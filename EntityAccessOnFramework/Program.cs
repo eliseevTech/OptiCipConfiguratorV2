@@ -25,7 +25,18 @@ namespace EntityAccessOnFramework
             
             }
 
-                Console.ReadLine();
+            using (Context C = new Context())
+            {
+                var s = C.Objects.ToList();
+
+                foreach (var l in s)
+                {
+                    Console.WriteLine(l.Name);
+                }
+
+            }
+
+            Console.ReadLine();
         }
 
 
