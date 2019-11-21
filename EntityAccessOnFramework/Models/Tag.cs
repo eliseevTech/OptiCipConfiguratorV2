@@ -45,12 +45,76 @@ namespace EntityAccessOnFramework.Models
         [MaxLength(15)]
         public string Type { get; set; }
 
-        ///// <summary>
-        ///// ALIAS_NOM
-        ///// </summary>
-        //[Column("LIEN")]
-        //[MaxLength(15)]
-        //public string OpcLink { get; set; }
+        /// <summary>
+        /// LIEN
+        /// </summary>
+        [Column("LIEN")]
+        [MaxLength(32)]
+        public string OpcShortLink { get; set; }
+
+        /// <summary>
+        /// ITEM
+        /// </summary>
+        [Column("ITEM")]
+        [MaxLength(50)]
+        public string OpcItem { get; set; }
+
+        /// <summary>
+        /// LIBELLE
+        /// </summary>
+        [Column("LIBELLE")]
+        [MaxLength(50)]
+        public string Label { get; set; }
+
+        /// <summary>
+        /// UNITE
+        /// </summary>
+        [Column("UNITE")]
+        [MaxLength(10)]
+        public string Unit { get; set; }
+
+
+        /// <summary>
+        /// MISE_ECHELLE
+        /// </summary>
+        [Column("MISE_ECHELLE")]
+        public bool? MISE_ECHELLE { get; set; }
+
+        /// <summary>
+        /// MIN_API
+        /// </summary>
+        [Column("MIN_API")]
+        public int? MapMin { get; set; }
+
+        /// <summary>
+        /// MAX_API
+        /// </summary>
+        [Column("MAX_API")]
+        public int? MapMax{ get; set; }
+
+        /// <summary>
+        /// MIN_API
+        /// </summary>
+        [Column("MIN_PHYS")]
+        public double? PhysicalMin { get; set; }
+
+        /// <summary>
+        /// MAX_API
+        /// </summary>
+        [Column("MAX_PHYS")]
+        public double? PhysicalMax { get; set; }
+
+        /// <summary>
+        /// CODE_TRAITEMENT
+        /// </summary>
+        [Column("CODE_TRAITEMENT")]
+        public short? CODE_TRAITEMENT { get; set; }
+
+        /// <summary>
+        /// PRECIS
+        /// </summary>
+        [Column("PRECIS")]
+        public short? PRECIS { get; set; }
 
     }
 }

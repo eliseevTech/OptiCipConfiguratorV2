@@ -18,6 +18,7 @@ namespace EntityAccessOnFramework.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<Line> Lines { get; set; }
         public DbSet<LineObject> Objects { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
