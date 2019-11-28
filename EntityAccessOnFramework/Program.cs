@@ -39,6 +39,18 @@ namespace EntityAccessOnFramework
 
             using (Context C = new Context())
             {
+                var s = C.LineTags.ToList();
+
+                foreach (var l in s)
+                {
+                    Console.WriteLine(l.Id);
+                }
+
+            }
+
+
+            using (Context C = new Context())
+            {
                 var s = C.Tags.ToList();
 
                 foreach (var l in s)

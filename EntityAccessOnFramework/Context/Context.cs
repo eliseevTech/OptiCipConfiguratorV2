@@ -19,10 +19,12 @@ namespace EntityAccessOnFramework.Data
         public DbSet<Line> Lines { get; set; }
         public DbSet<LineObject> Objects { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<LineTag> LineTags { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LineObject>().HasKey(O => new { O.ProjectId,O.GroupId,O.StationId,O.LineId,O.Id});
+            modelBuilder.Entity<LineTag>().HasKey(T => new { T.ProjectId, T.GroupId, T.StationId, T.LineId, T.Id });
         }
     }
 }
