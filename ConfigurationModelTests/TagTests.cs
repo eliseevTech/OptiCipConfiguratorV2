@@ -10,7 +10,7 @@ namespace ConfigurationModelTests
         [TestMethod]
         public void GetName()
         {
-            Tag tag = new Tag();   
+            OpcTag tag = new OpcTag();   
             Assert.AreEqual("Tag Name", (tag.TagName.Name));
             Assert.AreEqual("Address", (tag.Address.Name));
             Assert.AreEqual("Clamp High", (tag.ClampHigh.Name));

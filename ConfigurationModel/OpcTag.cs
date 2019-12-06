@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConfigurationModel
 {
-    public class Tag
+    public class OpcTag
     {
         public class _TagName
         {

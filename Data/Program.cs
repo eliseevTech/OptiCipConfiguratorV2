@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcelReader
+namespace Data
 {
-    public class Reader
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }
