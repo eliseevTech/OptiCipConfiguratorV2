@@ -51,6 +51,7 @@
     <Compile Include="Excel\ExcelDataCollector.cs" />
     <Compile Include="Excel\ExcelParser.cs" />
     <Compile Include="Excel\ExcelFactory.cs" />
+    <Compile Include="RequiredData.cs" />
     <Compile Include="IDataCollector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

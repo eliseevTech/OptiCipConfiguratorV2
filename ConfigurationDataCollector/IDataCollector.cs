@@ -11,8 +11,8 @@ namespace ConfigurationDataCollector
         /// Получаем данные
         /// </summary>
         /// <param name="dataRepository">Репозиторий данных, например файл в случае с excelDataCollector</param>
-        /// <param name="neededData">Данные которые хотим получить</param>
+        /// <param name="requiredData">Данные которые хотим получить</param>
         /// <returns></returns>
-        Dictionary<string, List<string>> GetData(string dataRepository, List<string> neededData);
+        Dictionary<string, List<string>> GetData(string dataRepository, List<RequiredData> requiredData);
     }
 }

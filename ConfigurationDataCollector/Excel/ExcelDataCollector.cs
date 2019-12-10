@@ -17,14 +17,14 @@ namespace ConfigurationDataCollector.Excel
         /// <param name="fileFullName">Он же dataRepository \ путь к файлу excel</param>
         /// <param name="neededData"></param>
         /// <returns></returns>
-        public Dictionary<string, List<string>> GetData(string fileFullName, List<string> neededData)
+        public Dictionary<string, List<string>> GetData(string fileFullName, List<RequiredData> requiredData)
         {
             using (ExcelFactory excelFactory = new ExcelFactory())
             {
                 var excel = excelFactory.CreateFromFile(fileFullName);
-                using (ExcelParser excelParser = new ExcelParser(neededData))
+                using (ExcelParser excelParser = new ExcelParser(requiredData))
                 {
-                    return excelParser.ParseFrom(excel);
+                    return excelParser.ParseFrom(excel,2);
                 }
             };
         

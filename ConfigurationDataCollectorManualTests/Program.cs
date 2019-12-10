@@ -12,11 +12,14 @@ namespace ConfigurationDataCollectorManualTests
     {
         static void Main(string[] args)
         {
-            string fileFullPath = @"C:\Users\sesa507770\Desktop\SE\pepsi\Новый проект 2019\exchangeTable3.xlsx"
+            string fileFullPath = @"C:\Users\sesa507770\Desktop\SE\pepsi\Новый проект 2019\Владимир\ВладимирExchangeTable.xlsx"
             ;
-            List<string> neededColums = new List<string>()
+            List<RequiredData> neededColums = new List<RequiredData>()
             {
-                "Station","Line","Type","Variable ENG","Full DB adr (formula)"
+                new RequiredData("Station"),
+                new RequiredData("Variable ENG"),
+                new RequiredData("Color",RequiredData.DataType.color)
+               
             };
             Dictionary<string, List<string>> result;
 
@@ -29,8 +32,8 @@ namespace ConfigurationDataCollectorManualTests
                 {
                     if (col != null)
                     {
-                    Console.Write(col[i] + " ");
-                    }
+                    Console.Write(col[i] + " | ");
+                    }                
                 }
                 Console.WriteLine();
             }
@@ -40,13 +43,13 @@ namespace ConfigurationDataCollectorManualTests
             Console.ReadLine();
         }
 
-        static Dictionary<string, List<string>> Test2(string fileFullPath, List<string> neededColums)
+        static Dictionary<string, List<string>> Test2(string fileFullPath, List<RequiredData> neededColums)
         {
             IDataCollector dataCollector = new ExcelDataCollector();
             return dataCollector.GetData(fileFullPath, neededColums);
         }
 
-        static void Test1(string fileFullPath, List<string> neededColums)
+        static void Test1(string fileFullPath, List<RequiredData> neededColums)
         {
             ExcelFactory excelFactory = new ExcelFactory();
             var excel = excelFactory.CreateFromFile(fileFullPath);

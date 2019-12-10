@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationDataCollector"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationDataCollectorManualTests", "ConfigurationDataCollectorManualTests\ConfigurationDataCollectorManualTests.csproj", "{3DC5485C-F59F-47D2-8321-CB28D3149BCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiCipAdministratorHelper2", "OptiCipAdministratorHelper2\OptiCipAdministratorHelper2.csproj", "{5C705E1F-9F33-49FE-8D74-AE3225EB950F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{3DC5485C-F59F-47D2-8321-CB28D3149BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC5485C-F59F-47D2-8321-CB28D3149BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC5485C-F59F-47D2-8321-CB28D3149BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

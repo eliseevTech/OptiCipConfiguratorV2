@@ -10,15 +10,15 @@ namespace ConfigurationDataCollector.Excel
 {
     public class ExcelParser : IDisposable
     {
-        List<string> _variableColumns;
+        List<RequiredData> _requiredData;
 
         /// <summary>
         /// даем интересующие нас данные (заголовки колонок)
         /// </summary>
         /// <param name="variableColumns">заголовки колонок</param>
-        public ExcelParser(List<string> variableColumns)
+        public ExcelParser(List<RequiredData> variableColumns)
         {
-            _variableColumns = variableColumns;            
+            _requiredData = variableColumns;            
         }
 
         public void Dispose()
@@ -38,26 +38,26 @@ namespace ConfigurationDataCollector.Excel
             ExcelWorksheet worksheet = excel.Workbook.Worksheets[worksheetNumber];
      
             ///проходим по всем запрашиваемым колонкам
-            foreach (var columnName in _variableColumns)
+            foreach (var OneRequiredData in _requiredData)
             {
                 ///ищем колонку - заголовок
                 ///и ее данные
-                var resultValues = GetColumnValues(worksheet, columnName);
-                _results.Add(columnName, resultValues);          
+                var resultValues = GetColumnValues(worksheet, OneRequiredData);
+                _results.Add(OneRequiredData.DataName, resultValues);          
             }
             return _results;
         }
-        
+
         /// <summary>
         /// Ищем колонку с таким заголовком, затем берем ее данные
         /// </summary>
         /// <param name="worksheet">ссылка на имплементацию листа екселя</param>
-        /// <param name="columnName">имя колонки</param>
+        /// <param name="requiredData">имя колонки</param>
         /// <returns></returns>
-        private List<string> GetColumnValues(ExcelWorksheet worksheet, string columnName)
+        private List<string> GetColumnValues(ExcelWorksheet worksheet, RequiredData requiredData)
         {
             ///ищем колонку - заголовок
-            var columnHeaderCell = worksheet.Cells.FirstOrDefault(C => C.GetValue<string>() == columnName);
+            var columnHeaderCell = worksheet.Cells.FirstOrDefault(C => C.GetValue<string>() == requiredData.DataName);
             if (columnHeaderCell == null)
             {
                 return null;
@@ -68,10 +68,26 @@ namespace ConfigurationDataCollector.Excel
             List<string> resultValues = new List<string>();
             for (int i = columnHeaderCell.Start.Row + 1; i < worksheet.Dimension.End.Row; i++)
             {
-                resultValues.Add((string)worksheet.Cells[i, columnNumber].Value);
+                if (requiredData.Type == RequiredData.DataType.value)
+                {
+                    resultValues.Add((string)worksheet.Cells[i, columnNumber].Value);
+                }
+                else if (requiredData.Type == RequiredData.DataType.color) 
+                {
+                    resultValues.Add((string)worksheet.Cells[i, columnNumber].Style.Fill.BackgroundColor.Rgb);
+                } 
+                else
+                {
+                    throw new InvalidOperationException("No Datatype of requiredData");
+                }
+           
             }
             return resultValues;
         }
+
+
+
+
 
     }
 
