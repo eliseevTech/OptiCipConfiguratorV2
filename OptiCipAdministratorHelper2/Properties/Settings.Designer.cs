@@ -25,10 +25,10 @@ namespace OptiCipAdministratorHelper2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en")]
-        public global::System.Globalization.CultureInfo DefaultLanguage {
+        [global::System.Configuration.DefaultSettingValueAttribute("ru")]
+        public string DefaultLanguage {
             get {
-                return ((global::System.Globalization.CultureInfo)(this["DefaultLanguage"]));
+                return ((string)(this["DefaultLanguage"]));
             }
             set {
                 this["DefaultLanguage"] = value;

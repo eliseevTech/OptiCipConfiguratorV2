@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppLang" xml:space="preserve">
-    <value>en</value>
+  <data name="ChangeLangMessage" xml:space="preserve">
+    <value>Язык будет изменен на "{0}" при следующем запуске.</value>
+  </data>
+  <data name="ChangeLangMessageBoxName" xml:space="preserve">
+    <value>Языковые настройки</value>
+  </data>
+  <data name="NavLanguage" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="NavSelectEnLanguage" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="NavSelectRuLanguage" xml:space="preserve">
+    <value>Русский</value>
   </data>
 </root>

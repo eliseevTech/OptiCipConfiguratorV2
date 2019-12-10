@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OptiCipAdministratorHelper2.Properties {
+namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace OptiCipAdministratorHelper2.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Local {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Local() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Resources.View.MainWindow.Local", typeof(Local).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,12 +51,57 @@ namespace OptiCipAdministratorHelper2.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The language will be changed on &quot;{0}&quot; at the next time you start..
+        /// </summary>
+        public static string ChangeLangMessage {
+            get {
+                return ResourceManager.GetString("ChangeLangMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language settings.
+        /// </summary>
+        public static string ChangeLangMessageBoxName {
+            get {
+                return ResourceManager.GetString("ChangeLangMessageBoxName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string NavLanguage {
+            get {
+                return ResourceManager.GetString("NavLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string NavSelectEnLanguage {
+            get {
+                return ResourceManager.GetString("NavSelectEnLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Русский.
+        /// </summary>
+        public static string NavSelectRuLanguage {
+            get {
+                return ResourceManager.GetString("NavSelectRuLanguage", resourceCulture);
             }
         }
     }

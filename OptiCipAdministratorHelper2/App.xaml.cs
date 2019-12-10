@@ -1,12 +1,22 @@
-﻿using OptiCipAdministratorHelper2.Services;
+﻿using Autofac;
+using OptiCipAdministratorHelper2.Services;
+using OptiCipAdministratorHelper2.View;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
 
 namespace OptiCipAdministratorHelper2
 {
@@ -15,39 +25,18 @@ namespace OptiCipAdministratorHelper2
     /// </summary>
     public partial class App : Application
     {
-        private static List<CultureInfo> m_Languages = new List<CultureInfo>();
-
-        public static List<CultureInfo> Languages
-        {
-            get
-            {
-                return m_Languages;
-            }
-        }
+        
+        IContainer container;
 
         public App()
         {
-            InitializeComponent();
-            LanguageChangeServices.LanguageChanged += App_LanguageChanged;
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.Register(L => new LanguageChangeServices()).AsSelf().SingleInstance();
+            container = containerBuilder.Build();
+            container.Resolve<LanguageChangeServices>().SetStartlang();
 
-            m_Languages.Clear();
-            m_Languages.Add(new CultureInfo("en")); //Нейтральная культура для этого проекта
-            m_Languages.Add(new CultureInfo("ru"));
-
-            LanguageChangeServices.Language = OptiCipAdministratorHelper2.Properties.Settings.Default.DefaultLanguage;
-        }
-
-        private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-            LanguageChangeServices.Language = OptiCipAdministratorHelper2.Properties.Settings.Default.DefaultLanguage;
-        }
-
-        private void App_LanguageChanged(Object sender, EventArgs e)
-        {
-            OptiCipAdministratorHelper2.Properties.Settings.Default.DefaultLanguage = LanguageChangeServices.Language;
-            OptiCipAdministratorHelper2.Properties.Settings.Default.Save();
-        }
-
-
+            MainWindow mainWindow = new MainWindow(container.Resolve<LanguageChangeServices>());
+            mainWindow.Show();
+        }   
     }
 }

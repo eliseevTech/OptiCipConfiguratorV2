@@ -8,55 +8,40 @@ using System.Windows;
 
 namespace OptiCipAdministratorHelper2.Services
 {
-    class LanguageChangeServices
+    public class LanguageChangeServices
     {
-        //Евент для оповещения всех окон приложения
-        public static event EventHandler LanguageChanged;
+        /// <summary>
+        /// имя переменной в сеттинге 
+        /// </summary>
+        string _settingDefaultLangName;
 
-        public static CultureInfo Language
+        public LanguageChangeServices(string settingDefaultLangName = "DefaultLanguage")
         {
-            get
-            {
-                return System.Threading.Thread.CurrentThread.CurrentUICulture;
-            }
-            set
-            {
-                if (value == null) throw new ArgumentNullException("value");
-                if (value == System.Threading.Thread.CurrentThread.CurrentUICulture) return;
-
-                //1. Меняем язык приложения:
-                System.Threading.Thread.CurrentThread.CurrentUICulture = value;
-
-                //2. Создаём ResourceDictionary для новой культуры
-                ResourceDictionary dict = new ResourceDictionary();
-                switch (value.Name)
-                {
-                    case "ru":
-                        dict.Source = new Uri(String.Format("Resources/lang.{0}.xaml", value.Name), UriKind.Relative);
-                        break;
-                    default:
-                        dict.Source = new Uri("Resources/lang.en.xaml", UriKind.Relative);
-                        break;
-                }
-
-                //3. Находим старую ResourceDictionary и удаляем его и добавляем новую ResourceDictionary
-                ResourceDictionary oldDict = (from d in Application.Current.Resources.MergedDictionaries
-                                              where d.Source != null && d.Source.OriginalString.StartsWith("Resources/lang.")
-                                              select d).First();
-                if (oldDict != null)
-                {
-                    int ind = Application.Current.Resources.MergedDictionaries.IndexOf(oldDict);
-                    Application.Current.Resources.MergedDictionaries.Remove(oldDict);
-                    Application.Current.Resources.MergedDictionaries.Insert(ind, dict);
-                }
-                else
-                {
-                    Application.Current.Resources.MergedDictionaries.Add(dict);
-                }
-
-                //4. Вызываем евент для оповещения всех окон.
-                LanguageChanged(Application.Current, new EventArgs());
-            }
+            _settingDefaultLangName = settingDefaultLangName;
         }
+
+        public void SetLang(string lang)
+        {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+            Properties.Settings.Default[_settingDefaultLangName] = lang;
+            Properties.Settings.Default.Save();
+        }
+
+
+        public void SetStartlang()
+        {
+            var lang = OptiCipAdministratorHelper2.Properties.Settings.Default[_settingDefaultLangName] as string;
+
+            if (!new string[] { "ru", "en" }.Contains(lang))
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                OptiCipAdministratorHelper2.Properties.Settings.Default[_settingDefaultLangName] = new CultureInfo("en");
+            }
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang); ;                              
+        }
+
+
+
+
     }
 }

@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OptiCipAdministratorHelper2.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DefaultLanguage" Type="System.Globalization.CultureInfo" Scope="User">
-      <Value Profile="(Default)">en</Value>
+    <Setting Name="DefaultLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ru</Value>
     </Setting>
   </Settings>
 </SettingsFile>
