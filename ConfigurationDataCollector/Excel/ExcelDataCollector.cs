@@ -11,6 +11,7 @@ namespace ConfigurationDataCollector.Excel
     /// </summary>
     public class ExcelDataCollector : IDataCollector
     {
+        public int WorksheetNumber { get; set; } = 1;
         /// <summary>
         /// Получаем данные из excel
         /// </summary>
@@ -24,11 +25,12 @@ namespace ConfigurationDataCollector.Excel
                 var excel = excelFactory.CreateFromFile(fileFullName);
                 using (ExcelParser excelParser = new ExcelParser(requiredData))
                 {
-                    return excelParser.ParseFrom(excel,2);
+                    return excelParser.ParseFrom(excel, WorksheetNumber);
                 }
             };
         
 
         }
+
     }
 }

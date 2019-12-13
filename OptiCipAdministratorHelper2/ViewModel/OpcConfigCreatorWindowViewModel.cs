@@ -1,5 +1,6 @@
 ﻿
 using ConfigurationDataCollector;
+using ConfigurationDataCollector.Excel;
 using Microsoft.Win32;
 using OptiCipAdministratorHelper2.Models;
 using OptiCipAdministratorHelper2.Models.OpcConfiguration;
@@ -29,7 +30,9 @@ namespace OptiCipAdministratorHelper2.ViewModel
             TagName = "Variable ENG",
             DataType = "Type",
             DbAddress = "Full DB adr (formula)",
-            Description = "Variable RUS"     
+            Description = "Variable RUS",
+
+            ExcelWorksheet = 1
         };
 
 
@@ -43,7 +46,7 @@ namespace OptiCipAdministratorHelper2.ViewModel
                   (selectFile = new RelayCommand(obj =>
                   {
                       OpenFileDialog openFileDialog = new OpenFileDialog();
-                      openFileDialog.Filter ="Excel Files (*.xlsx)|*.xlsx| All files (*.*)|*.*";
+                      openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx| All files (*.*)|*.*";
                       if (openFileDialog.ShowDialog() == true)
                           configModel.FilePath = openFileDialog.FileName;
                   }));
@@ -59,8 +62,7 @@ namespace OptiCipAdministratorHelper2.ViewModel
             {
                 return generateOpcConfig ??
                   (generateOpcConfig = new RelayCommand(obj =>
-                 {
-
+                  {
                       // делаем список нужных нам данных
                       List<RequiredData> requiredData = new List<RequiredData>()
                       {
@@ -69,25 +71,43 @@ namespace OptiCipAdministratorHelper2.ViewModel
                           new RequiredData(configModel.DataType),
                           new RequiredData(configModel.Description)
                       };
-                     Dictionary<string, List<string>> collectResult = CollectData(configModel.FilePath, requiredData);
 
-                     MessageBoxResult result = MessageBox.Show(collectResult[configModel.TagName].Count().ToString(),
-                                         "Confirmation",
-                                         MessageBoxButton.YesNo,
-                                         MessageBoxImage.Question);
-                     if (result == MessageBoxResult.Yes)
-                     {
-                         Application.Current.Shutdown();
-                     }
-                 }));
-        }
+                      Dictionary<string, List<string>> collectResult;
+                      try
+                      {
+                          collectResult = CollectData(configModel.FilePath, requiredData);
+                      }
+                      catch (Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                          return;
+                      }
+
+                      MessageBoxResult result = MessageBox.Show(collectResult[configModel.TagName].Count().ToString(),
+                                          "Confirmation",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Question);
+                      if (result == MessageBoxResult.Yes)
+                      {
+                          Application.Current.Shutdown();
+                      }
+                  }));
+            }
         }
 
 
         private Dictionary<string, List<string>> CollectData(string FullfilePath, List<RequiredData> requiredDatas)
         {
-            return _dataCollector.GetData(FullfilePath, requiredDatas);
-        }
+            ///если коллекторexcel, то устанавливаем какой лист мы хотим считать
+            if (_dataCollector is ExcelDataCollector)
+            {
+                (_dataCollector as ExcelDataCollector).WorksheetNumber = configModel.ExcelWorksheet;
+            }
+            ///Собираем данные коллектором
+            var collectResult = _dataCollector.GetData(FullfilePath, requiredDatas);
 
+            ///проверяем все ли вхождения были найдены
+            return collectResult;
+        }
     }
 }

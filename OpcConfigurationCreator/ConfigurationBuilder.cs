@@ -9,6 +9,8 @@ namespace OpcConfigurationCreator
 {
     public class ConfigurationBuilder
     {
+        private MemoryStream memoryStream;  
+        
         public List<IOpcTag> OpcTags;
 
         public string OutFilePath { get; set; } = AppContext.BaseDirectory;
@@ -40,11 +42,11 @@ namespace OpcConfigurationCreator
         {
             fileName = $"{AppContext.BaseDirectory}/{fileName}.csv";
             StreamWriter writer = CreateFile(fileName);    
-            WriteLineToFile(writer, "Tag Name,Address,Data Type,Respect Data Type,Client Access,Scan Rate,Scaling,Raw Low,Raw High,Scaled Low,Scaled High,Scaled Data Type,Clamp Low,Clamp High,Eng Units,Description,Negate Value");
+            WriteLine(writer, "Tag Name,Address,Data Type,Respect Data Type,Client Access,Scan Rate,Scaling,Raw Low,Raw High,Scaled Low,Scaled High,Scaled Data Type,Clamp Low,Clamp High,Eng Units,Description,Negate Value");
             
             foreach(var T in OpcTags)
             {
-                AddTagToFile(writer, T);
+                WriteTag(writer, T);
             }
             writer.Close();
         }
@@ -64,15 +66,14 @@ namespace OpcConfigurationCreator
             return new StreamWriter(stream);
         }
 
-        private void AddTagToFile(StreamWriter stream, IOpcTag tag)
+        private void WriteTag(StreamWriter stream, IOpcTag tag)
         {
-            WriteLineToFile(stream, tag.ToString());
+            WriteLine(stream, tag.ToString());
         }
 
-        private void WriteLineToFile(StreamWriter stream, string _string)
+        private void WriteLine(StreamWriter stream, string _string)
         {
             stream.WriteLine(_string);
         }
-
     }
 }

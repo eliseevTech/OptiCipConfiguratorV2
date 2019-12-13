@@ -8,33 +8,8 @@ namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
 {
     class OpcConfigModel : ModelBase
     {
-        private string tagName;
+  
         private string dataType;
-        private string dbAddress;
-        private string description;
-        private string filePath;
-
-
-        public string FilePath
-        {
-            get { return filePath; }
-            set
-            {
-                filePath = value;
-                OnPropertyChanged("FilePath");
-            }
-        }
-
-        public string TagName
-        {
-            get { return tagName; }
-            set
-            {
-                tagName = value;
-                OnPropertyChanged("Title");
-            }
-        }
-
         public string DataType
         {
             get { return dataType; }
@@ -45,6 +20,7 @@ namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
             }
         }
 
+        private string dbAddress;
         public string DbAddress
         {
             get { return dbAddress; }
@@ -55,6 +31,7 @@ namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
             }
         }
 
+        private string description;
         public string Description
         {
             get { return description; }
@@ -64,6 +41,38 @@ namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
                 OnPropertyChanged("Description");
             }
         }
+
+        private string filePath;
+        public string FilePath
+        {
+            get { return filePath; }
+            set
+            {
+                filePath = value;
+                OnPropertyChanged("FilePath");
+            }
+        }
+
+        private string tagName;
+        public string TagName
+        {
+            get { return tagName; }
+            set
+            {
+                tagName = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        private int excelWorksheet;
+        public int ExcelWorksheet
+        {
+            get { return excelWorksheet; }
+            set { excelWorksheet = value; }
+        }
+
+        
+
 
     }
 }

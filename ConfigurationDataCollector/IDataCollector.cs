@@ -5,7 +5,7 @@ namespace ConfigurationDataCollector
     /// <summary>
     /// Интерфейс коллектора данных из экселя или еще откудато. 
     /// </summary>
-    public interface IDataCollector 
+    public interface IDataCollector
     {
         /// <summary>
         /// Получаем данные
@@ -13,6 +13,6 @@ namespace ConfigurationDataCollector
         /// <param name="dataRepository">Репозиторий данных, например файл в случае с excelDataCollector</param>
         /// <param name="requiredData">Данные которые хотим получить</param>
         /// <returns></returns>
-        Dictionary<string, List<string>> GetData(string dataRepository, List<RequiredData> requiredData);
-    }
+        Dictionary<string, List<string>> GetData(string dataRepository, List<RequiredData> requiredData);   
+     }
 }

@@ -79,6 +79,15 @@ namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entry not found.
+        /// </summary>
+        public static string ErrorEntryNotFound {
+            get {
+                return ResourceManager.GetString("ErrorEntryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Type.
         /// </summary>
         public static string LabelConfDataType {
@@ -111,6 +120,15 @@ namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
         public static string LabelConfTagName {
             get {
                 return ResourceManager.GetString("LabelConfTagName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel worksheet number.
+        /// </summary>
+        public static string LabelExcelWorksheet {
+            get {
+                return ResourceManager.GetString("LabelExcelWorksheet", resourceCulture);
             }
         }
         

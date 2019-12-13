@@ -15,7 +15,7 @@ namespace OpcConfigurationCreatorManualTests
             {
                 new OpcTag()
                 {
-                    Address = "dsadsa"
+                    Address = "dsadsa"                    
                 }
             };
             ConfigurationBuilder ConfigurationBuilder = new ConfigurationBuilder(opcTags);
