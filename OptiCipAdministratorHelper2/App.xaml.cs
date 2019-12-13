@@ -16,7 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using ConfigurationDataCollector;
+using ConfigurationDataCollector.Excel;
 
 namespace OptiCipAdministratorHelper2
 {
@@ -32,10 +33,15 @@ namespace OptiCipAdministratorHelper2
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.Register(L => new LanguageChangeServices()).AsSelf().SingleInstance();
+            containerBuilder.RegisterType<MainWindow>().AsSelf();
+            containerBuilder.RegisterType<WindowLocator>().AsSelf();
+            containerBuilder.RegisterType<OpcConfigCreatorWindow>().AsSelf();
+            containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
+
             container = containerBuilder.Build();
             container.Resolve<LanguageChangeServices>().SetStartlang();
 
-            MainWindow mainWindow = new MainWindow(container.Resolve<LanguageChangeServices>());
+            MainWindow mainWindow = container.Resolve<MainWindow>();
             mainWindow.Show();
         }   
     }

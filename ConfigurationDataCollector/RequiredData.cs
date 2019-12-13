@@ -20,6 +20,7 @@ namespace ConfigurationDataCollector
         {
             value, color
         }
+
         public string DataName { get; set; }
         
         /// <summary>

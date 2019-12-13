@@ -1,4 +1,5 @@
 ﻿using OptiCipAdministratorHelper2.Services;
+using OptiCipAdministratorHelper2.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -23,43 +24,17 @@ namespace OptiCipAdministratorHelper2.View
     public partial class MainWindow : Window
     {
         LanguageChangeServices _languageChangeServices;
+        WindowLocator _windowService;
 
-        public MainWindow(LanguageChangeServices languageChangeServices)
+        public MainWindow(WindowLocator windowService,LanguageChangeServices languageChangeServices)
         {
             _languageChangeServices = languageChangeServices;
+            _windowService = windowService;
+            DataContext = new MainWindowViewModel();
             InitializeComponent();
-
-            //LanguageChangeServices.LanguageChanged += LanguageChanged;
-
-            //CultureInfo currLang = LanguageChangeServices.Language;
-
-            ////Заполняем меню смены языка:
-            //menuLanguage.Items.Clear();
-            //foreach (var lang in App.Languages)
-            //{
-            //    MenuItem menuLang = new MenuItem();
-            //    menuLang.Header = lang.DisplayName;
-            //    menuLang.Tag = lang;
-            //    menuLang.IsChecked = lang.Equals(currLang);
-            //    menuLang.Click += ChangeLanguageClick;
-            //    menuLanguage.Items.Add(menuLang);
-            //}
-
-
         }
 
 
-        //private void LanguageChanged(Object sender, EventArgs e)
-        //{
-        //    CultureInfo currLang = LanguageChangeServices.Language;
-
-        //    //Отмечаем нужный пункт смены языка как выбранный язык
-        //    foreach (MenuItem i in menuLanguage.Items)
-        //    {
-        //        CultureInfo ci = i.Tag as CultureInfo;
-        //        i.IsChecked = ci != null && ci.Equals(currLang);
-        //    }
-        //}
 
         private void ChangeLanguageClick(Object sender, EventArgs e)
         {
@@ -75,15 +50,18 @@ namespace OptiCipAdministratorHelper2.View
             }
         }
 
-        public void ChangeLanguage(string lang)
+        private void ChangeLanguage(string lang)
         {
             string messageText = string.Format(OptiCipAdministratorHelper2.Resources.View.MainWindow.Local.ChangeLangMessage,lang) ;
             string messageHead = OptiCipAdministratorHelper2.Resources.View.MainWindow.Local.ChangeLangMessageBoxName;
-
             MessageBoxResult result = MessageBox.Show(messageText,
                                           messageHead,
                                           MessageBoxButton.OK);
-
+        }
+        
+        private void OpenOpcCreatorClick(Object sender, EventArgs e)
+        {
+            _windowService.RunOpcConfigurator(); 
         }
     }
 

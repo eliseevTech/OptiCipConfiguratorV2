@@ -10,7 +10,16 @@
         Title="MainWindow" Height="450" Width="800">
     
     <Grid>
-        <Menu Height="25" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.8*" />
+        </Grid.ColumnDefinitions>
+
+        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0">
             <MenuItem Header="File">
                 <MenuItem Header="New Project" ></MenuItem>
                 <MenuItem Header="Open Project" >
@@ -21,14 +30,43 @@
                 <MenuItem Header="Exit" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Edit" ></MenuItem>
-            <MenuItem Header="View" ></MenuItem>
+            <MenuItem Header="{x:Static p:Local.navTools}" >
+                <MenuItem Header="{x:Static p:Local.navToolsOpcCreator}" Click="OpenOpcCreatorClick"></MenuItem>
+            </MenuItem>
             <MenuItem x:Name="menuLanguage" Header="{x:Static p:Local.NavLanguage}" >
                 <MenuItem Header="{x:Static p:Local.NavSelectRuLanguage}" Tag="ru" Click="ChangeLanguageClick" ></MenuItem>
                 <MenuItem Header="{x:Static p:Local.NavSelectEnLanguage}" Tag="en" Click="ChangeLanguageClick" ></MenuItem>
             </MenuItem>
         </Menu>
 
-   
+
+
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Phones}"
+                 SelectedItem="{Binding SelectedPhone}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Title}" />
+                        <TextBlock Text="{Binding Path=Company}" />
+                        <TextBlock Text="{Binding Path=Price}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1"  Grid.Row="1" DataContext="{Binding SelectedPhone}">
+            <TextBlock Text="Выбранный элемент"  />
+            <TextBlock Text="Модель" />
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Производитель" />
+            <TextBox Text="{Binding Company, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Цена" />
+            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+
+
+
 
     </Grid>
 

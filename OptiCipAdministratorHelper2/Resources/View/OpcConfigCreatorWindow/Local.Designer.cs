@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
+namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Resources.View.MainWindow.Local", typeof(Local).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow.Local", typeof(Local).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,65 @@ namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The language will be changed on &quot;{0}&quot; at the next time you start..
+        ///   Looks up a localized string similar to Generate.
         /// </summary>
-        public static string ChangeLangMessage {
+        public static string ButtonGenerate {
             get {
-                return ResourceManager.GetString("ChangeLangMessage", resourceCulture);
+                return ResourceManager.GetString("ButtonGenerate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language settings.
+        ///   Looks up a localized string similar to Select file.
         /// </summary>
-        public static string ChangeLangMessageBoxName {
+        public static string ButtonSelectFile {
             get {
-                return ResourceManager.GetString("ChangeLangMessageBoxName", resourceCulture);
+                return ResourceManager.GetString("ButtonSelectFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to Data Type.
         /// </summary>
-        public static string NavLanguage {
+        public static string LabelConfDataType {
             get {
-                return ResourceManager.GetString("NavLanguage", resourceCulture);
+                return ResourceManager.GetString("LabelConfDataType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English.
+        ///   Looks up a localized string similar to DB Address.
         /// </summary>
-        public static string NavSelectEnLanguage {
+        public static string LabelConfDbAdr {
             get {
-                return ResourceManager.GetString("NavSelectEnLanguage", resourceCulture);
+                return ResourceManager.GetString("LabelConfDbAdr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Русский.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
-        public static string NavSelectRuLanguage {
+        public static string LabelConfDescription {
             get {
-                return ResourceManager.GetString("NavSelectRuLanguage", resourceCulture);
+                return ResourceManager.GetString("LabelConfDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tools.
+        ///   Looks up a localized string similar to Tag Name.
         /// </summary>
-        public static string navTools {
+        public static string LabelConfTagName {
             get {
-                return ResourceManager.GetString("navTools", resourceCulture);
+                return ResourceManager.GetString("LabelConfTagName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Opc config creator.
         /// </summary>
-        public static string navToolsOpcCreator {
+        public static string PageName {
             get {
-                return ResourceManager.GetString("navToolsOpcCreator", resourceCulture);
+                return ResourceManager.GetString("PageName", resourceCulture);
             }
         }
     }

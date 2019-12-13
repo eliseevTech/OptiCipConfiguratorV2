@@ -132,4 +132,10 @@
   <data name="NavSelectRuLanguage" xml:space="preserve">
     <value>Русский</value>
   </data>
+  <data name="navTools" xml:space="preserve">
+    <value>Утилиты</value>
+  </data>
+  <data name="navToolsOpcCreator" xml:space="preserve">
+    <value>Создатель конфигурации OPC</value>
+  </data>
 </root>

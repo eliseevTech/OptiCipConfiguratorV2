@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\MainWindowModel.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\OpcConfiguration\OpcConfigModel.cs" />
     <Compile Include="Resources\View\MainWindow\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -68,7 +71,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Local.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\LanguageChangeServices.cs" />
+    <Compile Include="Resources\View\OpcConfigCreatorWindow\Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\View\OpcConfigCreatorWindow\Local.Designer.cs">
+      <DependentUpon>Local.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\DataCollectService.cs" />
+    <Compile Include="Services\OpcConfigurationCreationServices.cs" />
+    <Compile Include="Services\WindowLocator.cs" />
+    <Compile Include="ViewModel\OpcConfigCreatorWindowViewModel.cs" />
+    <Compile Include="View\OpcConfigCreatorWindow.xaml.cs">
+      <DependentUpon>OpcConfigCreatorWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,10 +96,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\OpcConfigCreatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,6 +134,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\View\OpcConfigCreatorWindow\Local.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\View\OpcConfigCreatorWindow\Local.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,7 +152,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <ProjectReference Include="..\ConfigurationDataCollector\ConfigurationDataCollector.csproj">
+      <Project>{4272330b-ce9a-4768-b0ad-7a72c8112b79}</Project>
+      <Name>ConfigurationDataCollector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpcConfigurationCreator\OpcConfigurationCreator.csproj">
+      <Project>{f40d2280-345c-4ec1-96eb-3480c76b2b51}</Project>
+      <Name>OpcConfigurationCreator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
