@@ -1,23 +1,10 @@
 ﻿using Autofac;
 using OptiCipAdministratorHelper2.Services;
 using OptiCipAdministratorHelper2.View;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ConfigurationDataCollector;
 using ConfigurationDataCollector.Excel;
+using System.Collections.Generic;
 
 namespace OptiCipAdministratorHelper2
 {
@@ -36,6 +23,8 @@ namespace OptiCipAdministratorHelper2
             containerBuilder.RegisterType<MainWindow>().AsSelf();
             containerBuilder.RegisterType<WindowLocator>().AsSelf();
             containerBuilder.RegisterType<OpcConfigCreatorWindow>().AsSelf();
+            containerBuilder.Register(O=> new OpcConfigurationCreator.ConfigurationBuilder(new List<OpcConfigurationCreator.IOpcTag>())).AsSelf();
+
             containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
 
             container = containerBuilder.Build();

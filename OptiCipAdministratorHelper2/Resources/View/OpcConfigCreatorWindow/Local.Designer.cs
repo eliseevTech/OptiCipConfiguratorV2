@@ -133,6 +133,15 @@ namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan rate (ms).
+        /// </summary>
+        public static string LabelScanRate {
+            get {
+                return ResourceManager.GetString("LabelScanRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Opc config creator.
         /// </summary>
         public static string PageName {

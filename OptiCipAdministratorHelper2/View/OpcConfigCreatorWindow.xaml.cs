@@ -1,4 +1,5 @@
 ﻿using ConfigurationDataCollector;
+using OpcConfigurationCreator;
 using OptiCipAdministratorHelper2.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace OptiCipAdministratorHelper2.View
     /// </summary>
     public partial class OpcConfigCreatorWindow : Window
     {
-        public OpcConfigCreatorWindow(IDataCollector dataCollector)
+        public OpcConfigCreatorWindow(IDataCollector dataCollector, ConfigurationBuilder configurationBuilder)
         {
-            DataContext = new OpcConfigCreatorWindowViewModel(dataCollector);
+            DataContext = new OpcConfigCreatorWindowViewModel(dataCollector, configurationBuilder);
             InitializeComponent();
         }
     }

@@ -81,8 +81,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Services\DataCollectService.cs" />
-    <Compile Include="Services\OpcConfigurationCreationServices.cs" />
+    <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
     <Compile Include="ViewModel\OpcConfigCreatorWindowViewModel.cs" />
     <Compile Include="View\OpcConfigCreatorWindow.xaml.cs">

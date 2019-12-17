@@ -141,6 +141,9 @@
   <data name="LabelExcelWorksheet" xml:space="preserve">
     <value>Лист excel</value>
   </data>
+  <data name="LabelScanRate" xml:space="preserve">
+    <value>Период опроса (мс)</value>
+  </data>
   <data name="PageName" xml:space="preserve">
     <value>Создатель конфигурации OPC</value>
   </data>

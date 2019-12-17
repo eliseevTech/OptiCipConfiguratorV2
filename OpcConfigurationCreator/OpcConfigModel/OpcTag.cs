@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -6,6 +7,7 @@ namespace OpcConfigurationCreator
 {
     public class OpcTag : IOpcTag
     {
+        [IsString]
         public string TagName { get; set; }
         public string Address { get; set; }
         public string DataType { get; set; }
@@ -30,8 +32,9 @@ namespace OpcConfigurationCreator
         /// <returns></returns>
         public override string ToString()
         {
-            return TagName
-                .Add(Address)
+            return 
+                $"\"{TagName}\""
+                .AddWithQuotationMarks(Address)
                 .Add(DataType)
                 .Add(RespectDataType)
                 .Add(ClientAccess)
@@ -45,16 +48,32 @@ namespace OpcConfigurationCreator
                 .Add(ClampLow)
                 .Add(ClampHigh)
                 .Add(EngUnits)
-                .Add(Description)
+                .AddWithQuotationMarks(Description)
                 .Add(NegateValue);
         }
     }
 
-    static class StringExtantion
+    static class StringExtention
     {
         public static string Add(this string baseString, string stringToAdd)
         {
             return baseString + "," + stringToAdd;
         }
+
+        public static string AddWithQuotationMarks(this string baseString, string stringToAdd)
+        {
+            if (string.IsNullOrEmpty(stringToAdd))
+            {
+                return Add(baseString, stringToAdd);
+            }
+            return baseString + $",\"{stringToAdd}\"";
+        }
+    }
+
+
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    class IsStringAttribute : Attribute
+    {
+
     }
 }

@@ -9,24 +9,18 @@ namespace OpcConfigurationCreator
 {
     public class ConfigurationBuilder
     {
-        private MemoryStream memoryStream;  
-        
         public List<IOpcTag> OpcTags;
 
-        public string OutFilePath { get; set; } = AppContext.BaseDirectory;
+        public string _outFileFullName { get; set; } = AppContext.BaseDirectory + "/OutPutFile.csv";
 
         /// <summary>
         /// Опс теги
         /// </summary>
         /// <param name="opcTags">теги опс</param>
         /// <param name="path">если путь не задан, то будет поставлен путь приложения (AppContext.BaseDirectory)</param>
-        public ConfigurationBuilder(List<IOpcTag> opcTags, string path = null)
+        public ConfigurationBuilder(List<IOpcTag> opcTags)
         {
-            if (path != null)
-            {
-                OutFilePath = path;
-            }
-            
+    
             OpcTags = opcTags;
         }
 
@@ -38,15 +32,19 @@ namespace OpcConfigurationCreator
             return this;
         }
         
-        public void BuildToFile(string fileName = "OpcConf")
+        public void BuildToFile(string outFileFullName = null)
         {
-            fileName = $"{AppContext.BaseDirectory}/{fileName}.csv";
-            StreamWriter writer = CreateFile(fileName);    
-            WriteLine(writer, "Tag Name,Address,Data Type,Respect Data Type,Client Access,Scan Rate,Scaling,Raw Low,Raw High,Scaled Low,Scaled High,Scaled Data Type,Clamp Low,Clamp High,Eng Units,Description,Negate Value");
+            if (outFileFullName != null)
+            {
+                _outFileFullName = outFileFullName;
+            }
+    
+            StreamWriter writer = CreateFile(_outFileFullName);    
+            WriteLineToFile(writer, "Tag Name,Address,Data Type,Respect Data Type,Client Access,Scan Rate,Scaling,Raw Low,Raw High,Scaled Low,Scaled High,Scaled Data Type,Clamp Low,Clamp High,Eng Units,Description,Negate Value");
             
             foreach(var T in OpcTags)
             {
-                WriteTag(writer, T);
+                AddTagToFile(writer, T);
             }
             writer.Close();
         }
@@ -66,14 +64,15 @@ namespace OpcConfigurationCreator
             return new StreamWriter(stream);
         }
 
-        private void WriteTag(StreamWriter stream, IOpcTag tag)
+        private void AddTagToFile(StreamWriter stream, IOpcTag tag)
         {
-            WriteLine(stream, tag.ToString());
+            WriteLineToFile(stream, tag.ToString());
         }
 
-        private void WriteLine(StreamWriter stream, string _string)
+        private void WriteLineToFile(StreamWriter stream, string _string)
         {
             stream.WriteLine(_string);
         }
+
     }
 }

@@ -71,7 +71,22 @@ namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
             set { excelWorksheet = value; }
         }
 
-        
+        private string outputFileFullName;
+        public string OutputFileFullName
+        {
+            get { return outputFileFullName; }
+            set { outputFileFullName = value; }
+        }
+
+        private string scanRate;
+        public string ScanRate
+        {
+            get { return scanRate; }
+            set { scanRate = value; }
+        }
+
+
+
 
 
     }

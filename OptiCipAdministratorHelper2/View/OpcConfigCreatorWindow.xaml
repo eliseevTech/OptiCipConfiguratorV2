@@ -37,10 +37,14 @@
             <TextBlock Grid.Column="0" Margin="0,84,0,166.4" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDescription}" HorizontalAlignment="Left" TextAlignment="Right" Width="121" Grid.ColumnSpan="2"/>
             <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10.2,84,0,0" TextWrapping="Wrap" Text="{Binding configModel.Description}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
 
-            <Button Content="{x:Static p:Local.ButtonGenerate}" Command="{Binding GenerateOpcConfig}" Grid.Column="2" HorizontalAlignment="Right" Width="75" Margin="0,0,-1.6,10.4" Height="19" VerticalAlignment="Bottom"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10.2,142,0,0" TextWrapping="Wrap" Text="{Binding configModel.ScanRate}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
+            <TextBlock Grid.Column="0" Margin="0,142,0,108.4" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelScanRate}" HorizontalAlignment="Left" TextAlignment="Right" Width="121" Grid.ColumnSpan="2"/>
 
-            <TextBlock Grid.Column="2" Margin="0,0,41.4,34.4" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelExcelWorksheet}" HorizontalAlignment="Right" TextAlignment="Right" Width="65" VerticalAlignment="Bottom"/>
-            <TextBox Grid.Column="2" Height="20" Margin="0,0,10.4,34.4" TextWrapping="Wrap" Text="{Binding configModel.ExcelWorksheet}" VerticalAlignment="Bottom" RenderTransformOrigin="0.469,0.48" HorizontalAlignment="Right" Width="26"/>
+
+            <Button Content="{x:Static p:Local.ButtonGenerate}" Command="{Binding GenerateOpcConfig}" Grid.Column="2" HorizontalAlignment="Right" Width="109" Margin="0,0,0.4,10.4" Height="39" VerticalAlignment="Bottom"/>
+
+            <TextBlock Grid.Column="2" Margin="0,0,44.4,54.4" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelExcelWorksheet}" HorizontalAlignment="Right" TextAlignment="Right" Width="136" VerticalAlignment="Bottom"/>
+            <TextBox Grid.Column="2" Height="20" Margin="0,0,0.4,54.4" TextWrapping="Wrap" Text="{Binding configModel.ExcelWorksheet}" VerticalAlignment="Bottom" RenderTransformOrigin="0.469,0.48" HorizontalAlignment="Right" Width="39"/>
 
 
         </Grid>

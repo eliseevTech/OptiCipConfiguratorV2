@@ -2,6 +2,7 @@
 using ConfigurationDataCollector;
 using ConfigurationDataCollector.Excel;
 using Microsoft.Win32;
+using OpcConfigurationCreator;
 using OptiCipAdministratorHelper2.Models;
 using OptiCipAdministratorHelper2.Models.OpcConfiguration;
 using OptiCipAdministratorHelper2.Services;
@@ -18,11 +19,13 @@ namespace OptiCipAdministratorHelper2.ViewModel
 {
     class OpcConfigCreatorWindowViewModel : ViewModelBase
     {
+        IDataCollector _dataCollector;
+        ConfigurationBuilder _configurationBuilder;
 
-        IDataCollector _dataCollector { get; set; }
-        public OpcConfigCreatorWindowViewModel(IDataCollector dataCollector)
+        public OpcConfigCreatorWindowViewModel(IDataCollector dataCollector, ConfigurationBuilder configurationBuilder)
         {
             _dataCollector = dataCollector;
+            _configurationBuilder = configurationBuilder;
         }
 
         public OpcConfigModel configModel { get; set; } = new OpcConfigModel()
@@ -31,8 +34,9 @@ namespace OptiCipAdministratorHelper2.ViewModel
             DataType = "Type",
             DbAddress = "Full DB adr (formula)",
             Description = "Variable RUS",
-
+            ScanRate = "500",
             ExcelWorksheet = 1
+            
         };
 
 
@@ -79,18 +83,43 @@ namespace OptiCipAdministratorHelper2.ViewModel
                       }
                       catch (Exception e)
                       {
-                          MessageBox.Show(e.Message);
+                          MessageBox.Show(e.StackTrace, e.Message);
                           return;
                       }
 
-                      MessageBoxResult result = MessageBox.Show(collectResult[configModel.TagName].Count().ToString(),
-                                          "Confirmation",
-                                          MessageBoxButton.YesNo,
-                                          MessageBoxImage.Question);
-                      if (result == MessageBoxResult.Yes)
+   
+                      List<IOpcTag> opcTags;
+
+                      try
                       {
-                          Application.Current.Shutdown();
+                          opcTags = ToOpcTags(collectResult, configModel);
                       }
+                      catch (Exception e)
+                      {
+                          MessageBox.Show(e.StackTrace, e.Message);
+                          return;
+                      }
+  
+                      _configurationBuilder.AddTags(opcTags);
+
+
+                      SaveFileDialog saveFileDialog = new SaveFileDialog();
+                      saveFileDialog.Filter = "CSV Files (*.csv)|*.csv| All files (*.*)|*.*";
+                      if (saveFileDialog.ShowDialog() == true)
+                      {
+                          configModel.OutputFileFullName = saveFileDialog.FileName;
+                      }
+
+                      _configurationBuilder.BuildToFile(configModel.OutputFileFullName);
+
+                      //MessageBoxResult result = MessageBox.Show(collectResult[configModel.TagName].Count().ToString(),
+                      //                    "Confirmation",
+                      //                    MessageBoxButton.YesNo,
+                      //                    MessageBoxImage.Question);
+                      //if (result == MessageBoxResult.Yes)
+                      //{
+                      //    Application.Current.Shutdown();
+                      //}
                   }));
             }
         }
@@ -108,6 +137,31 @@ namespace OptiCipAdministratorHelper2.ViewModel
 
             ///проверяем все ли вхождения были найдены
             return collectResult;
+        }
+
+        private List<IOpcTag> ToOpcTags(Dictionary<string, List<string>> collectResult, OpcConfigModel configModel)
+        {
+            List<IOpcTag> opcTags = new List<IOpcTag>();            
+            
+            for(int i = 0; i < collectResult.First().Value.Count(); i++)
+            {
+                if (collectResult[configModel.TagName][i] == null)
+                {
+                    continue;
+                }
+                opcTags.Add(new OpcTag()
+                {
+                    TagName = collectResult[configModel.TagName][i].Replace(" ", String.Empty),
+                    Address = collectResult[configModel.DbAddress][i],
+                    Description = collectResult[configModel.Description][i],
+                    DataType = collectResult[configModel.DataType][i],
+                    ScanRate = configModel.ScanRate,
+                    RespectDataType = "1",
+                    ClientAccess = "R/W"
+
+                }) ;
+            }
+            return opcTags;
         }
     }
 }
