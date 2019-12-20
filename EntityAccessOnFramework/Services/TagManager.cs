@@ -24,23 +24,27 @@ namespace EntityAccessOnFramework.Services
         }
 
 
-        public Tag AddNewTag(string name, string label, string alias, TagType tagType, int projectId, string opcItem, string opcShortLinkName)
+        public Tag AddNewTag(string name, string label, string alias, TagType tagType, int projectId, string opcShortLinkName, string opcItem )
         {
             Tag newTag = new Tag()
             {
                 Name = name,
                 ProjectId = projectId,
-
                 Label = label,
                 Alias = alias,
-                Type = tagType.ToStrings(),
-        
+                Type = tagType.ToStrings(),        
                 OpcShortLinkName = opcShortLinkName,
                 OpcItem = opcItem
             };
             _accessContext.Tags.Add(newTag);
             _accessContext.SaveChanges();
             return newTag;
+        }
+
+        public Tag AddNewTag(string name, string label, string alias, TagType tagType, Project project,  OpcShortLink opcShortLink, string opcItem)
+        {
+            return AddNewTag(name, label, alias, tagType, project.Id, opcShortLink.Name, opcItem);
+          
         }
 
 

@@ -43,11 +43,8 @@ namespace EntityAccessOnFrameworkManualTests
                 "testAlias2",
                 TagManager.TagType.digital,
                 _context.Projects.First().Id,
-                "Opc Item2",
-                _context.OpcShortLinks.First().Name);
-
-
-
+                _context.OpcShortLinks.First().Name,
+                "Opc Item2");
         }
     }
 }
