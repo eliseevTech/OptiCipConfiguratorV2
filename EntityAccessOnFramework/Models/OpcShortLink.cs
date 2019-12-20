@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityAccessOnFramework.Models
 {
-    [Table("LEINS_OPC")]
+    [Table("LIENS_OPC")]
     public class OpcShortLink
     {
         /// <summary>

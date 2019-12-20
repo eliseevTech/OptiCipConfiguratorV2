@@ -38,19 +38,6 @@ namespace EntityAccessOnFramework.Services
             _lineTagManager = lineTagManager;            
         }
 
-        /// <summary>
-        /// Добавляем новый тег в лингию
-        /// (добавляем тег в теги, а потом его в линию)
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="label"></param>
-        /// <param name="alias"></param>
-        /// <param name="tagType">тип</param>
-        /// <param name="line">линия</param>
-        public void AddNewTagToLine(string name, string label, string alias, TagType tagType, Line line)
-        {
-            Tag newTag = TagManager.AddNewTag(name, label, alias, tagType, line.ProjectId);
-            _lineTagManager.AddLineTag(newTag, line);
-        }
+
     }
 }

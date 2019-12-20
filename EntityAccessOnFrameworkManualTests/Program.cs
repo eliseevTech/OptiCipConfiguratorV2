@@ -6,12 +6,9 @@ using System.Linq;
 namespace EntityAccessOnFrameworkManualTests
 {
     class Program
-    {
-    
-
+    { 
         static void Main(string[] args)
-        {
-            
+        {            
             //base(new JetConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\Test-Project.sep'; providerName=JetEntityFrameworkProvider; Password=SEEME;"), true)
             AccessContext _context = new AccessContext(@"C:/PRJ/c#/OptiCipAdministratorHelper/Config_test.mdb");
 
@@ -27,9 +24,27 @@ namespace EntityAccessOnFrameworkManualTests
 
 
             var facade = container.Resolve<ConfigationFacade>();
-            facade.TagManager.AddNewTag("test", "testLabel", "testAlias", TagManager.TagType.digital, _context.Projects.First().Id);
 
 
+            //_context.Tags.Add(new EntityAccessOnFramework.Models.Tag()
+            //{
+            //    Name = "Dsa34",
+            //    ProjectId = 2,
+            //    Label = "Sd",
+            //    OpcItem = "dsda",
+            //    OpcShortLinkName = "Ds",
+            //    Type = "DIG"
+            //});
+            //_context.SaveChanges();
+
+            facade.TagManager.AddNewTag
+                ("test232322",
+                "testLabel2",
+                "testAlias2",
+                TagManager.TagType.digital,
+                _context.Projects.First().Id,
+                "Opc Item2",
+                _context.OpcShortLinks.First().Name);
 
 
 

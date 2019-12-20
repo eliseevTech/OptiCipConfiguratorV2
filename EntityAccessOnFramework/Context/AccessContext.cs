@@ -2,6 +2,7 @@
 using JetEntityFrameworkProvider;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,8 @@ namespace EntityAccessOnFramework.Data
             modelBuilder.Entity<LineObject>().HasKey(O => new { O.ProjectId,O.GroupId,O.StationId,O.LineId,O.Id});
             modelBuilder.Entity<LineTag>().HasKey(T => new { T.ProjectId, T.GroupId, T.StationId, T.LineId, T.TagId });
 
-            modelBuilder.Entity<Tag>().HasKey(T => new { T.Id, T.ProjectId });
+            modelBuilder.Entity<Tag>().HasKey(T => new { T.Id, T.ProjectId, T.Name });
+            modelBuilder.Entity<Tag>().Property(T => T.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             modelBuilder.Entity<OpcShortLink>().HasKey(O => new { O.Id, O.Name });
         }

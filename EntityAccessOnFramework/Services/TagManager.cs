@@ -29,10 +29,12 @@ namespace EntityAccessOnFramework.Services
             Tag newTag = new Tag()
             {
                 Name = name,
+                ProjectId = projectId,
+
                 Label = label,
                 Alias = alias,
                 Type = tagType.ToStrings(),
-                ProjectId = projectId,
+        
                 OpcShortLinkName = opcShortLinkName,
                 OpcItem = opcItem
             };
