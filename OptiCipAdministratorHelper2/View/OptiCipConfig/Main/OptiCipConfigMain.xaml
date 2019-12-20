@@ -1,0 +1,34 @@
+﻿<Window x:Class="OptiCipAdministratorHelper2.View.OptiCipConfig.Main.OptiCipConfigMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main"
+        xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources"
+        mc:Ignorable="d"
+       Title="{Binding ConfigurationName}" Height="471.1" Width="751.6">
+    <Grid>
+        <Label Content="{x:Static p:Local.LabelGroupName}" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="149"/>
+
+        <ComboBox ItemsSource="{Binding ConfigGroup}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"
+            SelectedItem="{Binding SelectedGroup, Mode=TwoWay}" Margin="10,39,586.6,373.6" />
+
+        <Label Content="{x:Static p:Local.LabelStationName}" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="149"/>
+        <ComboBox ItemsSource="{Binding ConfigStations}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"
+            Margin="10,95,586.6,317.6" />
+     
+        <!--<ListView Margin="10" ItemsSource="{Binding ConfigLayout}" HorizontalAlignment="Left" HorizontalContentAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="320" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn  Header="Matches" Width="80" DisplayMemberBinding="{Binding Id}" />
+                </GridView>
+            </ListView.View>
+        </ListView>-->
+    </Grid>
+
+</Window>

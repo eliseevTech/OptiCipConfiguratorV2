@@ -38,11 +38,21 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetEntityFrameworkProvider, Version=6.0.0.0, Culture=neutral, PublicKeyToken=756cf6beb8fe7b41, processorArchitecture=x86">
+      <HintPath>..\packages\JetEntityFrameworkProvider.6.1.4\lib\JetEntityFrameworkProvider.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
@@ -60,34 +70,49 @@
     </ApplicationDefinition>
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
-    <Compile Include="Models\OpcConfiguration\OpcConfigModel.cs" />
-    <Compile Include="Resources\View\MainWindow\Local.ru.Designer.cs">
+    <Compile Include="Services\AppConfigChangeService.cs" />
+    <Compile Include="View\OpcConfig\Model\OpcConfigModel.cs" />
+    <Compile Include="View\MainWindow\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\View\MainWindow\Local.Designer.cs">
+    <Compile Include="View\MainWindow\Resources\Local.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Local.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\View\OpcConfigCreatorWindow\Local.ru.Designer.cs">
+    <Compile Include="View\OpcConfig\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\View\OpcConfigCreatorWindow\Local.Designer.cs">
+    <Compile Include="View\OpcConfig\Resources\Local.Designer.cs">
       <DependentUpon>Local.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
-    <Compile Include="ViewModel\OpcConfigCreatorWindowViewModel.cs" />
-    <Compile Include="View\OpcConfigCreatorWindow.xaml.cs">
+    <Compile Include="View\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
+    <Compile Include="View\OpcConfig\OpcConfigCreatorWindow.xaml.cs">
       <DependentUpon>OpcConfigCreatorWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\MainWindow.xaml">
+    <Compile Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
+      <DependentUpon>OptiCipConfigMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\Main\Resources\Local.Designer.cs">
+      <DependentUpon>Local.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\Main\Resources\Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\Main\ViewModel\MainWindowViewModel.cs" />
+    <Page Include="View\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,13 +121,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="View\MainWindow\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\OpcConfigCreatorWindow.xaml">
+    <Page Include="View\OpcConfig\OpcConfigCreatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,21 +154,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\View\MainWindow\Local.ru.resx">
+    <EmbeddedResource Include="View\MainWindow\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\View\MainWindow\Local.resx">
+    <EmbeddedResource Include="View\MainWindow\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\View\OpcConfigCreatorWindow\Local.ru.resx">
+    <EmbeddedResource Include="View\OpcConfig\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\View\OpcConfigCreatorWindow\Local.resx">
+    <EmbeddedResource Include="View\OpcConfig\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\Main\Resources\Local.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\Main\Resources\Local.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -155,10 +192,17 @@
       <Project>{4272330b-ce9a-4768-b0ad-7a72c8112b79}</Project>
       <Name>ConfigurationDataCollector</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntityAccessOnFramework\EntityAccessOnFramework.csproj">
+      <Project>{0521cd88-307f-4d29-bbd3-4ca510840048}</Project>
+      <Name>EntityAccessOnFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpcConfigurationCreator\OpcConfigurationCreator.csproj">
       <Project>{f40d2280-345c-4ec1-96eb-3480c76b2b51}</Project>
       <Name>OpcConfigurationCreator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\OpcConfiguration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

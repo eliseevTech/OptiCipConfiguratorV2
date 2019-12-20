@@ -42,6 +42,7 @@ namespace EntityAccessOnFramework.Models
         /// ALIAS_NOM
         /// </summary>
         [Column("TYPE_EQT")]
+        [RegularExpression("^ANA$|^DIG$")]   
         [MaxLength(15)]
         public string Type { get; set; }
 
@@ -50,7 +51,7 @@ namespace EntityAccessOnFramework.Models
         /// </summary>
         [Column("LIEN")]
         [MaxLength(32)]
-        public string OpcShortLink { get; set; }
+        public string OpcShortLinkName { get; set; }
 
         /// <summary>
         /// ITEM

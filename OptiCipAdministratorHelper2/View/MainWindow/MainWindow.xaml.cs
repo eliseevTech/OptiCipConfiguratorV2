@@ -1,4 +1,5 @@
 ﻿using OptiCipAdministratorHelper2.Services;
+using OptiCipAdministratorHelper2.View.MainWindow.ViewModel;
 using OptiCipAdministratorHelper2.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OptiCipAdministratorHelper2.View.MainWindow.Resources;
+using Microsoft.Win32;
 
-namespace OptiCipAdministratorHelper2.View
+namespace OptiCipAdministratorHelper2.View.MainWindow
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,12 +28,15 @@ namespace OptiCipAdministratorHelper2.View
     {
         LanguageChangeServices _languageChangeServices;
         WindowLocator _windowService;
+        AccessContextService _accessContextService;
 
-        public MainWindow(WindowLocator windowService,LanguageChangeServices languageChangeServices)
+        public MainWindow(WindowLocator windowService,LanguageChangeServices languageChangeServices, AccessContextService accessContextService)
         {
             _languageChangeServices = languageChangeServices;
             _windowService = windowService;
             DataContext = new MainWindowViewModel();
+            _accessContextService = accessContextService;
+
             InitializeComponent();
         }
 
@@ -52,8 +58,8 @@ namespace OptiCipAdministratorHelper2.View
 
         private void ChangeLanguage(string lang)
         {
-            string messageText = string.Format(OptiCipAdministratorHelper2.Resources.View.MainWindow.Local.ChangeLangMessage,lang) ;
-            string messageHead = OptiCipAdministratorHelper2.Resources.View.MainWindow.Local.ChangeLangMessageBoxName;
+            string messageText = string.Format(Local.ChangeLangMessage,lang) ;
+            string messageHead = Local.ChangeLangMessageBoxName;
             MessageBoxResult result = MessageBox.Show(messageText,
                                           messageHead,
                                           MessageBoxButton.OK);
@@ -63,6 +69,24 @@ namespace OptiCipAdministratorHelper2.View
         {
             _windowService.RunOpcConfigurator(); 
         }
+
+
+        private void OpenConfiguration(Object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Opticip config file (*.mdb)|*.mdb| All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                _accessContextService.SetContext(openFileDialog.FileName);
+                _windowService.RunOptiCipConfiguratorMain();
+            }
+               
+
+     
+
+
+        }
+
     }
 
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
+namespace OptiCipAdministratorHelper2.View.MainWindow.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Resources.View.MainWindow.Local", typeof(Local).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.View.MainWindow.Resources.Local", typeof(Local).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,6 +88,24 @@ namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OptiCip.
+        /// </summary>
+        public static string NavOptiCipConfig {
+            get {
+                return ResourceManager.GetString("NavOptiCipConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string NavOptiCipConfigOpen {
+            get {
+                return ResourceManager.GetString("NavOptiCipConfigOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string NavSelectEnLanguage {
@@ -108,18 +126,18 @@ namespace OptiCipAdministratorHelper2.Resources.View.MainWindow {
         /// <summary>
         ///   Looks up a localized string similar to Tools.
         /// </summary>
-        public static string navTools {
+        public static string NavTools {
             get {
-                return ResourceManager.GetString("navTools", resourceCulture);
+                return ResourceManager.GetString("NavTools", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Opc config creator.
         /// </summary>
-        public static string navToolsOpcCreator {
+        public static string NavToolsOpcCreator {
             get {
-                return ResourceManager.GetString("navToolsOpcCreator", resourceCulture);
+                return ResourceManager.GetString("NavToolsOpcCreator", resourceCulture);
             }
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
+namespace OptiCipAdministratorHelper2.View.OpcConfig.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.Resources.View.OpcConfigCreatorWindow.Local", typeof(Local).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.View.OpcConfig.Resources.Local", typeof(Local).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

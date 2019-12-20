@@ -10,8 +10,9 @@ namespace EntityAccessOnFramework.Models
 {
    [Table("COURBES_BATCH_GEN")]
     public class Line
-    {        
-
+    {
+        [Column("ID_PROJ")]
+        public int ProjectId { get; set; }        
         /// <summary>
         /// ID_STAT
         /// </summary>
@@ -42,13 +43,13 @@ namespace EntityAccessOnFramework.Models
         /// VERROU
         /// </summary>
         [Column("VERROU")]
-        public bool Lock { get; set; }
+        public bool Lock { get; set; } = false;
 
         /// <summary>
         /// MODE_DECL
         /// </summary>
         [Column("MODE_DECL")]
-        public int Mode { get; set; }
+        public int Mode { get; set; } = 1;
 
         /// <summary>
         /// DECL_ITEM1
@@ -57,7 +58,7 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression("^.+[|].+$")]
         [MaxLength(255)]
         [Column("DECL_ITEM1")]
-        public string TagSequence { get; set; }
+        public string TagSequence { get; set; } 
 
         /// <summary>
         /// DECL_ITEM2
@@ -66,7 +67,7 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression("^.+[|].+$")]
         [MaxLength(255)]
         [Column("DECL_ITEM2")]
-        public string TagObject { get; set; }
+        public string TagObject { get; set; } 
 
         /// <summary>
         /// PARAM_ITEM1
@@ -75,7 +76,7 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression("^.+[|].+$")]
         [MaxLength(255)]
         [Column("PARAM_ITEM1")]
-        public string TagRecipe { get; set; }
+        public string TagRecipe { get; set; } 
 
         /// <summary>
         /// MODE_EXPERT
@@ -83,16 +84,16 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression("^NEP*")]
         [MaxLength(32)]
         [Column("MODE_EXPERT")]
-        public string ExpertMode { get; set; }
+        public string ExpertMode { get; set; } = "NEP";
 
         /// <summary>
-        /// PARAM_ITEM2
+        /// PARAM_ITEM2 Номер продукта
         /// PLC_GEA|LMK_GEA1_WS1_L1_Product_Number
         /// </summary>
         [RegularExpression("^.+[|].+$")]
         [MaxLength(255)]
         [Column("PARAM_ITEM2")]
-        public string TagProduct { get; set; }
+        public string TagProduct { get; set; } 
 
         /// <summary>
         /// GroupType
@@ -101,13 +102,13 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression("^GRP_RECORD*")]
         [MaxLength(20)]
         [Column("TYPE_BATCH")]
-        public string GroupType { get; set; }
+        public string GroupType { get; set; } = "GRP_RECORD";
 
         /// <summary>
         /// CODE_EXPERT
         /// </summary>
         [Column("CODE_EXPERT")]
-        public short CODE_EXPERT { get; set; }
+        public short CODE_EXPERT { get; set; } = 1;
 
         /// <summary>
         /// PARAM_EXPERT
@@ -116,7 +117,7 @@ namespace EntityAccessOnFramework.Models
         [RegularExpression(@"^TEMP=\d+[|]COND=\d+[|]FLOW=\d+[|]SL_AL1_EFF=\d+[|]SL_AL2_EFF=\d+$")]
         [MaxLength(255)]
         [Column("PARAM_EXPERT")]
-        public string ExpertProperties { get; set; }
+        public string ExpertProperties { get; set; } = "TEMP=34|COND=33|FLOW=33|SL_AL1_EFF=10|SL_AL2_EFF=20";
 
         /// <summary>
         /// PARAM_ITEM10
@@ -165,13 +166,13 @@ namespace EntityAccessOnFramework.Models
         /// GOLDEN_LOCK
         /// </summary>
         [Column("GOLDEN_LOCK")]
-        public bool GOLDEN_LOCK { get; set; }
+        public bool GOLDEN_LOCK { get; set; } = false;
 
         /// <summary>
         /// ID_DCO
         /// </summary>
         [Column("ID_DCO")]
-        public short ID_DCO { get; set; }
+        public short ID_DCO { get; set; } = 0;
 
 
 

@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0521CD88-307F-4D29-BBD3-4CA510840048}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>EntityAccessOnFramework</RootNamespace>
-    <AssemblyName>EntityAccessOnFramework</AssemblyName>
+    <ProjectGuid>{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>EntityAccessOnFrameworkManualTests</RootNamespace>
+    <AssemblyName>EntityAccessOnFrameworkManualTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -32,10 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,28 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\AccessContext.cs" />
-    <Compile Include="Models\LineTag.cs" />
-    <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\OpcShortLink.cs" />
-    <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\Line.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Object.cs" />
-    <Compile Include="Models\Station.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConfigationFacade.cs" />
-    <Compile Include="Services\LineManager.cs" />
-    <Compile Include="Services\StationManager.cs" />
-    <Compile Include="Services\LineTagManager.cs" />
-    <Compile Include="Services\TagManager.cs" />
-    <Compile Include="Services\TagTypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EntityAccessOnFramework\EntityAccessOnFramework.csproj">
+      <Project>{0521cd88-307f-4d29-bbd3-4ca510840048}</Project>
+      <Name>EntityAccessOnFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

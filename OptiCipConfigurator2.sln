@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationDataCollectorM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiCipAdministratorHelper2", "OptiCipAdministratorHelper2\OptiCipAdministratorHelper2.csproj", "{5C705E1F-9F33-49FE-8D74-AE3225EB950F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityAccessOnFrameworkManualTests", "EntityAccessOnFrameworkManualTests\EntityAccessOnFrameworkManualTests.csproj", "{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C705E1F-9F33-49FE-8D74-AE3225EB950F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CD83E4-7E67-4905-9EBD-1CD36D06517F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2789DEDB-042D-4A69-842D-3A153DF7D2FF} = {B1E9E738-82DF-439A-9FA9-D1E9F2BBD981}
 		{3DC5485C-F59F-47D2-8321-CB28D3149BCD} = {B1E9E738-82DF-439A-9FA9-D1E9F2BBD981}
+		{E6CD83E4-7E67-4905-9EBD-1CD36D06517F} = {B1E9E738-82DF-439A-9FA9-D1E9F2BBD981}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {377B704A-4304-46EA-A7BF-81102E9DB6D7}

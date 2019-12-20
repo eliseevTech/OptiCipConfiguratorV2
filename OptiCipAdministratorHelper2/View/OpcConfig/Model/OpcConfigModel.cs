@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OptiCipAdministratorHelper2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OptiCipAdministratorHelper2.Models.OpcConfiguration
+namespace OptiCipAdministratorHelper2.View.OpcConfig.Model
 {
     class OpcConfigModel : ModelBase
     {

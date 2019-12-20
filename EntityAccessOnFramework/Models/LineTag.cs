@@ -45,7 +45,7 @@ namespace EntityAccessOnFramework.Models
         /// ID_EQT
         /// </summary>
         [Column("ID_EQT")]
-        public int Id { get; set; }
+        public int TagId { get; set; }
 
         /// <summary>
         /// ID_RECORD

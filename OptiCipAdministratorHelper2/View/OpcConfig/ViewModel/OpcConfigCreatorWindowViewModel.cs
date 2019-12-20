@@ -4,9 +4,11 @@ using ConfigurationDataCollector.Excel;
 using Microsoft.Win32;
 using OpcConfigurationCreator;
 using OptiCipAdministratorHelper2.Models;
-using OptiCipAdministratorHelper2.Models.OpcConfiguration;
+
 using OptiCipAdministratorHelper2.Services;
 using OptiCipAdministratorHelper2.View;
+using OptiCipAdministratorHelper2.View.OpcConfig.Model;
+using OptiCipAdministratorHelper2.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace OptiCipAdministratorHelper2.ViewModel
+namespace OptiCipAdministratorHelper2.View.OpcConfig.ViewModel
 {
     class OpcConfigCreatorWindowViewModel : ViewModelBase
     {
