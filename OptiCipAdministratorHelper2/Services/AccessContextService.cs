@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Configuration;
-using EntityAccessOnFramework.Data;
+﻿using EntityAccessOnFramework.Data;
 
 namespace OptiCipAdministratorHelper2.Services
 {
     public class AccessContextService
     {
+        AccessContext _accessContext;
+
+
         public AccessContext Context { get; private set; }
         public string FilePath { get; private set; }
         /// <summary>

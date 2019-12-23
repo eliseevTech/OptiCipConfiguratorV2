@@ -1,0 +1,18 @@
+﻿<Window x:Class="OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText.GetUserTextWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="{x:Static p:Local.PageName}" Height="100.196" Width="316.714"
+        xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText.Resources"
+        
+        >
+    <Grid>
+        <TextBox x:Name="InputTextBox" Height="23" Margin="69,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" Width="231"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Click="AddClick" Margin="10,39,0,0" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+        <Button Content="{x:Static p:Local.ButtonCancel}" Click="CancleClick" Margin="225,39,0,0" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+        <Label Content="{x:Static p:Local.InputTextLabel}" HorizontalAlignment="Left" Margin="10,10,0,0" Width="59" Height="23" VerticalAlignment="Top" />
+
+    </Grid>
+</Window>

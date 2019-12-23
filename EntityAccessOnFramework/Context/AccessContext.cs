@@ -11,9 +11,7 @@ using System.Threading.Tasks;
 namespace EntityAccessOnFramework.Data
 {
     public class AccessContext : DbContext
-    {
-
-
+    {  
         public AccessContext(string connectionString) : base(new JetConnection("Provider=Microsoft.JET.Oledb.4.0;Data Source='" + connectionString + "';"), true)
         {
             Database.SetInitializer<AccessContext>(null);

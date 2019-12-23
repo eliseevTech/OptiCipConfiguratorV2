@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonAdd" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="GroupIsNotSelected" xml:space="preserve">
+    <value>Group is not selected.</value>
+  </data>
   <data name="LabelGroupName" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="LabelLineName" xml:space="preserve">
+    <value>Line</value>
   </data>
   <data name="LabelStationName" xml:space="preserve">
     <value>Station</value>
   </data>
   <data name="PageName" xml:space="preserve">
     <value>OptiCip Project</value>
+  </data>
+  <data name="StationIsNotSelected" xml:space="preserve">
+    <value>Station in not selected.</value>
   </data>
 </root>

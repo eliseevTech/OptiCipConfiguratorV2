@@ -67,8 +67,9 @@
     <Compile Include="Models\Station.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConfigationFacade.cs" />
+    <Compile Include="Services\ConfigurationFacade.cs" />
     <Compile Include="Services\LineManager.cs" />
+    <Compile Include="Services\GroupManager.cs" />
     <Compile Include="Services\StationManager.cs" />
     <Compile Include="Services\LineTagManager.cs" />
     <Compile Include="Services\TagManager.cs" />

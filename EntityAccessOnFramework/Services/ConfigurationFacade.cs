@@ -1,4 +1,5 @@
-﻿using EntityAccessOnFramework.Models;
+﻿using EntityAccessOnFramework.Data;
+using EntityAccessOnFramework.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace EntityAccessOnFramework.Services
     /// <summary>
     /// Фасад для менеджеров и методы где нужны все менеджеры (например добавление тега сразу в линию)
     /// </summary>
-    public class ConfigationFacade
+    public class ConfigurationFacade
     {
         public StationManager StationManager { get { return _stationManager; } }
         StationManager _stationManager;
@@ -25,17 +26,16 @@ namespace EntityAccessOnFramework.Services
         public LineTagManager LineTagManager { get { return _lineTagManager; } }
         LineTagManager _lineTagManager;
 
-        public ConfigationFacade(
-            StationManager stationManager,
-            LineManager lineManager,
-            TagManager tagManager,
-            LineTagManager lineTagManager
-            )
+        public GroupManager GroupManager { get { return _groupManager; } }
+        GroupManager _groupManager;
+
+        public ConfigurationFacade(AccessContext accessContext) 
         {
-            _stationManager = stationManager;
-            _lineManager = lineManager;
-            _tagManager = tagManager;
-            _lineTagManager = lineTagManager;            
+            _stationManager = new StationManager(accessContext);
+            _lineManager = new LineManager(accessContext);
+            _tagManager = new TagManager(accessContext);
+            _lineTagManager = new LineTagManager(accessContext);
+            _groupManager = new GroupManager(accessContext);
         }
 
 

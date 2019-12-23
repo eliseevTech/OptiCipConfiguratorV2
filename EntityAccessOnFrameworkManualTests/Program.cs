@@ -19,11 +19,11 @@ namespace EntityAccessOnFrameworkManualTests
             containerBuilder.Register(O => new LineTagManager(_context)).AsSelf().SingleInstance();
             containerBuilder.Register(O => new StationManager(_context)).AsSelf().SingleInstance();
   
-            containerBuilder.RegisterType<ConfigationFacade>().AsSelf();
+            containerBuilder.RegisterType<ConfigurationFacade>().AsSelf();
             IContainer container = containerBuilder.Build();
 
 
-            var facade = container.Resolve<ConfigationFacade>();
+            var facade = container.Resolve<ConfigurationFacade>();
 
 
             //_context.Tags.Add(new EntityAccessOnFramework.Models.Tag()

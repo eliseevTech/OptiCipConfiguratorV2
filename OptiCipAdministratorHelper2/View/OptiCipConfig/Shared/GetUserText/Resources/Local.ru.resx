@@ -120,22 +120,13 @@
   <data name="ButtonAdd" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="GroupIsNotSelected" xml:space="preserve">
-    <value>Группа не выбрана.</value>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Отмена</value>
   </data>
-  <data name="LabelGroupName" xml:space="preserve">
-    <value>Экран</value>
-  </data>
-  <data name="LabelStationName" xml:space="preserve">
-    <value>Станция</value>
+  <data name="InputTextLabel" xml:space="preserve">
+    <value>Имя:</value>
   </data>
   <data name="PageName" xml:space="preserve">
-    <value>Проект OptiCip</value>
-  </data>
-  <data name="StationIsNotSelected" xml:space="preserve">
-    <value>Станция не выбрана.</value>
-  </data>
-  <data name="String" xml:space="preserve">
-    <value>Линия</value>
+    <value>Добавить</value>
   </data>
 </root>

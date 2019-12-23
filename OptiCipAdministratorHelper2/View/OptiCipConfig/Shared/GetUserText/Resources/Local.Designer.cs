@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources {
+namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText.Resources {
     using System;
     
     
@@ -39,7 +39,8 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources.Local", typeof(Local).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText.Resources.Local" +
+                            "", typeof(Local).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +62,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new.
+        ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string ButtonAdd {
             get {
@@ -70,56 +71,29 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Group is not selected..
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string GroupIsNotSelected {
+        public static string ButtonCancel {
             get {
-                return ResourceManager.GetString("GroupIsNotSelected", resourceCulture);
+                return ResourceManager.GetString("ButtonCancel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View.
+        ///   Looks up a localized string similar to Name:.
         /// </summary>
-        public static string LabelGroupName {
+        public static string InputTextLabel {
             get {
-                return ResourceManager.GetString("LabelGroupName", resourceCulture);
+                return ResourceManager.GetString("InputTextLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Line.
-        /// </summary>
-        public static string LabelLineName {
-            get {
-                return ResourceManager.GetString("LabelLineName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Station.
-        /// </summary>
-        public static string LabelStationName {
-            get {
-                return ResourceManager.GetString("LabelStationName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OptiCip Project.
+        ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string PageName {
             get {
                 return ResourceManager.GetString("PageName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Station in not selected..
-        /// </summary>
-        public static string StationIsNotSelected {
-            get {
-                return ResourceManager.GetString("StationIsNotSelected", resourceCulture);
             }
         }
     }

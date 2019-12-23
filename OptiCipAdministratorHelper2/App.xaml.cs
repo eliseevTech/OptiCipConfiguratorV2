@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using OptiCipAdministratorHelper2.View.OpcConfig;
 using OptiCipAdministratorHelper2.View.MainWindow;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main;
+using EntityAccessOnFramework.Data;
+using EntityAccessOnFramework.Services;
 
 namespace OptiCipAdministratorHelper2
 {
@@ -29,9 +31,14 @@ namespace OptiCipAdministratorHelper2
             containerBuilder.RegisterType<OptiCipConfigMain>().AsSelf();
 
             containerBuilder.Register(O=> new OpcConfigurationCreator.ConfigurationBuilder(new List<OpcConfigurationCreator.IOpcTag>())).AsSelf();
+
+            //контекст
+
             containerBuilder.RegisterType<AccessContextService>().AsSelf().SingleInstance();
 
+            // работа с контекстом
             containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
+
 
             container = containerBuilder.Build();
             container.Resolve<LanguageChangeServices>().SetStartlang();

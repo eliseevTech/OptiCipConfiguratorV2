@@ -6,29 +6,54 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources"
         mc:Ignorable="d"
-       Title="{Binding ConfigurationName}" Height="471.1" Width="751.6">
+       Title="{Binding ConfigurationName}" Height="471.1" Width="582.8"
+        
+        >
     <Grid>
-        <Label Content="{x:Static p:Local.LabelGroupName}" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="149"/>
+        <Label Content="{x:Static p:Local.LabelGroupName}" HorizontalAlignment="Left" Margin="10,21,0,393.6" Width="149"/>
 
         <ComboBox ItemsSource="{Binding ConfigGroup}"
             DisplayMemberPath="Name"
             SelectedValuePath="Name"
-            SelectedItem="{Binding SelectedGroup, Mode=TwoWay}" Margin="10,39,586.6,373.6" />
+            SelectedItem="{Binding SelectedGroup, Mode=TwoWay}" Margin="10,39,0,0" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="149" />
 
-        <Label Content="{x:Static p:Local.LabelStationName}" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewGroup}" HorizontalAlignment="Left" Margin="164,39,0,0" Width="87" Height="29" VerticalAlignment="Top"/>
+
+
+        <Label Content="{x:Static p:Local.LabelStationName}" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="149"/>
         <ComboBox ItemsSource="{Binding ConfigStations}"
             DisplayMemberPath="Name"
             SelectedValuePath="Name"
-            Margin="10,95,586.6,317.6" />
-     
-        <!--<ListView Margin="10" ItemsSource="{Binding ConfigLayout}" HorizontalAlignment="Left" HorizontalContentAlignment="Left">
+            SelectedItem="{Binding SelectedStation, Mode=TwoWay}" Margin="10,95,0,0" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="149" />
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,95,0,0" Width="87" Height="29" VerticalAlignment="Top"/>
+
+        <Label Content="{x:Static p:Local.LabelLineName}" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="149"/>
+       
+        <ComboBox ItemsSource="{Binding ConfigLines}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"
+            SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
+            Margin="10,150,0,0" Height="29" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="149" />
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,150,0,0" Width="87" Height="29" VerticalAlignment="Top"/>
+
+
+        <ListView Margin="10,202,0,9.6" ItemsSource="{Binding ConfigLineTags}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="241">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="320" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn  Header="Matches" Width="80" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding TagId}" />
+                    
+                    <GridViewColumn  Header="Color" Width="80"  >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding Path=Color}" Background="{Binding Path=Color}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
                 </GridView>
             </ListView.View>
-        </ListView>-->
+        </ListView>
+        
     </Grid>
 
 </Window>

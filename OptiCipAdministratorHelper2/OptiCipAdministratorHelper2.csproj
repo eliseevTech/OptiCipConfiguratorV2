@@ -70,7 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
-    <Compile Include="Services\AppConfigChangeService.cs" />
+    <Compile Include="Services\AccessContextService.cs" />
     <Compile Include="View\OpcConfig\Model\OpcConfigModel.cs" />
     <Compile Include="View\MainWindow\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
@@ -81,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Local.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\OpcConfig\OpcConfigCreatorWindow.xaml.cs">
+      <DependentUpon>OpcConfigCreatorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OpcConfig\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
@@ -95,9 +98,6 @@
     <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
     <Compile Include="View\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
-    <Compile Include="View\OpcConfig\OpcConfigCreatorWindow.xaml.cs">
-      <DependentUpon>OpcConfigCreatorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
       <DependentUpon>OptiCipConfigMain.xaml</DependentUpon>
     </Compile>
@@ -112,6 +112,19 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="View\OptiCipConfig\Main\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="View\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml.cs">
+      <DependentUpon>GetUserTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.Designer.cs">
+      <DependentUpon>Local.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Page Include="View\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,9 +142,13 @@
     </Compile>
     <Page Include="View\OpcConfig\OpcConfigCreatorWindow.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +195,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -203,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\OpcConfiguration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
