@@ -98,6 +98,7 @@
     <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
     <Compile Include="View\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
+    <Compile Include="View\OptiCipConfig\Main\Models\LineTagFacade.cs" />
     <Compile Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
       <DependentUpon>OptiCipConfigMain.xaml</DependentUpon>
     </Compile>

@@ -20,6 +20,7 @@ using EntityAccessOnFramework.Models;
 using EntityAccessOnFramework.Services;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models;
 
 namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 {
@@ -31,7 +32,8 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
         public List<Group> ConfigGroup { get; set; }
         public List<Station> ConfigStations { get; set; }
         public List<Line> ConfigLines { get; set; }
-        public List<LineTag> ConfigLineTags { get; set; }
+        //public List<LineTag> ConfigLineTags { get; set; }
+        public List<LineTagFacade> LineTagFacades { get; set; }
 
 
         public ConfigurationFacade _configurationFacade;
@@ -82,12 +84,33 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             set
             {
                 selectedLine = value;
-                ConfigLineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
+                var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
+                LineTagFacades = GetLineFacadeTags(lineTags);
                 ///Уведомляем что данные свойство обновили
-                OnPropertyChanged("ConfigLineTags");                
+                OnPropertyChanged("LineTagFacades");                
             }
         }
 
+
+
+        List<LineTagFacade> GetLineFacadeTags(ICollection<LineTag> lineTags)
+        {
+            List<LineTagFacade> lineTagFacades = new List<LineTagFacade>();
+            foreach(var L in lineTags)
+            {
+                var tag = _context.Tags.FirstOrDefault(T => T.Id == L.TagId);
+                if (tag == null)
+                {
+                    continue;
+                }
+                lineTagFacades.Add(new LineTagFacade() 
+                {
+                    LineTag = L,
+                    Tag = tag
+                });
+            }
+            return lineTagFacades;
+        }
 
 
         // команда добавления нового объекта
@@ -164,7 +187,19 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
         }
 
 
-
+        // команда добавления нового объекта
+        private RelayCommand save;
+        public RelayCommand Save
+        {
+            get
+            {
+                return save ?? (addNewLine = new RelayCommand(obj =>
+                {
+                    Console.WriteLine(LineTagFacades.Count());
+                    
+                }));
+            }
+        }
 
 
 
