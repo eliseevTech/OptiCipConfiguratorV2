@@ -21,6 +21,7 @@ using EntityAccessOnFramework.Services;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models;
+using System.Data.Entity;
 
 namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 {
@@ -84,10 +85,13 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             set
             {
                 selectedLine = value;
+
+                ClearContextChanges();
+
                 var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
                 LineTagFacades = GetLineFacadeTags(lineTags);
                 ///Уведомляем что данные свойство обновили
-                OnPropertyChanged("LineTagFacades");                
+                OnPropertyChanged("LineTagFacades");
             }
         }
 
@@ -195,13 +199,53 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             {
                 return save ?? (addNewLine = new RelayCommand(obj =>
                 {
-                    Console.WriteLine(LineTagFacades.Count());
-                    
+                    _context.SaveChanges();
+                           }));
+            }
+        }
+
+
+        // команда добавления нового объекта
+        private RelayCommand addNewTagsToLine;
+        public RelayCommand AddNewTagsToLine
+        {
+            get
+            {
+                return addNewTagsToLine ?? (addNewTagsToLine = new RelayCommand(obj =>
+                {
+                    if (selectedGroup == null || SelectedLine == null)
+                    {
+                        MessageBox.Show(Local.GroupIsNotSelected);
+                        return;
+                    }
+                    MessageBox.Show("Добавляем из excel");
+ 
                 }));
             }
         }
 
 
+        private void ClearContextChanges()
+        {
+            var changedEntries = _context.ChangeTracker.Entries()
+                .Where(x => x.State != EntityState.Unchanged).ToList();
 
+            foreach (var entry in changedEntries)
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                        entry.CurrentValues.SetValues(entry.OriginalValues);
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Unchanged;
+                        break;
+                }
+            }
+        }
     }
 }

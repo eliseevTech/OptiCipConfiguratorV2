@@ -42,7 +42,7 @@ namespace EntityAccessOnFramework.Models
         /// ALIAS_NOM
         /// </summary>
         [Column("TYPE_EQT")]
-        [RegularExpression("^ANA$|^DIG$")]   
+        [RegularExpression("^ANA$|^DIG$|^TOR$")]   
         [MaxLength(15)]
         public string Type { get; set; }
 

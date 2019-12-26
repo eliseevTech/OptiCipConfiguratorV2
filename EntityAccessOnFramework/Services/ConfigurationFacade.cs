@@ -14,6 +14,8 @@ namespace EntityAccessOnFramework.Services
     /// </summary>
     public class ConfigurationFacade
     {
+        public AccessContext _accessContext;
+
         public StationManager StationManager { get { return _stationManager; } }
         StationManager _stationManager;
 
@@ -31,6 +33,7 @@ namespace EntityAccessOnFramework.Services
 
         public ConfigurationFacade(AccessContext accessContext) 
         {
+            _accessContext = accessContext;
             _stationManager = new StationManager(accessContext);
             _lineManager = new LineManager(accessContext);
             _tagManager = new TagManager(accessContext);
@@ -39,7 +42,36 @@ namespace EntityAccessOnFramework.Services
         }
 
 
+        public void AddNewTagToLine(Line line, Tag tag, int color )
+        {
+            _accessContext.LineTags.Add(new LineTag()
+            {
+                GroupId = line.GroupId,
+                StationId = line.StationId,
+                ProjectId = line.ProjectId,
+                ObjectId = -1,
+                LineId = line.Id,
+                TagId = tag.Id,
+                IsDigital = (tag.Type == "TOR"), 
+                Color = color               
+            });;
+        }
 
+        //public void AddNewTag(int projectId, string opcShortLink, string opcItem, string label, string name)
+        //{
+        //    Tag tag = new Tag();
+
+        //    tag.OpcItem = opcItem;
+        //    tag.ProjectId = projectId;
+        //    tag.Unit
+
+        //    tag.Name = name;
+        //    tag.Label = label;
+        //    tag.OpcShortLinkName = opcShortLink;
+        //    //_accessContext.Tags.Add)
+        //}
+
+        
 
 
     }

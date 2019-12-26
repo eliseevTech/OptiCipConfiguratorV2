@@ -24,7 +24,6 @@ namespace EntityAccessOnFramework.Models
         [Key]
         public int Id { get; set; }
 
-
         /// <summary>
         /// NOM_MAT
         /// </summary>

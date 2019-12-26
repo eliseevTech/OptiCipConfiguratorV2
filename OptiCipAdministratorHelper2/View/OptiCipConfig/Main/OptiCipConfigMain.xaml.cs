@@ -30,7 +30,5 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main
             DataContext = new OptiCipConfigMainViewModel(accessContextService, new ConfigurationFacade(accessContextService.Context));
             InitializeComponent();
         }
-
-
     }
 }

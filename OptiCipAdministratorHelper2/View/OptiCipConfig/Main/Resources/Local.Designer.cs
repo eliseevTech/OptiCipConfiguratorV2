@@ -70,6 +70,15 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add tag to line from excel.
+        /// </summary>
+        public static string ButtonAddTagToLine {
+            get {
+                return ResourceManager.GetString("ButtonAddTagToLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group is not selected..
         /// </summary>
         public static string GroupIsNotSelected {

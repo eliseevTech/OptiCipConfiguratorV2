@@ -6,13 +6,12 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources"
         mc:Ignorable="d"
-       Title="{Binding ConfigurationName}" Height="533.5" Width="582.8"
+       Title="{Binding ConfigurationName}" Height="533.5" Width="878.6"
         
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="109*"/>
-            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="{x:Static p:Local.LabelGroupName}" HorizontalAlignment="Left" Margin="10,5,0,413" Width="149"/>
 
@@ -21,7 +20,7 @@
             SelectedValuePath="Name"
             SelectedItem="{Binding SelectedGroup, Mode=TwoWay}" Margin="10,29,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="149" />
 
-        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewGroup}" HorizontalAlignment="Left" Margin="164,29,0,0" Width="69" Height="26" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewGroup}" HorizontalAlignment="Left" Margin="164,29,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
 
 
         <Label Content="{x:Static p:Local.LabelStationName}" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="149" Height="25"/>
@@ -29,7 +28,7 @@
             DisplayMemberPath="Name"
             SelectedValuePath="Name"
             SelectedItem="{Binding SelectedStation, Mode=TwoWay}" Margin="10,85,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="149" />
-        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,85,0,0" Width="69" Height="26" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,85,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
 
         <Label Content="{x:Static p:Local.LabelLineName}" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="149" Height="23"/>
 
@@ -38,37 +37,23 @@
             SelectedValuePath="Name"
             SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
             Margin="10,139,0,0" Height="26" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="149" />
-        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,139,0,0" Width="69" Height="26" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,139,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
+        <DataGrid  ItemsSource="{Binding LineTagFacades}" HorizontalAlignment="Left" Height="220" Margin="10,186,0,0" VerticalAlignment="Top" Width="852" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Path=Tag.Name}"  Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Color" IsReadOnly="True" Binding="{Binding Path=HexColor}" Width="80">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Background" Value="{Binding Path=HexColor}"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Tag.Alias,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
+        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="793,468,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
 
-        <ListView Margin="10,174,0,152" ItemsSource="{Binding LineTagFacades}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="556" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Tag.Name}" />
-
-                    <GridViewColumn Header="Color" Width="80"  >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  x:Name="Txt" Text="{Binding Path=HexColor}" Background="{Binding Path=HexColor}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Alias" Width="80"  >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox  x:Name="Txt" Text="{Binding Path=Tag.Alias,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        
-        
-        
-        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="279.4,139,0,0" Width="69" Height="26" VerticalAlignment="Top" Grid.Column="1"/>
-
+        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="719,468,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
     </Grid>
-
 </Window>

@@ -174,7 +174,5 @@ namespace EntityAccessOnFramework.Models
         [Column("ID_DCO")]
         public short ID_DCO { get; set; } = 0;
 
-
-
     }
 }
