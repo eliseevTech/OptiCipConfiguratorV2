@@ -70,7 +70,16 @@ namespace ConfigurationDataCollector.Excel
             {
                 if (requiredData.Type == RequiredData.DataType.value)
                 {
-                    resultValues.Add((string)worksheet.Cells[i, columnNumber].Value);
+                    var val = worksheet.Cells[i, columnNumber].Value;
+                    if (val == null)
+                    {
+                        resultValues.Add("");
+                    }
+                    else
+                    {
+                        resultValues.Add(val.ToString());
+                    }
+                    
                 }
                 else if (requiredData.Type == RequiredData.DataType.color) 
                 {

@@ -113,6 +113,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="View\OptiCipConfig\Main\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="View\OptiCipConfig\Services\ExcelReader.cs" />
     <Compile Include="View\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml.cs">
       <DependentUpon>GetUserTextWindow.xaml</DependentUpon>
     </Compile>

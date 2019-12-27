@@ -37,8 +37,7 @@ namespace OptiCipAdministratorHelper2.View.OpcConfig.ViewModel
             DbAddress = "Full DB adr (formula)",
             Description = "Variable RUS",
             ScanRate = "500",
-            ExcelWorksheet = 1
-            
+            ExcelWorksheet = 1          
         };
 
 

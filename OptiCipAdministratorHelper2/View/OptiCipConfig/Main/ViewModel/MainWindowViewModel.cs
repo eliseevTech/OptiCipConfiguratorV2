@@ -232,18 +232,18 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 
             foreach (var entry in changedEntries)
             {
-                switch (entry.State)
+                if (entry.State == EntityState.Modified)
                 {
-                    case EntityState.Modified:
-                        entry.CurrentValues.SetValues(entry.OriginalValues);
-                        entry.State = EntityState.Unchanged;
-                        break;
-                    case EntityState.Added:
-                        entry.State = EntityState.Detached;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Unchanged;
-                        break;
+                    entry.CurrentValues.SetValues(entry.OriginalValues);
+                    entry.State = EntityState.Unchanged;
+                }
+                if (entry.State == EntityState.Added)
+                {
+                    entry.State = EntityState.Detached;
+                }
+                if (entry.State == EntityState.Deleted)
+                {
+                    entry.State = EntityState.Unchanged;
                 }
             }
         }

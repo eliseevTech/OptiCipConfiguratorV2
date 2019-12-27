@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
 {
-    class LineTagFacade
+    public class LineTagFacade
     {
         public LineTag LineTag { get; set; }
         public Tag Tag { get; set; }
@@ -16,8 +16,6 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
         /// Отдаем цвет в хексе
         /// </summary>
         public string HexColor { get { return ToHex(LineTag.Color); }  set { LineTag.Color = ToDec(value); }  }
-
-
 
         /// <summary>
         /// Функция для перевода из строки в хеш цвета
@@ -50,7 +48,11 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
         /// <returns></returns>
         private int ToDec(string _Color)
         {
-
+            ///Если цвет меньше 6 символов, делаем белый.
+            if (_Color.Length < 6)
+            {
+                _Color = "#FFFFFF";
+            }
             //находим R G B
             string HexTempColor1 = _Color.Substring(1, 2);
             string HexTempColor2 = _Color.Substring(3, 2);
@@ -60,7 +62,6 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
             //возвращаем десячитное число
             return int.Parse(HexTagColor, System.Globalization.NumberStyles.HexNumber);
         }
-
         ///задать все нужные поля а потом передавть в модель для таблички
     }
 }
