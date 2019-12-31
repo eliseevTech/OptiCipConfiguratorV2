@@ -52,8 +52,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="793,468,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
+        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="793,468,0,0" Width="69" Height="26" VerticalAlignment="Top" Background="#FFFFA25B"/>
 
-        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="719,468,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
+        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewTagsToLineFromExcel}" HorizontalAlignment="Left" Margin="10,468,0,0" Width="149" Height="26" VerticalAlignment="Top" Background="#FFA3E700"/>
     </Grid>
 </Window>

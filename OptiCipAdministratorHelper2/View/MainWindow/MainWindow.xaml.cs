@@ -74,7 +74,7 @@ namespace OptiCipAdministratorHelper2.View.MainWindow
         private void OpenConfiguration(Object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Opticip config file (*.mdb)|*.mdb| All files (*.*)|*.*";
+            openFileDialog.Filter = "Opticip config file (*.mdb)|*.mdb| All files (*.*)|3*.*";
             if (openFileDialog.ShowDialog() == true)
             {
                 _accessContextService.SetContext(openFileDialog.FileName);

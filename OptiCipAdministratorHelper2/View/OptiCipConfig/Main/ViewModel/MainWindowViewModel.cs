@@ -38,14 +38,18 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 
 
         public ConfigurationFacade _configurationFacade;
+        public WindowLocator _windowService;
 
 
-        public OptiCipConfigMainViewModel(AccessContextService accessContextService, ConfigurationFacade configurationFacade)
+        public OptiCipConfigMainViewModel(
+            AccessContextService accessContextService, 
+            ConfigurationFacade configurationFacade,
+            WindowLocator windowService)
         {
             _configurationFacade = configurationFacade;
             _context = accessContextService.Context;
             ConfigurationName = accessContextService.FilePath;
-
+            _windowService = windowService;
             ConfigGroup =  _context.Groups.ToList();           
         }
 
@@ -206,12 +210,12 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 
 
         // команда добавления нового объекта
-        private RelayCommand addNewTagsToLine;
-        public RelayCommand AddNewTagsToLine
+        private RelayCommand addNewTagsToLineFromExcel;
+        public RelayCommand AddNewTagsToLineFromExcel
         {
             get
             {
-                return addNewTagsToLine ?? (addNewTagsToLine = new RelayCommand(obj =>
+                return addNewTagsToLineFromExcel ?? (addNewTagsToLineFromExcel = new RelayCommand(obj =>
                 {
                     if (selectedGroup == null || SelectedLine == null)
                     {
@@ -219,7 +223,9 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                         return;
                     }
                     MessageBox.Show("Добавляем из excel");
- 
+
+                    _windowService.RunAddLineTagToOptiCipConfiguration(SelectedLine);
+
                 }));
             }
         }
@@ -247,5 +253,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                 }
             }
         }
+
+
     }
 }

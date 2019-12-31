@@ -10,6 +10,9 @@ using OptiCipAdministratorHelper2.View.MainWindow;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main;
 using EntityAccessOnFramework.Data;
 using EntityAccessOnFramework.Services;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag;
 
 namespace OptiCipAdministratorHelper2
 {
@@ -29,6 +32,11 @@ namespace OptiCipAdministratorHelper2
             containerBuilder.RegisterType<WindowLocator>().AsSelf();
             containerBuilder.RegisterType<OpcConfigCreatorWindow>().AsSelf();
             containerBuilder.RegisterType<OptiCipConfigMain>().AsSelf();
+            containerBuilder.RegisterType<ExcelReader>().AsSelf();
+            containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
+            containerBuilder.RegisterType<AddLineTagViewModel>().AsSelf();
+            containerBuilder.RegisterType<AddLineTagPage>().AsSelf();
+
 
             containerBuilder.Register(O=> new OpcConfigurationCreator.ConfigurationBuilder(new List<OpcConfigurationCreator.IOpcTag>())).AsSelf();
 

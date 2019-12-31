@@ -98,6 +98,20 @@
     <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
     <Compile Include="View\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
+    <Compile Include="View\OptiCipConfig\AddLineTag\AddLineTagPage.xaml.cs">
+      <DependentUpon>AddLineTagPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\AddLineTag\Resources\Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\AddLineTag\Resources\Local.Designer.cs">
+      <DependentUpon>Local.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\OptiCipConfig\AddLineTag\ViewModel\AddTagLineViewModel.cs" />
     <Compile Include="View\OptiCipConfig\Main\Models\LineTagFacade.cs" />
     <Compile Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
       <DependentUpon>OptiCipConfigMain.xaml</DependentUpon>
@@ -146,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="View\OptiCipConfig\AddLineTag\AddLineTagPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +204,14 @@
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\OpcConfig\Resources\Local.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\AddLineTag\Resources\Local.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OptiCipConfig\AddLineTag\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>

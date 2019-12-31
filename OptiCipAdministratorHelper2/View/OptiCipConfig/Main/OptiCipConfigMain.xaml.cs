@@ -24,10 +24,11 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main
     public partial class OptiCipConfigMain : Window
     {
         public OptiCipConfigMain(
-            AccessContextService accessContextService        
+            AccessContextService accessContextService,
+            WindowLocator windowLocator
             )
         {
-            DataContext = new OptiCipConfigMainViewModel(accessContextService, new ConfigurationFacade(accessContextService.Context));
+            DataContext = new OptiCipConfigMainViewModel(accessContextService, new ConfigurationFacade(accessContextService.Context), windowLocator);
             InitializeComponent();
         }
     }

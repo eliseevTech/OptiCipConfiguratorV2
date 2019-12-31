@@ -23,11 +23,13 @@ namespace ExcelReaderManualTests
             excelReader.TagAliasColumnName = "Variable RUS";
             excelReader.TagColorColumnName = "Color";
             excelReader.TagNameColumnName = "Variable ENG";
-            excelReader.FilterNameColumnName = "FilterName";
+
             excelReader.TagTypeColumnName = "Type";
             excelReader.TagUnitsColumnName = "Units";
 
-            excelReader.FilterName = "CIP1_1";
+            excelReader.FilterNameColumnName = "FilterName";
+            excelReader.FilterValue = "CIP1_1";
+
             Line line = new Line()
             {
                 Id = 3,
@@ -40,7 +42,7 @@ namespace ExcelReaderManualTests
                 Name = "opcShortLinkName"
             };
 
-            var result = excelReader.GetTagsForLine(line, opcShortLink);
+            var result = excelReader.GetTagsForLine(line, opcShortLink.Name);
             Console.WriteLine("dsa");
         }
     }

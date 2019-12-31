@@ -27,7 +27,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
         /// <summary>
         /// Значение фильтра
         /// </summary>
-        public string FilterName { get; set; }
+        public string FilterValue { get; set; }
 
 
         public int WorksheetNumber { get; set; }
@@ -44,7 +44,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
             _dataCollector = dataCollector;
         }
 
-        public List<LineTagFacade> GetTagsForLine(Line line, OpcShortLink opcShortLink)
+        public List<LineTagFacade> GetTagsForLine(Line line, string opcShortLinkName)
         {
             var collectResult = ReadAllTagsFromExcel();
             List<LineTagFacade> lineTagFacades = new List<LineTagFacade>();
@@ -58,7 +58,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
                     continue;
                 }
                 ///если нет имя не соответствует линии
-                if (collectResult[FilterNameColumnName][i] == null || collectResult[FilterNameColumnName][i] != FilterName)
+                if (collectResult[FilterNameColumnName][i] == null || collectResult[FilterNameColumnName][i] != FilterValue)
                 {
                     continue;
                 }
@@ -77,7 +77,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
                         Alias = collectResult[TagAliasColumnName][i],           
                         Label = collectResult[TagNameColumnName][i],
                         OpcItem = collectResult[TagNameColumnName][i],
-                        OpcShortLinkName = opcShortLink.Name,
+                        OpcShortLinkName = opcShortLinkName,
                         ProjectId = line.ProjectId,
                         Type = (IsDigital) ? "TOR" : "ANA",
                         Unit = collectResult[TagUnitsColumnName][i]
@@ -98,9 +98,6 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
             }
             return lineTagFacades;
         }
-
-
-
 
 
         /// <summary>

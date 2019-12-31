@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using OptiCipAdministratorHelper2.View.OpcConfig;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag;
+using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel;
+using EntityAccessOnFramework.Models;
 
 namespace OptiCipAdministratorHelper2.Services
 {
@@ -39,5 +42,13 @@ namespace OptiCipAdministratorHelper2.Services
         }
 
 
+        public void RunAddLineTagToOptiCipConfiguration(Line line)
+        {
+            var window = _container.Resolve<AddLineTagPage>();
+            var context = _container.Resolve<AddLineTagViewModel>();
+            context.SetLine(line);
+            window.DataContext = context;
+            window.Show();
+        }
     }
 }
