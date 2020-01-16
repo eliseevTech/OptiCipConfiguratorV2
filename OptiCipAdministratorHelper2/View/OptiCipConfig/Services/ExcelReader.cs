@@ -16,9 +16,13 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
 
         public string TagNameColumnName { get; set; }
         public string TagAliasColumnName { get; set; }
+        public string TagLabelColumnName { get; set; }
+
         public string TagColorColumnName { get; set; }
         public string TagTypeColumnName { get; set; }
         public string TagUnitsColumnName { get; set; }
+        public string MinValueColumnName { get; set; }
+        public string MaxValueColumnName { get; set; }
 
         /// <summary>
         /// Колонка фильтрации, берем данные только где колонка соответсвтует филтру
@@ -75,7 +79,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
                     {
                         Name = collectResult[TagNameColumnName][i],
                         Alias = collectResult[TagAliasColumnName][i],           
-                        Label = collectResult[TagNameColumnName][i],
+                        Label = collectResult[TagLabelColumnName][i],
                         OpcItem = collectResult[TagNameColumnName][i],
                         OpcShortLinkName = opcShortLinkName,
                         ProjectId = line.ProjectId,
@@ -93,6 +97,21 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
                     },
                     HexColor = collectResult[TagColorColumnName][i]
                 };
+
+                int min;
+                if (int.TryParse(collectResult[MinValueColumnName][i],out min))
+                {
+                    lineTagFacade.Tag.PhysicalMin = min;
+                    lineTagFacade.Tag.MapMin = min;
+                }
+                int max;
+                if (int.TryParse(collectResult[MaxValueColumnName][i], out max))
+                {
+                    lineTagFacade.Tag.PhysicalMax = max;
+                    lineTagFacade.Tag.MapMax = min;
+                }
+
+
                 lineTagFacades.Add(lineTagFacade);
                 
             }
@@ -110,11 +129,14 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Services
             List<RequiredData> requiredData = new List<RequiredData>()
                       {
                           new RequiredData(TagNameColumnName),
-                          new RequiredData(TagAliasColumnName),              
+                          new RequiredData(TagAliasColumnName),
+                          new RequiredData(TagLabelColumnName),
                           new RequiredData(TagColorColumnName, RequiredData.DataType.color),
                           new RequiredData(TagTypeColumnName),
                           new RequiredData(TagUnitsColumnName),
-                          new RequiredData(FilterNameColumnName)
+                          new RequiredData(FilterNameColumnName),
+                          new RequiredData(MinValueColumnName),
+                          new RequiredData(MaxValueColumnName),
                       };
             return CollectData(ExcelPath, requiredData);
         }

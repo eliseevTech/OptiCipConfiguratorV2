@@ -23,7 +23,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
         /// </summary>
         /// <param name="_Color">число в 10ичной системе но не более ffffff в 16ричной</param>
         /// <returns></returns>
-        private string ToHex(int _Color)
+        public string ToHex(int _Color)
         {
             //прибавляем число в  деситичной 16777216 в (16ичной 1 00 00 00)
             //что бы появились нули
@@ -46,10 +46,10 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models
         /// </summary>
         /// <param name="_Color">строка в формате #AABBCC</param>
         /// <returns></returns>
-        private int ToDec(string _Color)
+        public int ToDec(string _Color)
         {
             ///Если цвет меньше 6 символов, делаем белый.
-            if (_Color.Length < 6)
+            if (_Color.Length < 7)
             {
                 _Color = "#FFFFFF";
             }

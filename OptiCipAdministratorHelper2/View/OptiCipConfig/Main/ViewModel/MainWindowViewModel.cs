@@ -159,6 +159,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                     if (getUserTextWindow.IsSuccess)
                     {
                         _configurationFacade.StationManager.AddStation(getUserTextWindow.InputText, selectedGroup);
+                        OnPropertyChanged("ConfigStations");
                     }
                     GC.SuppressFinalize(getUserTextWindow);
                 }));
@@ -187,7 +188,9 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                     getUserTextWindow.ShowDialog();
                     if (getUserTextWindow.IsSuccess)
                     {
-                        _configurationFacade.StationManager.AddStation(getUserTextWindow.InputText, selectedGroup);
+                        //  _configurationFacade.LineManager.AddStation(getUserTextWindow.InputText, selectedGroup);
+                        MessageBox.Show("Функционал не реализован");
+   
                     }
                     GC.SuppressFinalize(getUserTextWindow);
                 }));
@@ -222,9 +225,8 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                         MessageBox.Show(Local.GroupIsNotSelected);
                         return;
                     }
-                    MessageBox.Show("Добавляем из excel");
-
                     _windowService.RunAddLineTagToOptiCipConfiguration(SelectedLine);
+                    OnPropertyChanged("LineTagFacades");
 
                 }));
             }

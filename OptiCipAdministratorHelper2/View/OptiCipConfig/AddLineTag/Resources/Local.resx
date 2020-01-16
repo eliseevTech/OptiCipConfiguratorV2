@@ -135,6 +135,9 @@
   <data name="LabelTagColorColumnName" xml:space="preserve">
     <value>Color column name</value>
   </data>
+  <data name="LabelTagLabelColumnName" xml:space="preserve">
+    <value>Label column name</value>
+  </data>
   <data name="LabelTagNameColumnName" xml:space="preserve">
     <value>Tag name column name </value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="LabelWorksheetNumber" xml:space="preserve">
     <value>Worksheet number</value>
+  </data>
+  <data name="MaxValueColumnName" xml:space="preserve">
+    <value>Max value</value>
+  </data>
+  <data name="MinValueColumnName" xml:space="preserve">
+    <value>Min value</value>
   </data>
   <data name="OpcShortLinkName" xml:space="preserve">
     <value>Opc short line name</value>

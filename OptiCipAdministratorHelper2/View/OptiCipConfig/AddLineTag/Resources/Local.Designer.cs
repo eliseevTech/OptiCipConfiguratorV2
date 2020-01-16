@@ -115,6 +115,15 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Label column name.
+        /// </summary>
+        public static string LabelTagLabelColumnName {
+            get {
+                return ResourceManager.GetString("LabelTagLabelColumnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tag name column name .
         /// </summary>
         public static string LabelTagNameColumnName {
@@ -147,6 +156,24 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.Resources {
         public static string LabelWorksheetNumber {
             get {
                 return ResourceManager.GetString("LabelWorksheetNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max value.
+        /// </summary>
+        public static string MaxValueColumnName {
+            get {
+                return ResourceManager.GetString("MaxValueColumnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min value.
+        /// </summary>
+        public static string MinValueColumnName {
+            get {
+                return ResourceManager.GetString("MinValueColumnName", resourceCulture);
             }
         }
         

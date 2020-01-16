@@ -135,6 +135,9 @@
   <data name="LabelTagColorColumnName" xml:space="preserve">
     <value>Заголовок кологки Color</value>
   </data>
+  <data name="LabelTagLabelColumnName" xml:space="preserve">
+    <value>Заголовок кологки Label</value>
+  </data>
   <data name="LabelTagNameColumnName" xml:space="preserve">
     <value>Заголовок кологки Tag name</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="LabelWorksheetNumber" xml:space="preserve">
     <value>Лист excel</value>
+  </data>
+  <data name="MaxValueColumnName" xml:space="preserve">
+    <value>Максимальное значение</value>
+  </data>
+  <data name="MinValueColumnName" xml:space="preserve">
+    <value>Минимальное значение</value>
   </data>
   <data name="OpcShortLinkName" xml:space="preserve">
     <value>Имя shortOpcLink</value>

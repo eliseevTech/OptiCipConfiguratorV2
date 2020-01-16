@@ -78,27 +78,36 @@ namespace ConfigurationDataCollector.Excel
                     else
                     {
                         resultValues.Add(val.ToString());
-                    }
-                    
+                    }                    
                 }
                 else if (requiredData.Type == RequiredData.DataType.color) 
                 {
-                    resultValues.Add((string)worksheet.Cells[i, columnNumber].Style.Fill.BackgroundColor.Rgb);
+                    var color = (string)worksheet.Cells[i, columnNumber].Style.Fill.BackgroundColor.Rgb;
+                    var colorWithoutAlfa = ExcelParser.RemoveAlfa(color);
+
+                    resultValues.Add(colorWithoutAlfa);
                 } 
                 else
                 {
                     throw new InvalidOperationException("No Datatype of requiredData");
-                }
-           
+                }           
             }
             return resultValues;
         }
 
 
-
-
-
+        /// <summary>
+        /// удаляем альфаканал из цвета
+        /// </summary>
+        /// <param name="colorWithAlfa">#AARRGGBB</param>
+        /// <returns>#RRGGBB</returns>
+        public static string RemoveAlfa(string colorWithAlfa)
+        {
+            if (colorWithAlfa.Length < 8)
+            {
+                return "#FFFFFF";
+            }
+            return "#" + colorWithAlfa.Substring(2, 6);
+        }
     }
-
- 
 }

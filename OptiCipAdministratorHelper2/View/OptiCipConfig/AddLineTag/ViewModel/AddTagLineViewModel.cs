@@ -1,25 +1,10 @@
-﻿
-using ConfigurationDataCollector;
-using ConfigurationDataCollector.Excel;
-using EntityAccessOnFramework.Data;
+﻿using EntityAccessOnFramework.Data;
 using Microsoft.Win32;
-using OpcConfigurationCreator;
-using OptiCipAdministratorHelper2.Models;
-
 using OptiCipAdministratorHelper2.Services;
-using OptiCipAdministratorHelper2.View;
 using OptiCipAdministratorHelper2.ViewModel;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using EntityAccessOnFramework.Models;
-using EntityAccessOnFramework.Services;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Shared.GetUserText;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Resources;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models;
 using System.Data.Entity;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
@@ -44,9 +29,9 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
             //_configurationFacade = configurationFacade;
             _context = accessContextService.Context;
             _excelReader = excelReader;
+            OpcShortLinkNames = _context.OpcShortLinks.Select(S => S.Name).ToList();
+            OnPropertyChanged("OpcShortLinkNames");
         }
-
-
 
         public void SetLine(Line line)
         {
@@ -54,24 +39,30 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
         }
 
         #region properties
-        public string TagAliasColumnName { get; set; } = "Variable RUS";
+        public string TagAliasColumnName { get; set; } = "Alias";
+
+        public string TagLabelColumnName { get; set; } = "Label";
+
         public string TagColorColumnName { get; set; } = "Color";
-        public string TagNameColumnName { get; set; } = "Variable ENG";
+        public string TagNameColumnName { get; set; } = "Name";
 
-        public string FilterNameColumnName { get; set; } = "Filter";
+        public string FilterNameColumnName { get; set; } = "FilterName";
         public string FilterValue { get; set; } = "CIP1_1";
-
 
         public string TagTypeColumnName { get; set; } = "Type";
         public string TagUnitsColumnName { get; set; } = "Units";
         public int WorksheetNumber { get; set; } = 2;
 
-        public string OpcShortLinkName { get; set; } = "shortLink";
+        public List<string> OpcShortLinkNames { get; set; }
+        public string OpcShortLinkName { get; set; }
+
+        public string MinValueColumnName { get; set; } = "Min";
+        public string MaxValueColumnName { get; set; } = "Max";
 
         public bool IsEnableButtonGetFile { get; set; } = false;
         public string SelectedFile { get; set; }
-        #endregion
 
+        #endregion
 
         // команда добавления нового объекта
         private RelayCommand selectFile;
@@ -89,7 +80,6 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
                         IsEnableButtonGetFile = true;
                         OnPropertyChanged("SelectedFile");
                         OnPropertyChanged("IsEnableButtonGetFile");
-
                     }                 
                 }));
             }
@@ -102,27 +92,25 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
             get
             {
                 return getTags ?? ( getTags = new RelayCommand(obj =>
-                {
-                    var excelTags = GetTagFromExcel();
-                    
-                    foreach(var T in excelTags)
-                    {
-                        var tag = _context.Tags.Add(T.Tag);
-                        ///нужно записать тег и взять его id, потом id задать в линию
-                        T.LineTag.TagId = tag.Id;
-                        _context.LineTags.Add(T.LineTag);
-                            
-                        
-                    }
-
+                {                  
+                        var excelTags = GetTagFromExcel();
+                        foreach (var T in excelTags)
+                        {
+                            var tag = _context.Tags.Add(T.Tag);
+                            _context.SaveChanges();
+                            ///нужно записать тег и взять его id, потом id задать в линию
+                            T.LineTag.TagId = tag.Id;
+                            _context.LineTags.Add(T.LineTag);
+                            _context.SaveChanges();
+                        }         
                 }));
             }
         }
 
-
         private List<LineTagFacade> GetTagFromExcel()
         {
             _excelReader.ExcelPath = SelectedFile;
+            _excelReader.TagLabelColumnName= TagLabelColumnName;
             _excelReader.TagAliasColumnName = TagAliasColumnName;
             _excelReader.TagColorColumnName = TagColorColumnName;
             _excelReader.TagNameColumnName = TagNameColumnName;
@@ -130,11 +118,12 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
             _excelReader.FilterValue = FilterValue;
             _excelReader.TagTypeColumnName = TagTypeColumnName;
             _excelReader.TagUnitsColumnName = TagUnitsColumnName;
+            _excelReader.MinValueColumnName = MinValueColumnName;
+            _excelReader.MaxValueColumnName = MaxValueColumnName;
 
             _excelReader.WorksheetNumber = WorksheetNumber;
             return _excelReader.GetTagsForLine(_line, OpcShortLinkName);
         }
-
 
         private void ClearContextChanges()
         {
