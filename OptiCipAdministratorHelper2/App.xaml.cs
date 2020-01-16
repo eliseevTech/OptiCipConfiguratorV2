@@ -13,6 +13,7 @@ using EntityAccessOnFramework.Services;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag;
+using NLog;
 
 namespace OptiCipAdministratorHelper2
 {
@@ -20,13 +21,26 @@ namespace OptiCipAdministratorHelper2
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
-        
+    {        
         IContainer container;
+
+ 
 
         public App()
         {
+
+
+ 
+
+            
+
             var containerBuilder = new ContainerBuilder();
+
+
+            NLog.LogManager.Configuration = new NLog.Config.XmlLoggingConfiguration("nlog.config");
+            NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+            containerBuilder.Register(L => NLog.LogManager.GetCurrentClassLogger()).As<ILogger>();
+
             containerBuilder.Register(L => new LanguageChangeServices()).AsSelf().SingleInstance();
             containerBuilder.RegisterType<MainWindow>().AsSelf();
             containerBuilder.RegisterType<WindowLocator>().AsSelf();
@@ -34,14 +48,13 @@ namespace OptiCipAdministratorHelper2
             containerBuilder.RegisterType<OptiCipConfigMain>().AsSelf();
             containerBuilder.RegisterType<ExcelReader>().AsSelf();
             containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
+
             containerBuilder.RegisterType<AddLineTagViewModel>().AsSelf();
             containerBuilder.RegisterType<AddLineTagPage>().AsSelf();
-
 
             containerBuilder.Register(O=> new OpcConfigurationCreator.ConfigurationBuilder(new List<OpcConfigurationCreator.IOpcTag>())).AsSelf();
 
             //контекст
-
             containerBuilder.RegisterType<AccessContextService>().AsSelf().SingleInstance();
 
             // работа с контекстом
@@ -49,7 +62,10 @@ namespace OptiCipAdministratorHelper2
 
 
             container = containerBuilder.Build();
+
             container.Resolve<LanguageChangeServices>().SetStartlang();
+
+            container.Resolve<ILogger>().Debug("Program start");
 
             MainWindow mainWindow = container.Resolve<MainWindow>();
             mainWindow.Show();

@@ -8,6 +8,7 @@ using EntityAccessOnFramework.Models;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models;
 using System.Data.Entity;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
+using NLog;
 
 namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
 {
@@ -19,16 +20,21 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
 
         private Line _line;
 
+        private ILogger _logger;
+
 
         public AddLineTagViewModel(
             AccessContextService accessContextService,
            // ConfigurationFacade configurationFacade,
-            ExcelReader excelReader
+            ExcelReader excelReader,
+           ILogger logger
             )
         {
             //_configurationFacade = configurationFacade;
             _context = accessContextService.Context;
             _excelReader = excelReader;
+            _logger = logger;
+
             OpcShortLinkNames = _context.OpcShortLinks.Select(S => S.Name).ToList();
             OnPropertyChanged("OpcShortLinkNames");
         }
@@ -120,9 +126,11 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel
             _excelReader.TagUnitsColumnName = TagUnitsColumnName;
             _excelReader.MinValueColumnName = MinValueColumnName;
             _excelReader.MaxValueColumnName = MaxValueColumnName;
-
             _excelReader.WorksheetNumber = WorksheetNumber;
-            return _excelReader.GetTagsForLine(_line, OpcShortLinkName);
+ 
+            var lineTagFacades = _excelReader.GetTagsForLine(_line, OpcShortLinkName);
+            _logger.Info("sdas");
+            return lineTagFacades;
         }
 
         private void ClearContextChanges()
