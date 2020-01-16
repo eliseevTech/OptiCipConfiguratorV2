@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Models;
+
 using Xunit;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Main.Models;
 
 namespace OptiCipAdministratorHelper2XunitTests.View.OptiCipConfig.Main.Models
 {

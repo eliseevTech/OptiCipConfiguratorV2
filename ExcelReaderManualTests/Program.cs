@@ -1,6 +1,6 @@
 ﻿using ConfigurationDataCollector.Excel;
 using EntityAccessOnFramework.Models;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

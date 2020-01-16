@@ -1,14 +1,14 @@
-﻿using OptiCipAdministratorHelper2.View;
+﻿using OptiCipAdministratorHelper2.Areas;
 using System;
 using System.Collections.Generic;
 using Autofac;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OptiCipAdministratorHelper2.View.OpcConfig;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Main;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel;
+using OptiCipAdministratorHelper2.Areas.OpcConfig;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel;
 using EntityAccessOnFramework.Models;
 
 namespace OptiCipAdministratorHelper2.Services

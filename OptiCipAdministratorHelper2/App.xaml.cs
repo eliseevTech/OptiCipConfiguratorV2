@@ -5,15 +5,16 @@ using System.Windows;
 using ConfigurationDataCollector;
 using ConfigurationDataCollector.Excel;
 using System.Collections.Generic;
-using OptiCipAdministratorHelper2.View.OpcConfig;
-using OptiCipAdministratorHelper2.View.MainWindow;
+using OptiCipAdministratorHelper2.Areas.OpcConfig;
+using OptiCipAdministratorHelper2.Areas.MainWindow;
 using OptiCipAdministratorHelper2.View.OptiCipConfig.Main;
 using EntityAccessOnFramework.Data;
 using EntityAccessOnFramework.Services;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.Services;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag.ViewModel;
-using OptiCipAdministratorHelper2.View.OptiCipConfig.AddLineTag;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag;
 using NLog;
+using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main;
 
 namespace OptiCipAdministratorHelper2
 {

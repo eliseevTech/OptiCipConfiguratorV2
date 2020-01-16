@@ -79,77 +79,77 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Services\AccessContextService.cs" />
     <Compile Include="Services\UIMessageService.cs" />
-    <Compile Include="View\OpcConfig\Model\OpcConfigModel.cs" />
-    <Compile Include="View\MainWindow\Resources\Local.ru.Designer.cs">
+    <Compile Include="Areas\OpcConfig\Model\OpcConfigModel.cs" />
+    <Compile Include="Areas\MainWindow\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\MainWindow\Resources\Local.Designer.cs">
+    <Compile Include="Areas\MainWindow\Resources\Local.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Local.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\OpcConfig\OpcConfigCreatorWindow.xaml.cs">
+    <Compile Include="Areas\OpcConfig\OpcConfigCreatorWindow.xaml.cs">
       <DependentUpon>OpcConfigCreatorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OpcConfig\Resources\Local.ru.Designer.cs">
+    <Compile Include="Areas\OpcConfig\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OpcConfig\Resources\Local.Designer.cs">
+    <Compile Include="Areas\OpcConfig\Resources\Local.Designer.cs">
       <DependentUpon>Local.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\LanguageChangeServices.cs" />
     <Compile Include="Services\WindowLocator.cs" />
-    <Compile Include="View\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
-    <Compile Include="View\OptiCipConfig\AddLineTag\AddLineTagPage.xaml.cs">
+    <Compile Include="Areas\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
+    <Compile Include="Areas\OptiCipConfig\AddLineTag\AddLineTagPage.xaml.cs">
       <DependentUpon>AddLineTagPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OptiCipConfig\AddLineTag\Resources\Local.ru.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\AddLineTag\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OptiCipConfig\AddLineTag\Resources\Local.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\AddLineTag\Resources\Local.Designer.cs">
       <DependentUpon>Local.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OptiCipConfig\AddLineTag\ViewModel\AddTagLineViewModel.cs" />
-    <Compile Include="View\OptiCipConfig\Main\Models\LineTagFacade.cs" />
-    <Compile Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
+    <Compile Include="Areas\OptiCipConfig\AddLineTag\ViewModel\AddTagLineViewModel.cs" />
+    <Compile Include="Areas\OptiCipConfig\Main\Models\LineTagFacade.cs" />
+    <Compile Include="Areas\OptiCipConfig\Main\OptiCipConfigMain.xaml.cs">
       <DependentUpon>OptiCipConfigMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OptiCipConfig\Main\Resources\Local.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\Main\Resources\Local.Designer.cs">
       <DependentUpon>Local.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OptiCipConfig\Main\Resources\Local.ru.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\Main\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OptiCipConfig\Main\ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="View\OptiCipConfig\Services\ExcelReader.cs" />
-    <Compile Include="View\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml.cs">
+    <Compile Include="Areas\OptiCipConfig\Main\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Areas\OptiCipConfig\Services\ExcelReader.cs" />
+    <Compile Include="Areas\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml.cs">
       <DependentUpon>GetUserTextWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\Shared\GetUserText\Resources\Local.Designer.cs">
       <DependentUpon>Local.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.Designer.cs">
+    <Compile Include="Areas\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.Designer.cs">
       <DependentUpon>Local.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Page Include="View\MainWindow\MainWindow.xaml">
+    <Page Include="Areas\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -158,25 +158,25 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="View\MainWindow\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Areas\MainWindow\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\MainWindow\MainWindow.xaml.cs">
+    <Compile Include="Areas\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\OpcConfig\OpcConfigCreatorWindow.xaml">
+    <Page Include="Areas\OpcConfig\OpcConfigCreatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="View\OptiCipConfig\AddLineTag\AddLineTagPage.xaml">
+    <Page Include="Areas\OptiCipConfig\AddLineTag\AddLineTagPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\OptiCipConfig\Main\OptiCipConfigMain.xaml">
+    <Page Include="Areas\OptiCipConfig\Main\OptiCipConfigMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml">
+    <Page Include="Areas\OptiCipConfig\Shared\GetUserText\GetUserTextWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,43 +199,45 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainWindow\Resources\Local.ru.resx">
+    <EmbeddedResource Include="Areas\MainWindow\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainWindow\Resources\Local.resx">
+    <EmbeddedResource Include="Areas\MainWindow\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OpcConfig\Resources\Local.ru.resx">
+    <EmbeddedResource Include="Areas\OpcConfig\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OpcConfig\Resources\Local.resx">
+    <EmbeddedResource Include="Areas\OpcConfig\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\AddLineTag\Resources\Local.ru.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\AddLineTag\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\AddLineTag\Resources\Local.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\AddLineTag\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\Main\Resources\Local.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\Main\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\Main\Resources\Local.ru.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\Main\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\Shared\GetUserText\Resources\Local.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.resx">
+    <EmbeddedResource Include="Areas\OptiCipConfig\Shared\GetUserText\Resources\Local.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>

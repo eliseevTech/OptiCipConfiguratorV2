@@ -1,0 +1,66 @@
+﻿<Window x:Class="OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.AddLineTagPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.Resources"
+   
+        mc:Ignorable="d"
+        Title="AddTagLinePage" Height="545.2" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="{x:Static local:Local.LabelTagNameColumnName}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149"  Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,10,0,0" TextWrapping="Wrap" Text="{Binding TagNameColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelTagLabelColumnName}" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,50,0,0" TextWrapping="Wrap" Text="{Binding TagLabelColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelTagAliasColumnName}" HorizontalAlignment="Left" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,90,0,0" TextWrapping="Wrap" Text="{Binding TagAliasColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelTagTypeColumnName}" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,130,0,0" TextWrapping="Wrap" Text="{Binding TagTypeColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelTagUnitsColumnName}" HorizontalAlignment="Left" Margin="0,170,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,170,0,0" TextWrapping="Wrap" Text="{Binding TagUnitsColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelTagColorColumnName}" HorizontalAlignment="Left" Margin="0,210,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,210,0,0" TextWrapping="Wrap" Text="{Binding TagColorColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelFilterNameColumnName}" HorizontalAlignment="Left" Margin="0,250,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,250,0,0" TextWrapping="Wrap" Text="{Binding FilterNameColumnName}" VerticalAlignment="Top" Width="210"/>
+
+        <Label Content="{x:Static local:Local.LabelFilterValue}" HorizontalAlignment="Left" Margin="380,250,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="91" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="476,250,0,0" TextWrapping="Wrap" Text="{Binding FilterValue}" VerticalAlignment="Top" Width="120"/>
+
+
+        <Label Content="{x:Static local:Local.MinValueColumnName}" HorizontalAlignment="Left" Margin="0,290,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,290,0,0" TextWrapping="Wrap" Text="{Binding MinValueColumnName}" VerticalAlignment="Top" Width="210"/>
+        <Label Content="{x:Static local:Local.MaxValueColumnName}" HorizontalAlignment="Left" Margin="0,330,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="165,330,0,0" TextWrapping="Wrap" Text="{Binding MaxValueColumnName}" VerticalAlignment="Top" Width="210"/>
+
+
+        <Label Content="{x:Static local:Local.LabelWorksheetNumber}" HorizontalAlignment="Left" Margin="0,389,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="154,389,0,0" TextWrapping="Wrap" Text="{Binding WorksheetNumber}" VerticalAlignment="Top" Width="34"/>
+
+        <Label Content="{x:Static local:Local.OpcShortLinkName}" HorizontalAlignment="Left" Margin="0,422,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+
+
+        <ComboBox ItemsSource="{Binding OpcShortLinkNames}"
+
+            SelectedItem="{Binding OpcShortLinkName, Mode=TwoWay}"
+            Margin="154,422,0,0" Height="26" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="149" />
+
+
+        <Button Content="{x:Static local:Local.GetTagsFromFile}" IsEnabled="{Binding IsEnableButtonGetFile}"  Command="{Binding GetTags}" HorizontalAlignment="Left" Margin="642,478,0,0" VerticalAlignment="Top" Width="133" Height="26"/>
+        <Button Content="{x:Static local:Local.ButtonSelectFile}" Command="{Binding SelectFile}" HorizontalAlignment="Left" Margin="16,480,0,0" VerticalAlignment="Top" Width="133" Height="26"/>
+        <Label Content="{Binding SelectedFile}" HorizontalAlignment="Left" Margin="154,478,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="483" Height="28"/>
+
+
+    </Grid>
+</Window>
