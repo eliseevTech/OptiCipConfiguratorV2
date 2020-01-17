@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using OptiCipAdministratorHelper2.Areas.MainWindow.Resources;
 using Microsoft.Win32;
 using OptiCipAdministratorHelper2.Areas.MainWindow.ViewModel;
+using NLog;
 
 namespace OptiCipAdministratorHelper2.Areas.MainWindow
 {
@@ -17,18 +18,37 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
     public partial class MainWindow : Window
     {
         LanguageChangeServices _languageChangeServices;
-        WindowLocator _windowService;
+        WindowLocator _windowLocator;
         AccessContextService _accessContextService;
+        WindowsService _windowsService;
+        ILogger _logger;
 
-        public MainWindow(WindowLocator windowService,LanguageChangeServices languageChangeServices, AccessContextService accessContextService)
+        public bool IsOpticipGroupOnWindows { get; set; } 
+
+        public MainWindow(
+            WindowLocator windowLocator,
+            LanguageChangeServices languageChangeServices,
+            AccessContextService accessContextService,
+            WindowsService windowsService,
+             ILogger logger
+            )
         {
             _languageChangeServices = languageChangeServices;
-            _windowService = windowService;
-            DataContext = new MainWindowViewModel();
-            _accessContextService = accessContextService;
+            _windowLocator = windowLocator;
 
+            _accessContextService = accessContextService;
+            _windowsService = windowsService;
+
+            _logger = logger;
+
+            DataContext = new MainWindowViewModel();
             InitializeComponent();
+
+            IsOpticipGroupOnWindows = windowsService.CheckOpticipUsersGroup();
         }
+
+
+
 
 
 
@@ -57,7 +77,7 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
         
         private void OpenOpcCreatorClick(Object sender, EventArgs e)
         {
-            _windowService.RunOpcConfigurator(); 
+            _windowLocator.RunOpcConfigurator(); 
         }
 
 
@@ -68,13 +88,38 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
             if (openFileDialog.ShowDialog() == true)
             {
                 _accessContextService.SetContext(openFileDialog.FileName);
-                _windowService.RunOptiCipConfiguratorMain();
+                _windowLocator.RunOptiCipConfiguratorMain();
+            }               
+        }
+
+
+        private void GetInfoOfOpticipUserGroups(object sender, RoutedEventArgs e)
+        {
+            string message;
+            if (!_windowsService.CheckOpticipUsersGroup())
+            {
+                message = Local.UserGroupInfo + "\n" + Local.UserGroupGroupIsNotOk + "\n" + Local.UserGroupAddUserLabel;                
+                if (MessageBox.Show(message, Local.UserGroupAddUserLabel, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    _logger.Info("Try to adding windows groups", this.Name);
+                    if (_windowsService.AddOptiCipGroups())
+                    {
+                        MessageBox.Show(Local.UserGroupAddingSuccess, Local.UserGroupAddingSuccess);
+                        _logger.Info(this.Name + " adding success");
+                    }
+                    else
+                    {
+                        MessageBox.Show(Local.UserGroupAddingNotSuccess, Local.UserGroupAddingSuccess);
+                        _logger.Info(this.Name + " adding failed");
+                    }
+                }
+                return;
             }
-               
-
-     
-
-
+            else
+            {
+                message = Local.UserGroupInfo + "\n" + Local.UserGroupGroupIsOk;
+                MessageBox.Show(message, message);
+            }
         }
 
     }

@@ -25,6 +25,8 @@
             </MenuItem>
             <MenuItem Header="{x:Static p:Local.NavTools}" >
                 <MenuItem Header="{x:Static p:Local.NavToolsOpcCreator}" Click="OpenOpcCreatorClick"></MenuItem>
+                <MenuItem Header="{x:Static p:Local.NavUserGroup}" Click="GetInfoOfOpticipUserGroups">
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="menuLanguage" Header="{x:Static p:Local.NavLanguage}" >
                 <MenuItem Header="{x:Static p:Local.NavSelectRuLanguage}" Tag="ru" Click="ChangeLanguageClick" ></MenuItem>

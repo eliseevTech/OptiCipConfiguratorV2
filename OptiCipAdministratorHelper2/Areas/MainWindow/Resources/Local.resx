@@ -144,4 +144,26 @@
   <data name="NavToolsOpcCreator" xml:space="preserve">
     <value>Opc config creator</value>
   </data>
+  <data name="NavUserGroup" xml:space="preserve">
+    <value>Opticip usergroup</value>
+  </data>
+  <data name="UserGroupAddingNotSuccess" xml:space="preserve">
+    <value>Somethink wrong, try to add group by computer managment</value>
+  </data>
+  <data name="UserGroupAddingSuccess" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="UserGroupAddUserLabel" xml:space="preserve">
+    <value>Add groups?</value>
+  </data>
+  <data name="UserGroupGroupIsNotOk" xml:space="preserve">
+    <value>Not all necessary groups are present!</value>
+  </data>
+  <data name="UserGroupGroupIsOk" xml:space="preserve">
+    <value>All necessary groups are present.</value>
+  </data>
+  <data name="UserGroupInfo" xml:space="preserve">
+    <value>To add users, run the program from the administrator.
+For the functioning of the opticip viewer, the system must have the following user groups OPTICIP_ADMINISTRATORS, OPTICIP_MANAGERS, OPTICIP_USERS.</value>
+  </data>
 </root>

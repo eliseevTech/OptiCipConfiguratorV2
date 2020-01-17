@@ -144,4 +144,26 @@
   <data name="NavToolsOpcCreator" xml:space="preserve">
     <value>Создатель конфигурации OPC</value>
   </data>
+  <data name="NavUserGroup" xml:space="preserve">
+    <value>Группы пользователей opticip</value>
+  </data>
+  <data name="UserGroupAddingNotSuccess" xml:space="preserve">
+    <value>Не удалось добавить группы, попробуйте через "управление компьютером"</value>
+  </data>
+  <data name="UserGroupAddingSuccess" xml:space="preserve">
+    <value>Группы добавлены успешно!</value>
+  </data>
+  <data name="UserGroupAddUserLabel" xml:space="preserve">
+    <value>Добавить группы?</value>
+  </data>
+  <data name="UserGroupGroupIsNotOk" xml:space="preserve">
+    <value>Не все необходимые группы присутствуют!</value>
+  </data>
+  <data name="UserGroupGroupIsOk" xml:space="preserve">
+    <value>Все необходимые группы присутствуют.</value>
+  </data>
+  <data name="UserGroupInfo" xml:space="preserve">
+    <value>Для добавления пользователей нежно запустить программу от администратора.
+Для функционирования opticip viewer в системе должны быть следующие группы пользователей OPTICIP_ADMINISTRATORS, OPTICIP_MANAGERS, OPTICIP_USERS.</value>
+  </data>
 </root>

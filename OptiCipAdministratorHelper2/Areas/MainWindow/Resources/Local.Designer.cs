@@ -140,5 +140,69 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow.Resources {
                 return ResourceManager.GetString("NavToolsOpcCreator", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opticip usergroup.
+        /// </summary>
+        public static string NavUserGroup {
+            get {
+                return ResourceManager.GetString("NavUserGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Somethink wrong, try to add group by computer managment.
+        /// </summary>
+        public static string UserGroupAddingNotSuccess {
+            get {
+                return ResourceManager.GetString("UserGroupAddingNotSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string UserGroupAddingSuccess {
+            get {
+                return ResourceManager.GetString("UserGroupAddingSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add groups?.
+        /// </summary>
+        public static string UserGroupAddUserLabel {
+            get {
+                return ResourceManager.GetString("UserGroupAddUserLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not all necessary groups are present!.
+        /// </summary>
+        public static string UserGroupGroupIsNotOk {
+            get {
+                return ResourceManager.GetString("UserGroupGroupIsNotOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All necessary groups are present..
+        /// </summary>
+        public static string UserGroupGroupIsOk {
+            get {
+                return ResourceManager.GetString("UserGroupGroupIsOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To add users, run the program from the administrator.
+        ///For the functioning of the opticip viewer, the system must have the following user groups OPTICIP_ADMINISTRATORS, OPTICIP_MANAGERS, OPTICIP_USERS..
+        /// </summary>
+        public static string UserGroupInfo {
+            get {
+                return ResourceManager.GetString("UserGroupInfo", resourceCulture);
+            }
+        }
     }
 }

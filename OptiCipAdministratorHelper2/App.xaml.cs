@@ -25,16 +25,8 @@ namespace OptiCipAdministratorHelper2
     {        
         IContainer container;
 
- 
-
         public App()
         {
-
-
- 
-
-            
-
             var containerBuilder = new ContainerBuilder();
 
 
@@ -54,6 +46,8 @@ namespace OptiCipAdministratorHelper2
 
             containerBuilder.RegisterType<AddLineTagViewModel>().AsSelf();
             containerBuilder.RegisterType<AddLineTagPage>().AsSelf();
+
+            containerBuilder.RegisterType<WindowsService>().AsSelf();
 
             containerBuilder.Register(O=> new OpcConfigurationCreator.ConfigurationBuilder(new List<OpcConfigurationCreator.IOpcTag>())).AsSelf();
 
