@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.Areas.MainWindow.Resources"
-        Title="MainWindow" Height="163.6" Width="319.6">
+        Title="MainWindow" Height="165.793" Width="319.6">
 
     <Grid Margin="0,0,0,1.6" HorizontalAlignment="Left" Width="314">
         <Grid.RowDefinitions>
@@ -23,7 +23,6 @@
                 <Separator />
                 <MenuItem Header="Exit" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit" ></MenuItem>
             <MenuItem Header="{x:Static p:Local.NavTools}" >
                 <MenuItem Header="{x:Static p:Local.NavToolsOpcCreator}" Click="OpenOpcCreatorClick"></MenuItem>
             </MenuItem>

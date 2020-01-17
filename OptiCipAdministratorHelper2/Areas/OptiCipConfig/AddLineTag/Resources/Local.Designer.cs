@@ -185,5 +185,14 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.Resources {
                 return ResourceManager.GetString("OpcShortLinkName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new tags to line.
+        /// </summary>
+        public static string PageName {
+            get {
+                return ResourceManager.GetString("PageName", resourceCulture);
+            }
+        }
     }
 }

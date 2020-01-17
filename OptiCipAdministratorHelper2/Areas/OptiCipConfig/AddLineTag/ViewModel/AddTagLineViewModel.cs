@@ -9,6 +9,8 @@ using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Models;
 using System.Data.Entity;
 using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services;
 using NLog;
+using System.Text;
+using System.Windows;
 
 namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
 {
@@ -21,19 +23,22 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
         private Line _line;
 
         private ILogger _logger;
+        private UIMessageService _uIMessageService;
 
 
         public AddLineTagViewModel(
             AccessContextService accessContextService,
-           // ConfigurationFacade configurationFacade,
+            // ConfigurationFacade configurationFacade,
             ExcelReader excelReader,
-           ILogger logger
+           ILogger logger,
+           UIMessageService uIMessageService
             )
         {
             //_configurationFacade = configurationFacade;
             _context = accessContextService.Context;
             _excelReader = excelReader;
             _logger = logger;
+            _uIMessageService = uIMessageService;
 
             OpcShortLinkNames = _context.OpcShortLinks.Select(S => S.Name).ToList();
             OnPropertyChanged("OpcShortLinkNames");
@@ -82,11 +87,11 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
                     openFileDialog.Filter = "Opticip config file (*.xlsx)|*.xlsx| All files (*.*)|*.*";
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        SelectedFile =  openFileDialog.FileName;
+                        SelectedFile = openFileDialog.FileName;
                         IsEnableButtonGetFile = true;
                         OnPropertyChanged("SelectedFile");
                         OnPropertyChanged("IsEnableButtonGetFile");
-                    }                 
+                    }
                 }));
             }
         }
@@ -97,18 +102,40 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
         {
             get
             {
-                return getTags ?? ( getTags = new RelayCommand(obj =>
-                {                  
-                        var excelTags = GetTagFromExcel();
-                        foreach (var T in excelTags)
-                        {
-                            var tag = _context.Tags.Add(T.Tag);
-                            _context.SaveChanges();
-                            ///нужно записать тег и взять его id, потом id задать в линию
-                            T.LineTag.TagId = tag.Id;
-                            _context.LineTags.Add(T.LineTag);
-                            _context.SaveChanges();
-                        }         
+                return getTags ?? (getTags = new RelayCommand(obj =>
+                {
+                    var excelTags = GetTagFromExcel();
+
+                    var logMessage = TagLinesToString(excelTags);
+
+
+                    MessageBoxResult result = MessageBox.Show(logMessage,"",           
+                              MessageBoxButton.OK);
+                    _logger.Warn("------------------------------------------");
+                    _logger.Warn(logMessage);
+
+                    //if (result != MessageBoxResult.OK)
+                    //{
+                    //    return;
+                    //}
+
+                    if (_uIMessageService.ShowMessageListInfo(logMessage) == false)
+                    {
+                        return;
+                    }
+
+                    _logger.Warn("--------------------------------");
+                    _logger.Warn("Write tags to tags and tags line");
+
+                    foreach (var T in excelTags)
+                    {
+                        var tag = _context.Tags.Add(T.Tag);
+                        _context.SaveChanges();
+                        ///нужно записать тег и взять его id, потом id задать в линию
+                        T.LineTag.TagId = tag.Id;
+                        _context.LineTags.Add(T.LineTag);
+                        _context.SaveChanges();
+                    }
                 }));
             }
         }
@@ -116,7 +143,7 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
         private List<LineTagFacade> GetTagFromExcel()
         {
             _excelReader.ExcelPath = SelectedFile;
-            _excelReader.TagLabelColumnName= TagLabelColumnName;
+            _excelReader.TagLabelColumnName = TagLabelColumnName;
             _excelReader.TagAliasColumnName = TagAliasColumnName;
             _excelReader.TagColorColumnName = TagColorColumnName;
             _excelReader.TagNameColumnName = TagNameColumnName;
@@ -127,11 +154,24 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
             _excelReader.MinValueColumnName = MinValueColumnName;
             _excelReader.MaxValueColumnName = MaxValueColumnName;
             _excelReader.WorksheetNumber = WorksheetNumber;
- 
+
             var lineTagFacades = _excelReader.GetTagsForLine(_line, OpcShortLinkName);
-            _logger.Info("sdas");
+
             return lineTagFacades;
         }
+
+        private string TagLinesToString(List<LineTagFacade> lineTagFacades)
+        {
+            StringBuilder result = new StringBuilder(lineTagFacades.Count * 100);
+            result.AppendLine($"Get {lineTagFacades.Count} tags");
+            foreach (var l in lineTagFacades)
+            {
+                result.AppendLine(l.Tag.ToString());
+            }
+            return result.ToString();
+        }
+
+
 
         private void ClearContextChanges()
         {

@@ -117,5 +117,40 @@ namespace EntityAccessOnFramework.Models
         [Column("PRECIS")]
         public short? PRECIS { get; set; }
 
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder("");
+            result
+                .AppendIfNotNull(Id, "Id")
+                .AppendIfNotNull(Name, "Name")
+                .AppendIfNotNull(ProjectId, "Project id")
+                .AppendIfNotNull(Alias, "Alias")
+                .AppendIfNotNull(OpcItem, "OpcItem")
+                .AppendIfNotNull(Label, "Label")
+                .AppendIfNotNull(Unit, "Unit");
+            return result.ToString();
+        }
+
+
+    }
+    internal static class TagExtentions
+    {
+        public static StringBuilder AppendIfNotNull(this StringBuilder currentString, object addingObject)
+        {
+            if (addingObject != null)
+            {
+                return currentString.Append(" " + addingObject.ToString());
+            }
+            return currentString;
+        }
+        public static StringBuilder AppendIfNotNull(this StringBuilder currentString, object addingObject, string nameOfObject)
+        {
+            if (addingObject != null)
+            {
+                return currentString.Append($" {nameOfObject}: " + addingObject.ToString());
+            }
+            return currentString;
+        }
     }
 }

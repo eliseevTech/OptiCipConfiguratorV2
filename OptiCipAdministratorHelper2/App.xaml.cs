@@ -50,6 +50,8 @@ namespace OptiCipAdministratorHelper2
             containerBuilder.RegisterType<ExcelReader>().AsSelf();
             containerBuilder.RegisterType<ExcelDataCollector>().As<IDataCollector>();
 
+            containerBuilder.RegisterType<UIMessageService>().AsSelf();
+
             containerBuilder.RegisterType<AddLineTagViewModel>().AsSelf();
             containerBuilder.RegisterType<AddLineTagPage>().AsSelf();
 

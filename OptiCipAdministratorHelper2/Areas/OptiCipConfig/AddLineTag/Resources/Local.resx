@@ -159,4 +159,7 @@
   <data name="OpcShortLinkName" xml:space="preserve">
     <value>Opc short line name</value>
   </data>
+  <data name="PageName" xml:space="preserve">
+    <value>Add new tags to line</value>
+  </data>
 </root>

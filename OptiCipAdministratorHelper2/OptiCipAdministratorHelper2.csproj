@@ -104,6 +104,20 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\LanguageChangeServices.cs" />
+    <Compile Include="Services\UIServiceService\MessageListInfo.xaml.cs">
+      <DependentUpon>MessageListInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UIServiceService\Resources\Local.Designer.cs">
+      <DependentUpon>Local.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\UIServiceService\Resources\Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\UIServiceService\ViewModel\MessageListInfoViewModel.cs" />
     <Compile Include="Services\WindowLocator.cs" />
     <Compile Include="Areas\OpcConfig\ViewModel\OpcConfigCreatorWindowViewModel.cs" />
     <Compile Include="Areas\OptiCipConfig\AddLineTag\AddLineTagPage.xaml.cs">
@@ -180,6 +194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Services\UIServiceService\MessageListInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -241,6 +259,15 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Services\UIServiceService\Resources\Local.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\UIServiceService\Resources\Local.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -269,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\OpcConfiguration\" />
-    <Folder Include="Services\UIServiceService\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

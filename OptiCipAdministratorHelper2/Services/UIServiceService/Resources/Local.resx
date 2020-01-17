@@ -117,49 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonSelectFile" xml:space="preserve">
-    <value>Выбрать файл xlsx </value>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="GetTagsFromFile" xml:space="preserve">
-    <value>Получить теги</value>
-  </data>
-  <data name="LabelFilterNameColumnName" xml:space="preserve">
-    <value>Заголовок кологки Filter</value>
-  </data>
-  <data name="LabelFilterValue" xml:space="preserve">
-    <value>Значение фильтра</value>
-  </data>
-  <data name="LabelTagAliasColumnName" xml:space="preserve">
-    <value>Заголовок кологки Alias</value>
-  </data>
-  <data name="LabelTagColorColumnName" xml:space="preserve">
-    <value>Заголовок кологки Color</value>
-  </data>
-  <data name="LabelTagLabelColumnName" xml:space="preserve">
-    <value>Заголовок кологки Label</value>
-  </data>
-  <data name="LabelTagNameColumnName" xml:space="preserve">
-    <value>Заголовок кологки Tag name</value>
-  </data>
-  <data name="LabelTagTypeColumnName" xml:space="preserve">
-    <value>Заголовок кологки Tag type</value>
-  </data>
-  <data name="LabelTagUnitsColumnName" xml:space="preserve">
-    <value>Заголовок кологки Tag units</value>
-  </data>
-  <data name="LabelWorksheetNumber" xml:space="preserve">
-    <value>Лист excel</value>
-  </data>
-  <data name="MaxValueColumnName" xml:space="preserve">
-    <value>Максимальное значение</value>
-  </data>
-  <data name="MinValueColumnName" xml:space="preserve">
-    <value>Минимальное значение</value>
-  </data>
-  <data name="OpcShortLinkName" xml:space="preserve">
-    <value>Имя shortOpcLink</value>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="PageName" xml:space="preserve">
-    <value>Добавить новые теги в линию</value>
+    <value>Result</value>
   </data>
 </root>
