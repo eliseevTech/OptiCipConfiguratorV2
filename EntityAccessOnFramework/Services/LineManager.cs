@@ -19,7 +19,22 @@ namespace EntityAccessOnFramework.Services
         }
 
 
-    
+
+        public Line AddLine(string name, Station station)
+        {
+            Line newLine = new Line()
+            {
+                Name = name,
+                ProjectId = station.ProjectId,
+                GroupId = station.GroupId,
+                StationId = station.Id,
+
+            };
+            _accessContext.Lines.Add(newLine);
+            _accessContext.SaveChanges();
+            return newLine;
+        }
+
 
 
 

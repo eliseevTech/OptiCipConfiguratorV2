@@ -19,9 +19,13 @@ namespace OpcConfigurationCreator
         /// <param name="opcTags">теги опс</param>
         /// <param name="path">если путь не задан, то будет поставлен путь приложения (AppContext.BaseDirectory)</param>
         public ConfigurationBuilder(List<IOpcTag> opcTags)
-        {
-    
+        {    
             OpcTags = opcTags;
+        }
+
+        public void Clear()
+        {
+            OpcTags.Clear();
         }
 
         /// <param name="opcTags"></param>

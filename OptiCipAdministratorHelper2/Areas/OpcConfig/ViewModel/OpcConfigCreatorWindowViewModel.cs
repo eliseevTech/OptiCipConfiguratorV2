@@ -32,12 +32,12 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
 
         public OpcConfigModel configModel { get; set; } = new OpcConfigModel()
         {
-            TagName = "Variable ENG",
+            TagName = "Name",
             DataType = "Type",
             DbAddress = "Full DB adr (formula)",
-            Description = "Variable RUS",
+            Description = "Alias",
             ScanRate = "500",
-            ExcelWorksheet = 1          
+            ExcelWorksheet = 2          
         };
 
 
@@ -100,7 +100,7 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                           MessageBox.Show(e.StackTrace, e.Message);
                           return;
                       }
-  
+                      _configurationBuilder.Clear();
                       _configurationBuilder.AddTags(opcTags);
 
 

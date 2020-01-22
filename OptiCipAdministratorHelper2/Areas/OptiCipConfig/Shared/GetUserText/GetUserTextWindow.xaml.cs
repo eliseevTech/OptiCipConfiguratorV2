@@ -22,8 +22,9 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Shared.GetUserText
         public string InputText { get; set; }
         public bool IsSuccess { get; private set; } = false;
 
-        public GetUserTextWindow()
+        public GetUserTextWindow(string tittle = "")
         {
+            this.Title = tittle;
             InitializeComponent();
         }
 

@@ -4,9 +4,6 @@ namespace OptiCipAdministratorHelper2.Services
 {
     public class AccessContextService
     {
-        AccessContext _accessContext;
-
-
         public AccessContext Context { get; private set; }
         public string FilePath { get; private set; }
         /// <summary>

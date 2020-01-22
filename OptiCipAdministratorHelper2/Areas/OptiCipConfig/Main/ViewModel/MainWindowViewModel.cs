@@ -35,7 +35,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 
 
         public OptiCipConfigMainViewModel(
-            AccessContextService accessContextService, 
+            AccessContextService accessContextService,
             ConfigurationFacade configurationFacade,
             WindowLocator windowService)
         {
@@ -43,7 +43,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             _context = accessContextService.Context;
             ConfigurationName = accessContextService.FilePath;
             _windowService = windowService;
-            ConfigGroup =  _context.Groups.ToList();           
+            ConfigGroup = _context.Groups.ToList();
         }
 
 
@@ -84,9 +84,16 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                 selectedLine = value;
 
                 ClearContextChanges();
+                if (SelectedLine == null)
+                {
+                    LineTagFacades = null;                  
+                }
+                else
+                {
+                    var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
+                    LineTagFacades = GetLineFacadeTags(lineTags);
+                }
 
-                var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
-                LineTagFacades = GetLineFacadeTags(lineTags);
                 ///Уведомляем что данные свойство обновили
                 OnPropertyChanged("LineTagFacades");
             }
@@ -97,14 +104,14 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
         List<LineTagFacade> GetLineFacadeTags(ICollection<LineTag> lineTags)
         {
             List<LineTagFacade> lineTagFacades = new List<LineTagFacade>();
-            foreach(var L in lineTags)
+            foreach (var L in lineTags)
             {
                 var tag = _context.Tags.FirstOrDefault(T => T.Id == L.TagId);
                 if (tag == null)
                 {
                     continue;
                 }
-                lineTagFacades.Add(new LineTagFacade() 
+                lineTagFacades.Add(new LineTagFacade()
                 {
                     LineTag = L,
                     Tag = tag
@@ -146,8 +153,8 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                     {
                         MessageBox.Show(Local.GroupIsNotSelected);
                         return;
-                    }                    
-                    GetUserTextWindow getUserTextWindow = new GetUserTextWindow();
+                    }
+                    GetUserTextWindow getUserTextWindow = new GetUserTextWindow(Local.AddStationTittle);
                     getUserTextWindow.ShowDialog();
                     if (getUserTextWindow.IsSuccess)
                     {
@@ -167,23 +174,23 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             {
                 return addNewLine ?? (addNewLine = new RelayCommand(obj =>
                 {
-                if (selectedGroup == null)
+                    if (selectedGroup == null)
                     {
                         MessageBox.Show(Local.GroupIsNotSelected);
                         return;
                     }
-                else if (selectedStation == null)
+                    else if (selectedStation == null)
                     {
                         MessageBox.Show(Local.StationIsNotSelected);
                         return;
                     }
-                    GetUserTextWindow getUserTextWindow = new GetUserTextWindow();
+
+                    GetUserTextWindow getUserTextWindow = new GetUserTextWindow(Local.AddLineTittle);
                     getUserTextWindow.ShowDialog();
                     if (getUserTextWindow.IsSuccess)
                     {
-                        //  _configurationFacade.LineManager.AddStation(getUserTextWindow.InputText, selectedGroup);
-                        MessageBox.Show("Функционал не реализован");
-   
+                       //_configurationFacade.LineManager.AddLine(getUserTextWindow.InputText, selectedStation);
+                       MessageBox.Show("Функционал не реализован до конца");
                     }
                     GC.SuppressFinalize(getUserTextWindow);
                 }));
@@ -200,7 +207,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                 return save ?? (addNewLine = new RelayCommand(obj =>
                 {
                     _context.SaveChanges();
-                           }));
+                }));
             }
         }
 

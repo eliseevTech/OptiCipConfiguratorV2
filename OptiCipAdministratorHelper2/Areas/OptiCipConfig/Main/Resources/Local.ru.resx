@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddLineTittle" xml:space="preserve">
+    <value>Добавить новую линию</value>
+  </data>
+  <data name="AddStationTittle" xml:space="preserve">
+    <value>Добавить новую станцию</value>
+  </data>
   <data name="ButtonAdd" xml:space="preserve">
     <value>Добавить</value>
   </data>
@@ -137,8 +143,5 @@
   </data>
   <data name="StationIsNotSelected" xml:space="preserve">
     <value>Станция не выбрана.</value>
-  </data>
-  <data name="String" xml:space="preserve">
-    <value>Линия</value>
   </data>
 </root>

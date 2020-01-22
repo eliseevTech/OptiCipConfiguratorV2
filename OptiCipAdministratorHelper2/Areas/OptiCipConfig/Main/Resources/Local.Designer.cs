@@ -61,6 +61,24 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new line.
+        /// </summary>
+        public static string AddLineTittle {
+            get {
+                return ResourceManager.GetString("AddLineTittle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new station.
+        /// </summary>
+        public static string AddStationTittle {
+            get {
+                return ResourceManager.GetString("AddStationTittle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new.
         /// </summary>
         public static string ButtonAdd {

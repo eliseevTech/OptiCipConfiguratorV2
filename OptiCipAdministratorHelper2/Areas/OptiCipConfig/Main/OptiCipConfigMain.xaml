@@ -37,7 +37,7 @@
             SelectedValuePath="Name"
             SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
             Margin="10,139,0,0" Height="26" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="149" />
-        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewStation}" HorizontalAlignment="Left" Margin="164,139,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
+        <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewLine}" HorizontalAlignment="Left" Margin="164,139,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
         <DataGrid  ItemsSource="{Binding LineTagFacades}" HorizontalAlignment="Left" Height="220" Margin="10,186,0,0" VerticalAlignment="Top" Width="852" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Path=Tag.Name}"  Width="200"></DataGridTextColumn>

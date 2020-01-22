@@ -114,11 +114,6 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
                     _logger.Warn("------------------------------------------");
                     _logger.Warn(logMessage);
 
-                    //if (result != MessageBoxResult.OK)
-                    //{
-                    //    return;
-                    //}
-
                     if (_uIMessageService.ShowMessageListInfo(logMessage) == false)
                     {
                         return;
@@ -129,6 +124,7 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
 
                     foreach (var T in excelTags)
                     {
+
                         var tag = _context.Tags.Add(T.Tag);
                         _context.SaveChanges();
                         ///нужно записать тег и взять его id, потом id задать в линию
