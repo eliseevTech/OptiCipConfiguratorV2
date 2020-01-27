@@ -16,6 +16,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using NLog;
+using Newtonsoft.Json;
+using OptiCipAdministratorHelper2.Helpers;
 
 namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
 {
@@ -23,11 +26,13 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
     {
         IDataCollector _dataCollector;
         ConfigurationBuilder _configurationBuilder;
+        ILogger _logger;
 
-        public OpcConfigCreatorWindowViewModel(IDataCollector dataCollector, ConfigurationBuilder configurationBuilder)
+        public OpcConfigCreatorWindowViewModel(IDataCollector dataCollector, ConfigurationBuilder configurationBuilder, ILogger logger)
         {
             _dataCollector = dataCollector;
             _configurationBuilder = configurationBuilder;
+            _logger = logger;
         }
 
         public OpcConfigModel configModel { get; set; } = new OpcConfigModel()
@@ -36,7 +41,7 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
             DataType = "Type",
             DbAddress = "Full DB adr (formula)",
             Description = "Alias",
-            ScanRate = "500",
+            ScanRate = "2000",
             ExcelWorksheet = 2          
         };
 
@@ -58,7 +63,6 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
             }
         }
 
-
         // команда добавления нового объекта
         private RelayCommand generateOpcConfig;
         public RelayCommand GenerateOpcConfig
@@ -68,6 +72,9 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                 return generateOpcConfig ??
                   (generateOpcConfig = new RelayCommand(obj =>
                   {
+                      _logger.Info("Start generate opc config with config model:");
+                      _logger.ObjectLikeJson(LogLevel.Info, configModel);
+
                       // делаем список нужных нам данных
                       List<RequiredData> requiredData = new List<RequiredData>()
                       {
@@ -81,46 +88,30 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                       try
                       {
                           collectResult = CollectData(configModel.FilePath, requiredData);
-                      }
-                      catch (Exception e)
-                      {
-                          MessageBox.Show(e.StackTrace, e.Message);
-                          return;
-                      }
 
-   
-                      List<IOpcTag> opcTags;
-
-                      try
-                      {
+                          List<IOpcTag> opcTags;
+                
                           opcTags = ToOpcTags(collectResult, configModel);
+
+                          _configurationBuilder.Clear();
+                          _configurationBuilder.AddTags(opcTags);
+
+                          SaveFileDialog saveFileDialog = new SaveFileDialog();
+                          saveFileDialog.Filter = "CSV Files (*.csv)|*.csv| All files (*.*)|*.*";
+                          if (saveFileDialog.ShowDialog() == true)
+                          {
+                              configModel.OutputFileFullName = saveFileDialog.FileName;
+                          }
+                          _configurationBuilder.BuildToFile(configModel.OutputFileFullName);
+
                       }
                       catch (Exception e)
                       {
+                          _logger.ObjectLikeJson(LogLevel.Error, e);
                           MessageBox.Show(e.StackTrace, e.Message);
                           return;
                       }
-                      _configurationBuilder.Clear();
-                      _configurationBuilder.AddTags(opcTags);
-
-
-                      SaveFileDialog saveFileDialog = new SaveFileDialog();
-                      saveFileDialog.Filter = "CSV Files (*.csv)|*.csv| All files (*.*)|*.*";
-                      if (saveFileDialog.ShowDialog() == true)
-                      {
-                          configModel.OutputFileFullName = saveFileDialog.FileName;
-                      }
-
-                      _configurationBuilder.BuildToFile(configModel.OutputFileFullName);
-
-                      //MessageBoxResult result = MessageBox.Show(collectResult[configModel.TagName].Count().ToString(),
-                      //                    "Confirmation",
-                      //                    MessageBoxButton.YesNo,
-                      //                    MessageBoxImage.Question);
-                      //if (result == MessageBoxResult.Yes)
-                      //{
-                      //    Application.Current.Shutdown();
-                      //}
+    
                   }));
             }
         }
@@ -164,5 +155,6 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
             }
             return opcTags;
         }
+
     }
 }

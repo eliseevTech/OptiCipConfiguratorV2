@@ -106,31 +106,29 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
                 {
                     var excelTags = GetTagFromExcel();
 
-                    var logMessage = TagLinesToString(excelTags);
-
-
-                    MessageBoxResult result = MessageBox.Show(logMessage,"",           
-                              MessageBoxButton.OK);
-                    _logger.Warn("------------------------------------------");
-                    _logger.Warn(logMessage);
+                    string gettedTagCountMessage = $"Get {excelTags.Count()} tags from excel file";                   
+                    var logMessage = gettedTagCountMessage + "\n" + TagLinesToString(excelTags);
 
                     if (_uIMessageService.ShowMessageListInfo(logMessage) == false)
                     {
                         return;
                     }
-
-                    _logger.Warn("--------------------------------");
-                    _logger.Warn("Write tags to tags and tags line");
+                    _logger.Warn($"Get command to write {excelTags.Count()} tags to line and tag line");             
+    
 
                     foreach (var T in excelTags)
                     {
-
-                        var tag = _context.Tags.Add(T.Tag);
+                        _logger.Info($"Add tag {T.Tag.Name} to Access ");
+                        var tag = _context.Tags.Add(T.Tag);                    
                         _context.SaveChanges();
+                        _logger.Info($"Adding tag - success for {T.Tag.Name}. Set tag id {T.Tag.Id}");
                         ///нужно записать тег и взять его id, потом id задать в линию
+                        
                         T.LineTag.TagId = tag.Id;
+                        _logger.Info($"Add line tag {T.Tag.Name} to Access ");
                         _context.LineTags.Add(T.LineTag);
                         _context.SaveChanges();
+                        _logger.Info($"Adding line tag for {T.Tag.Name} - success.");
                     }
                 }));
             }
@@ -159,7 +157,7 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
         private string TagLinesToString(List<LineTagFacade> lineTagFacades)
         {
             StringBuilder result = new StringBuilder(lineTagFacades.Count * 100);
-            result.AppendLine($"Get {lineTagFacades.Count} tags");
+        
             foreach (var l in lineTagFacades)
             {
                 result.AppendLine(l.Tag.ToString());
