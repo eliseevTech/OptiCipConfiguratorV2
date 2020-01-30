@@ -79,6 +79,33 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SCHNEIDER-ELECTRIC ESS RUSSIA.
+        /// </summary>
+        public static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string NavHelp {
+            get {
+                return ResourceManager.GetString("NavHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        public static string NavInfo {
+            get {
+                return ResourceManager.GetString("NavInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string NavLanguage {
@@ -147,6 +174,15 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow.Resources {
         public static string NavUserGroup {
             get {
                 return ResourceManager.GetString("NavUserGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OPTICIP administrator helper 2.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

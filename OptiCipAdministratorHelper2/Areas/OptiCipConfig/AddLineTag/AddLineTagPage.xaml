@@ -6,14 +6,8 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.Resources"
    
         mc:Ignorable="d"
-        Title="PageName" Height="517.6" Width="675.866">
+        Title="PageName" Height="519.733" Width="684.933">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Label Content="{x:Static local:Local.LabelTagNameColumnName}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149"  Height="28"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="165,10,0,0" TextWrapping="Wrap" Text="{Binding TagNameColumnName}" VerticalAlignment="Top" Width="210"/>
 
@@ -38,27 +32,24 @@
         <Label Content="{x:Static local:Local.LabelFilterValue}" HorizontalAlignment="Left" Margin="380,250,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="91" Height="28"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="476,250,0,0" TextWrapping="Wrap" Text="{Binding FilterValue}" VerticalAlignment="Top" Width="120"/>
 
-
         <Label Content="{x:Static local:Local.MinValueColumnName}" HorizontalAlignment="Left" Margin="0,290,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="165,290,0,0" TextWrapping="Wrap" Text="{Binding MinValueColumnName}" VerticalAlignment="Top" Width="210"/>
+
         <Label Content="{x:Static local:Local.MaxValueColumnName}" HorizontalAlignment="Left" Margin="0,330,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="165,330,0,0" TextWrapping="Wrap" Text="{Binding MaxValueColumnName}" VerticalAlignment="Top" Width="210"/>
 
-
-        <Label Content="{x:Static local:Local.LabelWorksheetNumber}" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <Label Content="{x:Static local:Local.LabelWorksheetNumber}" HorizontalAlignment="Left" Margin="0,370,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="165,370,0,0" TextWrapping="Wrap" Text="{Binding WorksheetNumber}" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.406,1.15"/>
 
-        <Label Content="{x:Static local:Local.OpcShortLinkName}" HorizontalAlignment="Left" Margin="11,410,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
+        <Label Content="{x:Static local:Local.OpcShortLinkName}" HorizontalAlignment="Left" Margin="0,410,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="149" Height="28"/>
         <ComboBox ItemsSource="{Binding OpcShortLinkNames}"
-
             SelectedItem="{Binding OpcShortLinkName, Mode=TwoWay}"
             Margin="165,410,0,0" Height="26" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="210" />
 
-
-        <Button Content="{x:Static local:Local.GetTagsFromFile}" IsEnabled="{Binding IsEnableButtonGetFile}"  Command="{Binding GetTags}" HorizontalAlignment="Left" Margin="530,450,0,0" VerticalAlignment="Top" Width="133" Height="26"/>
         <Button Content="{x:Static local:Local.ButtonSelectFile}" Command="{Binding SelectFile}" HorizontalAlignment="Left" Margin="11,450,0,0" VerticalAlignment="Top" Width="149" Height="26"/>
         <TextBox Text="{Binding SelectedFile}" HorizontalAlignment="Left" Margin="165,450,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="360" Height="26"/>
 
+        <Button Content="{x:Static local:Local.GetTagsFromFile}" IsEnabled="{Binding IsEnableButtonGetFile}"  Command="{Binding GetTags}" HorizontalAlignment="Left" Margin="530,450,0,0" VerticalAlignment="Top" Width="133" Height="26"/>
 
     </Grid>
 </Window>

@@ -6,42 +6,31 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.Areas.MainWindow.Resources"
-        Title="MainWindow" Height="165.793" Width="319.6">
+        Title="{x:Static p:Local.Title}" Height="93.793" Width="398" ResizeMode="NoResize">
 
-    <Grid Margin="0,0,0,1.6" HorizontalAlignment="Left" Width="314">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="420"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Grid Margin="0,0,-79.4,2" HorizontalAlignment="Left" Width="393" Background="#FF00D019">
 
-        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0" Margin="0,0,-0.4,0">
+        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0" Margin="0,0,-0.2,0">
             <MenuItem Header="{x:Static p:Local.NavOptiCipConfig}">
                 <MenuItem Header="{x:Static p:Local.NavOptiCipConfigOpen}" Click="OpenConfiguration">
                 </MenuItem>
-                <Separator />
-                <MenuItem Header="Exit" ></MenuItem>
             </MenuItem>
             <MenuItem Header="{x:Static p:Local.NavTools}" >
                 <MenuItem Header="{x:Static p:Local.NavToolsOpcCreator}" Click="OpenOpcCreatorClick"></MenuItem>
+                <Separator />
                 <MenuItem Header="{x:Static p:Local.NavUserGroup}" Click="GetInfoOfOpticipUserGroups">
                 </MenuItem>
             </MenuItem>
+          
             <MenuItem x:Name="menuLanguage" Header="{x:Static p:Local.NavLanguage}" >
                 <MenuItem Header="{x:Static p:Local.NavSelectRuLanguage}" Tag="ru" Click="ChangeLanguageClick" ></MenuItem>
                 <MenuItem Header="{x:Static p:Local.NavSelectEnLanguage}" Tag="en" Click="ChangeLanguageClick" ></MenuItem>
             </MenuItem>
+            <MenuItem Header="{x:Static p:Local.NavHelp}" >
+                <MenuItem Header="{x:Static p:Local.NavInfo}"  Click="ShowInfoClick" ></MenuItem>
+            </MenuItem>
         </Menu>
-
-
-
-
-
-
-
-
-
+        <Label Content="{x:Static p:Local.CompanyName}" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Height="23" Width="314"/>
     </Grid>
 
 </Window>

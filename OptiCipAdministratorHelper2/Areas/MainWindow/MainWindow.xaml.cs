@@ -9,6 +9,7 @@ using OptiCipAdministratorHelper2.Areas.MainWindow.Resources;
 using Microsoft.Win32;
 using OptiCipAdministratorHelper2.Areas.MainWindow.ViewModel;
 using NLog;
+using System.Reflection;
 
 namespace OptiCipAdministratorHelper2.Areas.MainWindow
 {
@@ -23,7 +24,7 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
         WindowsService _windowsService;
         ILogger _logger;
 
-        public bool IsOpticipGroupOnWindows { get; set; } 
+        public bool IsOpticipGroupOnWindows { get; set; }
 
         public MainWindow(
             WindowLocator windowLocator,
@@ -68,16 +69,16 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
 
         private void ChangeLanguage(string lang)
         {
-            string messageText = string.Format(Local.ChangeLangMessage,lang) ;
+            string messageText = string.Format(Local.ChangeLangMessage, lang);
             string messageHead = Local.ChangeLangMessageBoxName;
             MessageBoxResult result = MessageBox.Show(messageText,
                                           messageHead,
                                           MessageBoxButton.OK);
         }
-        
+
         private void OpenOpcCreatorClick(Object sender, EventArgs e)
         {
-            _windowLocator.RunOpcConfigurator(); 
+            _windowLocator.RunOpcConfigurator();
         }
 
 
@@ -89,7 +90,7 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
             {
                 _accessContextService.SetContext(openFileDialog.FileName);
                 _windowLocator.RunOptiCipConfiguratorMain();
-            }               
+            }
         }
 
 
@@ -98,7 +99,7 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
             string message;
             if (!_windowsService.CheckOpticipUsersGroup())
             {
-                message = Local.UserGroupInfo + "\n" + Local.UserGroupGroupIsNotOk + "\n" + Local.UserGroupAddUserLabel;                
+                message = Local.UserGroupInfo + "\n" + Local.UserGroupGroupIsNotOk + "\n" + Local.UserGroupAddUserLabel;
                 if (MessageBox.Show(message, Local.UserGroupAddUserLabel, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     _logger.Info("Try to adding windows groups", this.Name);
@@ -122,8 +123,12 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
             }
         }
 
+        private void ShowInfoClick(object sender, RoutedEventArgs e)
+        {
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();           
+                MessageBox.Show($"Version {version}");
+        }
+
     }
-
-
 }
 

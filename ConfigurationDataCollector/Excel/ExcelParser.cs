@@ -83,8 +83,9 @@ namespace ConfigurationDataCollector.Excel
                 else if (requiredData.Type == RequiredData.DataType.color) 
                 {
                     var color = (string)worksheet.Cells[i, columnNumber].Style.Fill.BackgroundColor.Rgb;
-                    var colorWithoutAlfa = ExcelParser.RemoveAlfa(color);
 
+                    var colorWithoutAlfa = ExcelParser.RemoveAlfa(color);
+                    
                     resultValues.Add(colorWithoutAlfa);
                 } 
                 else
@@ -103,9 +104,14 @@ namespace ConfigurationDataCollector.Excel
         /// <returns>#RRGGBB</returns>
         public static string RemoveAlfa(string colorWithAlfa)
         {
-            if (colorWithAlfa.Length < 8)
+            if (string.IsNullOrEmpty(colorWithAlfa))
             {
                 return "#FFFFFF";
+            }
+            int colorLengthWithOutAlfa = 7;
+            if (colorWithAlfa.Length == colorLengthWithOutAlfa)
+            {
+                return colorWithAlfa; 
             }
             return "#" + colorWithAlfa.Substring(2, 6);
         }

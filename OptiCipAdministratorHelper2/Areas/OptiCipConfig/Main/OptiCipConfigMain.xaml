@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Resources"
         mc:Ignorable="d"
-       Title="{Binding ConfigurationName}" Height="533.5" Width="878.6"
+       Title="{Binding ConfigurationName}" Height="481.5" Width="878.6"
         
         >
     <Grid>
@@ -51,9 +51,7 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Tag.Alias,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="793,468,0,0" Width="69" Height="26" VerticalAlignment="Top" Background="#FFFFA25B"/>
-
-        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewTagsToLineFromExcel}" HorizontalAlignment="Left" Margin="10,468,0,0" Width="149" Height="26" VerticalAlignment="Top" Background="#FFA3E700"/>
+   
+        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewTagsToLineFromExcel}" HorizontalAlignment="Left" Margin="10,0,0,10" Width="149" Background="#FFA3E700" Height="26" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

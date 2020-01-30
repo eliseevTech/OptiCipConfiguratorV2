@@ -103,13 +103,22 @@ namespace EntityAccessOnFramework.Models
         [Column("DIG_REFSTYLE")]
         public int DIG_REFSTYLE { get; set; }
 
-
         /// <summary>
         /// DIG_HEIGHT
         /// for digital 1 \ for analog 0
         /// </summary>
         [Column("DIG_HEIGHT")]
         public double DIG_HEIGHT { get; set; }
+
+        [Column("DIG_ONGLET")]
+        public int DIG_ONGLET { get; set; }
+
+        [MaxLength(20)]
+        [Column("DIG_TITRE")]
+        public string DIG_TITRE { get; set; }
+
+        [Column("IMPRIME")]
+        public bool? IMPRIME { get; set; }
 
     }
 }

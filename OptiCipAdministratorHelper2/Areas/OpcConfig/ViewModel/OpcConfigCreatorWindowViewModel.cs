@@ -73,7 +73,7 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                   (generateOpcConfig = new RelayCommand(obj =>
                   {
                       _logger.Info("Start generate opc config with config model:");
-                      _logger.ObjectLikeJson(LogLevel.Info, configModel);
+                      _logger.Json(LogLevel.Info, configModel);
 
                       // делаем список нужных нам данных
                       List<RequiredData> requiredData = new List<RequiredData>()
@@ -107,7 +107,7 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                       }
                       catch (Exception e)
                       {
-                          _logger.ObjectLikeJson(LogLevel.Error, e);
+                          _logger.Json(LogLevel.Error, e);
                           MessageBox.Show(e.StackTrace, e.Message);
                           return;
                       }

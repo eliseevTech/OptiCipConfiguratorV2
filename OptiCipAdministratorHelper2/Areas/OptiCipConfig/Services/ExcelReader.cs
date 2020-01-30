@@ -73,18 +73,22 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
                     IsDigital = true;
                 }
 
+                int digitalPosition = 0;
+
                 LineTagFacade lineTagFacade = new LineTagFacade()
                 {
                     Tag = new Tag()
                     {
                         Name = collectResult[TagNameColumnName][i],
-                        Alias = collectResult[TagAliasColumnName][i],           
+                        Alias = collectResult[TagAliasColumnName][i],
                         Label = collectResult[TagLabelColumnName][i],
                         OpcItem = collectResult[TagNameColumnName][i],
                         OpcShortLinkName = opcShortLinkName,
                         ProjectId = line.ProjectId,
-                        Type = (IsDigital) ? "TOR" : "ANA",
-                        Unit = collectResult[TagUnitsColumnName][i]
+                        Type = (IsDigital) ? "TOR" : "ANA",                       
+                        Unit = collectResult[TagUnitsColumnName][i],
+                        CODE_TRAITEMENT = 0,
+                        PRECIS = 0
                     },
                     LineTag = new LineTag()
                     {
@@ -93,30 +97,41 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
                         GroupId = line.GroupId,
                         LineId = line.Id,
                         StationId = line.StationId,
-                        IsDigital = IsDigital  
+                        IsDigital = IsDigital,
+                        DIG_TITRE = (IsDigital) ? "Tab Base" : "",
+                        DIG_REFSTYLE = 1,
+                        DIG_HEIGHT = (IsDigital) ? 1 : 0,
+                        PositionLow = (IsDigital) ? digitalPosition : 0,
+                        PositionHigh = (IsDigital) ? ++digitalPosition : 0,
+                        Width = 1
                     },
                     HexColor = collectResult[TagColorColumnName][i]
                 };
 
-                int min;
-                if (int.TryParse(collectResult[MinValueColumnName][i],out min))
-                {
-                    lineTagFacade.Tag.PhysicalMin = min;
-                    lineTagFacade.Tag.MapMin = min;
-                }
-                int max;
-                if (int.TryParse(collectResult[MaxValueColumnName][i], out max))
-                {
-                    lineTagFacade.Tag.PhysicalMax = max;
-                    lineTagFacade.Tag.MapMax = min;
-                }
 
+                SetMinMax(collectResult[MinValueColumnName][i], collectResult[MaxValueColumnName][i], lineTagFacade);
 
                 lineTagFacades.Add(lineTagFacade);
-                
+
             }
             return lineTagFacades;
         }
+
+        private void SetMinMax(string minString, string maxString, LineTagFacade lineTagFacade)
+        {
+            int min = 0;
+            int.TryParse(minString, out min);
+
+            lineTagFacade.Tag.PhysicalMin = min;
+            lineTagFacade.Tag.MapMin = min;
+
+            int max = 0;
+            int.TryParse(maxString, out max);
+            lineTagFacade.Tag.PhysicalMax = max;
+            lineTagFacade.Tag.MapMax = max;
+        }
+
+
 
 
         /// <summary>
@@ -156,6 +171,6 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
             return collectResult;
         }
 
-  
+
     }
 }

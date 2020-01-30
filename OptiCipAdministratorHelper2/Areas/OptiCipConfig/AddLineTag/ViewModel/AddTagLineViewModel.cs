@@ -11,6 +11,8 @@ using OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services;
 using NLog;
 using System.Text;
 using System.Windows;
+using OptiCipAdministratorHelper2.Helpers;
+using System;
 
 namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
 {
@@ -104,35 +106,51 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
             {
                 return getTags ?? (getTags = new RelayCommand(obj =>
                 {
-                    var excelTags = GetTagFromExcel();
 
-                    string gettedTagCountMessage = $"Get {excelTags.Count()} tags from excel file";                   
-                    var logMessage = gettedTagCountMessage + "\n" + TagLinesToString(excelTags);
-
-                    if (_uIMessageService.ShowMessageListInfo(logMessage) == false)
+                    try
                     {
-                        return;
-                    }
-                    _logger.Warn($"Get command to write {excelTags.Count()} tags to line and tag line");             
-    
+                        var excelTags = GetTagFromExcel();
 
-                    foreach (var T in excelTags)
-                    {
-                        _logger.Info($"Add tag {T.Tag.Name} to Access ");
-                        var tag = _context.Tags.Add(T.Tag);                    
-                        _context.SaveChanges();
-                        _logger.Info($"Adding tag - success for {T.Tag.Name}. Set tag id {T.Tag.Id}");
-                        ///нужно записать тег и взять его id, потом id задать в линию
-                        
-                        T.LineTag.TagId = tag.Id;
-                        _logger.Info($"Add line tag {T.Tag.Name} to Access ");
-                        _context.LineTags.Add(T.LineTag);
-                        _context.SaveChanges();
-                        _logger.Info($"Adding line tag for {T.Tag.Name} - success.");
+                        string gettedTagCountMessage = $"Get {excelTags.Count()} tags from excel file";
+                        var logMessage = gettedTagCountMessage + "\n" + TagLinesToString(excelTags);
+
+                        if (_uIMessageService.ShowMessageListInfo(logMessage) == false)
+                        {
+                            return;
+                        }
+                        _logger.Warn($"Get command to write {excelTags.Count()} tags to line and tag line");
+
+                        AddLineTagsToAccess(excelTags);
                     }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show($"Error, for more information see log file {e.Message} {e.Data}");
+                        _logger.Json(LogLevel.Error, e);
+                    }
+
                 }));
             }
         }
+
+        private void AddLineTagsToAccess(List<LineTagFacade> excelTags)
+        {
+            foreach (var T in excelTags)
+            {
+                _logger.Info($"Add tag {T.Tag.Name} to Access ");
+                var tag = _context.Tags.Add(T.Tag);
+                _context.SaveChanges();
+                _logger.Info($"Adding tag - success for {T.Tag.Name}. Set tag id {T.Tag.Id}");
+                ///нужно записать тег и взять его id, потом id задать в линию
+
+                T.LineTag.TagId = tag.Id;
+                _logger.Info($"Add line tag {T.Tag.Name} to Access ");
+                _context.LineTags.Add(T.LineTag);
+                _context.SaveChanges();
+                _logger.Info($"Adding line tag for {T.Tag.Name} - success.");
+            }
+        }
+
+
 
         private List<LineTagFacade> GetTagFromExcel()
         {
@@ -157,7 +175,7 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.AddLineTag.ViewModel
         private string TagLinesToString(List<LineTagFacade> lineTagFacades)
         {
             StringBuilder result = new StringBuilder(lineTagFacades.Count * 100);
-        
+
             foreach (var l in lineTagFacades)
             {
                 result.AppendLine(l.Tag.ToString());
