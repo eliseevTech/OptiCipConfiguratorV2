@@ -53,6 +53,7 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
             var collectResult = ReadAllTagsFromExcel();
             List<LineTagFacade> lineTagFacades = new List<LineTagFacade>();
 
+            int digitalTagPosition = 0;
 
             for (int i = 0; i < collectResult.First().Value.Count(); i++)
             {
@@ -72,8 +73,6 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
                 {
                     IsDigital = true;
                 }
-
-                int digitalPosition = 0;
 
                 LineTagFacade lineTagFacade = new LineTagFacade()
                 {
@@ -101,8 +100,8 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Services
                         DIG_TITRE = (IsDigital) ? "Tab Base" : "",
                         DIG_REFSTYLE = 1,
                         DIG_HEIGHT = (IsDigital) ? 1 : 0,
-                        PositionLow = (IsDigital) ? digitalPosition : 0,
-                        PositionHigh = (IsDigital) ? ++digitalPosition : 0,
+                        PositionLow = (IsDigital) ? digitalTagPosition++ : 0,
+                        PositionHigh = (IsDigital) ? digitalTagPosition++ : 0,
                         Width = 1
                     },
                     HexColor = collectResult[TagColorColumnName][i]

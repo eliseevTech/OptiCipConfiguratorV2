@@ -125,8 +125,9 @@ namespace OptiCipAdministratorHelper2.Areas.MainWindow
 
         private void ShowInfoClick(object sender, RoutedEventArgs e)
         {
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();           
-                MessageBox.Show($"Version {version}");
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string info = "By Eliseev Eugene (eliseevmail@ya.ru) / SCHNEIDER-ELECTRIC ESS Russia";
+                MessageBox.Show($"{info}{System.Environment.NewLine}Version {version}");
         }
 
     }
