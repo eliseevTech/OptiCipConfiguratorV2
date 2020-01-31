@@ -129,6 +129,12 @@
   <data name="ButtonAddTagToLine" xml:space="preserve">
     <value>Добавить теги в линию </value>
   </data>
+  <data name="ButtonRefresh" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
   <data name="GroupIsNotSelected" xml:space="preserve">
     <value>Группа не выбрана.</value>
   </data>

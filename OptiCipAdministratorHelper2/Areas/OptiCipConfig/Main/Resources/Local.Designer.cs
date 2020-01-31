@@ -97,6 +97,24 @@ namespace OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string ButtonRefresh {
+            get {
+                return ResourceManager.GetString("ButtonRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ButtonSave {
+            get {
+                return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group is not selected..
         /// </summary>
         public static string GroupIsNotSelected {

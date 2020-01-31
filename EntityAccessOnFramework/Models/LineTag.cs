@@ -111,7 +111,7 @@ namespace EntityAccessOnFramework.Models
         public double DIG_HEIGHT { get; set; }
 
         [Column("DIG_ONGLET")]
-        public int DIG_ONGLET { get; set; }
+        public short DIG_ONGLET { get; set; }
 
         [MaxLength(20)]
         [Column("DIG_TITRE")]

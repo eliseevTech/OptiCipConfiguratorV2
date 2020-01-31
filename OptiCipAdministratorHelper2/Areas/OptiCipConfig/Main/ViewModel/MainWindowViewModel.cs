@@ -1,12 +1,9 @@
 ﻿using EntityAccessOnFramework.Data;
-
 using OptiCipAdministratorHelper2.Services;
 using OptiCipAdministratorHelper2.ViewModel;
 using System;
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Windows;
 using EntityAccessOnFramework.Models;
 using EntityAccessOnFramework.Services;
@@ -82,23 +79,27 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
             set
             {
                 selectedLine = value;
-
-                ClearContextChanges();
-                if (SelectedLine == null)
-                {
-                    LineTagFacades = null;                  
-                }
-                else
-                {
-                    var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
-                    LineTagFacades = GetLineFacadeTags(lineTags);
-                }
-
-                ///Уведомляем что данные свойство обновили
-                OnPropertyChanged("LineTagFacades");
+                UpdateLineTag();
             }
         }
 
+        private void UpdateLineTag()
+        {
+
+            ClearContextChanges();
+            if (SelectedLine == null)
+            {
+                LineTagFacades = null;
+            }
+            else
+            {
+                var lineTags = _context.LineTags.Where(S => S.GroupId == SelectedLine.GroupId && S.StationId == SelectedLine.StationId && S.LineId == SelectedLine.Id).ToList();
+                LineTagFacades = GetLineFacadeTags(lineTags);
+            }
+
+            ///Уведомляем что данные свойство обновили
+            OnPropertyChanged("LineTagFacades");
+        }
 
 
         List<LineTagFacade> GetLineFacadeTags(ICollection<LineTag> lineTags)
@@ -190,7 +191,7 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
                     if (getUserTextWindow.IsSuccess)
                     {
                        //_configurationFacade.LineManager.AddLine(getUserTextWindow.InputText, selectedStation);
-                       MessageBox.Show("Функционал не реализован до конца");
+                       MessageBox.Show("Function not yet implemented");
                     }
                     GC.SuppressFinalize(getUserTextWindow);
                 }));
@@ -199,14 +200,28 @@ namespace OptiCipAdministratorHelper2.View.OptiCipConfig.Main.ViewModel
 
 
         // команда добавления нового объекта
+        private RelayCommand refresh;
+        public RelayCommand Refresh
+        {
+            get
+            {
+                return refresh ?? (refresh = new RelayCommand(obj =>
+                {
+                    UpdateLineTag();
+                }));
+            }
+        }
+
+        // команда добавления нового объекта
         private RelayCommand save;
         public RelayCommand Save
         {
             get
             {
-                return save ?? (addNewLine = new RelayCommand(obj =>
-                {
+                return save ?? (save = new RelayCommand(obj =>
+                {                    
                     _context.SaveChanges();
+                    OnPropertyChanged("LineTagFacades");
                 }));
             }
         }

@@ -129,6 +129,12 @@
   <data name="ButtonAddTagToLine" xml:space="preserve">
     <value>Add tag to line from excel</value>
   </data>
+  <data name="ButtonRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="GroupIsNotSelected" xml:space="preserve">
     <value>Group is not selected.</value>
   </data>

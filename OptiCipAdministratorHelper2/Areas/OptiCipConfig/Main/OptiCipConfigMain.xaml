@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OptiCipAdministratorHelper2.View.OptiCipConfig.Main"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.Areas.OptiCipConfig.Main.Resources"
         mc:Ignorable="d"
-       Title="{Binding ConfigurationName}" Height="481.5" Width="878.6"
+       Title="{Binding ConfigurationName}" Height="481.5" Width="1166.8"
         
         >
     <Grid>
@@ -38,7 +38,7 @@
             SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
             Margin="10,139,0,0" Height="26" VerticalAlignment="Top" RenderTransformOrigin="0.466,1.034" HorizontalAlignment="Left" Width="149" />
         <Button Content="{x:Static p:Local.ButtonAdd}" Command="{Binding AddNewLine}" HorizontalAlignment="Left" Margin="164,139,0,0" Width="69" Height="26" VerticalAlignment="Top"/>
-        <DataGrid  ItemsSource="{Binding LineTagFacades}" HorizontalAlignment="Left" Height="220" Margin="10,186,0,0" VerticalAlignment="Top" Width="852" AutoGenerateColumns="False">
+        <DataGrid  ItemsSource="{Binding LineTagFacades}" Margin="10,186,6,41" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Path=Tag.Name}"  Width="200"></DataGridTextColumn>
                 <DataGridTextColumn Header="Color" IsReadOnly="True" Binding="{Binding Path=HexColor}" Width="80">
@@ -48,10 +48,24 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Tag.Alias,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Alias" Binding="{Binding Path=Tag.Alias,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Label" Binding="{Binding Path=Tag.Label,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Unit" Binding="{Binding Path=Tag.Unit,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="40"></DataGridTextColumn>
+                <DataGridTextColumn Header="PhysicalMin" Binding="{Binding Path=Tag.PhysicalMin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="PhysicalMax" Binding="{Binding Path=Tag.PhysicalMax,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Min" Binding="{Binding Path=Tag.Min,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Max" Binding="{Binding Path=Tag.Max,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="80"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Show Scale"  Binding="{Binding Path=Tag.ShowScale,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="80"></DataGridCheckBoxColumn>
+
+
+
             </DataGrid.Columns>
         </DataGrid>
-   
-        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewTagsToLineFromExcel}" HorizontalAlignment="Left" Margin="10,0,0,10" Width="149" Background="#FFA3E700" Height="26" VerticalAlignment="Bottom"/>
+
+        <Button Content="{x:Static p:Local.ButtonAddTagToLine}" Command="{Binding AddNewTagsToLineFromExcel}" HorizontalAlignment="Left" Margin="337,139,0,0" Width="175" Background="#FFA3E700" Height="26" VerticalAlignment="Top"/>
+        <Button Content="{x:Static p:Local.ButtonRefresh}" Command="{Binding Refresh}" HorizontalAlignment="Left" Margin="238,139,0,0" Width="94" Background="#FFFAA000" Height="26" VerticalAlignment="Top"/>
+        <Button Content="{x:Static p:Local.ButtonSave}" Command="{Binding Save}" Margin="10,0,0,10" Background="#FFF00000" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="175"/>
+
+
     </Grid>
 </Window>
