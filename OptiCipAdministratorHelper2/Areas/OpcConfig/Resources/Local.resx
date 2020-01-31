@@ -141,6 +141,15 @@
   <data name="LabelExcelWorksheet" xml:space="preserve">
     <value>Excel worksheet number</value>
   </data>
+  <data name="LabelFilterColumnName" xml:space="preserve">
+    <value>Filter column name</value>
+  </data>
+  <data name="LabelFilterValue" xml:space="preserve">
+    <value>Filter value</value>
+  </data>
+  <data name="LabelNeedFiler" xml:space="preserve">
+    <value>Use filter</value>
+  </data>
   <data name="LabelScanRate" xml:space="preserve">
     <value>Scan rate (ms)</value>
   </data>

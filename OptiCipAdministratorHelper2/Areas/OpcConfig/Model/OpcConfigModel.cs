@@ -87,8 +87,18 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.Model
         }
 
 
-
-
+        private bool needFilter = false;
+        public bool NeedFilter
+        {
+            get { return needFilter; }
+            set
+            {
+                needFilter = value;
+                OnPropertyChanged("NeedFilter");
+            }
+        }
+        public string FilterNameColumnName { get; set; } = "FilterName";
+        public string FilterValue { get; set; } = "CIP1_1";
 
     }
 }

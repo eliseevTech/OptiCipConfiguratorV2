@@ -42,7 +42,10 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
             DbAddress = "Full DB adr (formula)",
             Description = "Alias",
             ScanRate = "2000",
-            ExcelWorksheet = 2          
+            ExcelWorksheet = 2,
+            FilterValue = "CIP1_1",
+            NeedFilter = false,
+            FilterNameColumnName = "FilterName"
         };
 
 
@@ -81,8 +84,13 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                           new RequiredData(configModel.TagName),
                           new RequiredData(configModel.DbAddress),
                           new RequiredData(configModel.DataType),
-                          new RequiredData(configModel.Description)
+                          new RequiredData(configModel.Description),
                       };
+
+                      if (configModel.NeedFilter)
+                      {
+                          requiredData.Add(new RequiredData(configModel.FilterNameColumnName));
+                      }
 
                       Dictionary<string, List<string>> collectResult;
                       try
@@ -141,6 +149,14 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                 {
                     continue;
                 }
+                if (configModel.NeedFilter)
+                {                    
+                        if (collectResult[configModel.FilterNameColumnName][i] == null || collectResult[configModel.FilterNameColumnName][i] != configModel.FilterValue)
+                        {
+                            continue;
+                        }
+                }
+                
                 opcTags.Add(new OpcTag()
                 {
                     TagName = collectResult[configModel.TagName][i].Replace(" ", String.Empty),
@@ -150,7 +166,6 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.ViewModel
                     ScanRate = configModel.ScanRate,
                     RespectDataType = "1",
                     ClientAccess = "R/W"
-
                 }) ;
             }
             return opcTags;

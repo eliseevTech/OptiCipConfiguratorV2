@@ -133,6 +133,33 @@ namespace OptiCipAdministratorHelper2.Areas.OpcConfig.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter column name.
+        /// </summary>
+        public static string LabelFilterColumnName {
+            get {
+                return ResourceManager.GetString("LabelFilterColumnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter value.
+        /// </summary>
+        public static string LabelFilterValue {
+            get {
+                return ResourceManager.GetString("LabelFilterValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use filter.
+        /// </summary>
+        public static string LabelNeedFiler {
+            get {
+                return ResourceManager.GetString("LabelNeedFiler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan rate (ms).
         /// </summary>
         public static string LabelScanRate {

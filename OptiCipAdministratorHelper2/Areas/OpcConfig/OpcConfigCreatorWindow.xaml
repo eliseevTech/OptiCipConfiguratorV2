@@ -5,45 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:OptiCipAdministratorHelper2.Areas.OpcConfig.Resources"
-        Title="{x:Static p:Local.PageName}" Height="265.571" Width="355.714" Background="#FFF1FFEC">
-    <Grid HorizontalAlignment="Left" Width="342" Margin="0,0,0,0.2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="300.4"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Grid Margin="0,0,0,72.8" HorizontalAlignment="Left" Width="349" Height="218" VerticalAlignment="Bottom">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="545.6"/>
-            </Grid.ColumnDefinitions>
+        Title="{x:Static p:Local.PageName}" Height="448.671" Width="355.981" Background="#FFF1FFEC">
+    <Grid>
 
 
 
-
-            <TextBlock Grid.Column="0" Margin="10,87,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfTagName}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="20" Margin="131,87,0,0" TextWrapping="Wrap" Text="{Binding configModel.TagName}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
-            <TextBlock Grid.Column="0" Margin="10,111,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDataType}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="20" Margin="131,111,0,0" TextWrapping="Wrap" Text="{Binding configModel.DataType}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
-            <TextBlock Grid.Column="0" Margin="10,137,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDbAdr}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="20" Margin="131,137,0,0" TextWrapping="Wrap" Text="{Binding configModel.DbAddress}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
-            <TextBlock Grid.Column="0" Margin="10,162,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDescription}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="20" Margin="131,162,0,0" TextWrapping="Wrap" Text="{Binding configModel.Description}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
-
-            <TextBox HorizontalAlignment="Left" Margin="131,189,0,0" TextWrapping="Wrap" Text="{Binding configModel.ScanRate}" Width="60" RenderTransformOrigin="0.577,0.391" Height="20" VerticalAlignment="Top"/>
-            <TextBlock Grid.Column="0" Margin="10,189,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelScanRate}" HorizontalAlignment="Left" TextAlignment="Right" Width="111" VerticalAlignment="Top"/>
+        <Button Content="{x:Static p:Local.ButtonSelectFile}" Command="{Binding SelectFile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="349" Height="29" Background="#FFE0E0E0"/>
+        <TextBox HorizontalAlignment="Left" Height="48" Margin="10,34,0,0" TextWrapping="Wrap" Text="{Binding configModel.FilePath}" VerticalAlignment="Top" Width="322" IsEnabled="False"/>
 
 
-            <Button Content="{x:Static p:Local.ButtonGenerate}" Command="{Binding GenerateOpcConfig}" HorizontalAlignment="Right" Width="135" Margin="0,189,214.6,0" Height="20" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="0" Margin="10,87,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfTagName}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="131,87,0,0" TextWrapping="Wrap" Text="{Binding configModel.TagName}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
+        <TextBlock Grid.Column="0" Margin="10,111,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDataType}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="131,111,0,0" TextWrapping="Wrap" Text="{Binding configModel.DataType}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
+        <TextBlock Grid.Column="0" Margin="10,137,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDbAdr}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="131,137,0,0" TextWrapping="Wrap" Text="{Binding configModel.DbAddress}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
+        <TextBlock Grid.Column="0" Margin="10,162,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelConfDescription}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="131,162,0,0" TextWrapping="Wrap" Text="{Binding configModel.Description}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
 
-            <TextBlock Margin="0,-84,43.6,241" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelExcelWorksheet}" HorizontalAlignment="Right" TextAlignment="Right" Width="136" VerticalAlignment="Bottom"/>
-            <TextBox Height="20" Margin="0,-84,-0.4,241" TextWrapping="Wrap" Text="{Binding configModel.ExcelWorksheet}" VerticalAlignment="Bottom" RenderTransformOrigin="0.469,0.48" HorizontalAlignment="Right" Width="39"/>
-            <TextBox HorizontalAlignment="Left" Height="48" Margin="10,34,0,0" TextWrapping="Wrap" Text="{Binding configModel.FilePath}" VerticalAlignment="Top" Width="322" IsEnabled="False"/>
-            <Button Content="{x:Static p:Local.ButtonSelectFile}" Command="{Binding SelectFile}"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="322" Height="29"/>
+        
+        <TextBlock Grid.Column="0" Margin="10,197,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelNeedFiler}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding configModel.NeedFilter}" HorizontalAlignment="Left" Margin="132,198,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,-0.447"/>
+
+        <TextBlock  Grid.Column="0" Margin="10,222,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelFilterColumnName}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox  IsEnabled="{Binding configModel.NeedFilter}" HorizontalAlignment="Left" Height="20" Margin="131,222,0,0" TextWrapping="Wrap" Text="{Binding configModel.FilterNameColumnName}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
+
+        <TextBlock Grid.Column="0" Margin="10,247,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelFilterValue}" HorizontalAlignment="Left" TextAlignment="Right" Width="110" VerticalAlignment="Top"/>
+        <TextBox IsEnabled="{Binding configModel.NeedFilter}" HorizontalAlignment="Left" Height="20" Margin="131,247,0,0" TextWrapping="Wrap" Text="{Binding configModel.FilterValue}" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.577,0.391"/>
 
 
-        </Grid>
+        <TextBox HorizontalAlignment="Left" Margin="273,287,0,0" TextWrapping="Wrap" Text="{Binding configModel.ScanRate}" Width="60" RenderTransformOrigin="0.577,0.391" Height="20" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="0" Margin="157,287,0,0" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelScanRate}" HorizontalAlignment="Left" TextAlignment="Right" Width="111" VerticalAlignment="Top"/>
+
+
+        <Button Content="{x:Static p:Local.ButtonGenerate}" Command="{Binding GenerateOpcConfig}" HorizontalAlignment="Left" Width="135" Margin="197,389,0,0" Height="20" VerticalAlignment="Top"/>
+
+
+        <TextBlock Margin="0,0,61,35" TextWrapping="Wrap"  Height="20" Text="{x:Static p:Local.LabelExcelWorksheet}" HorizontalAlignment="Right" TextAlignment="Right" Width="136" VerticalAlignment="Bottom"/>
+        <TextBox Height="20" Margin="0,0,17,35" TextWrapping="Wrap" Text="{Binding configModel.ExcelWorksheet}" VerticalAlignment="Bottom" RenderTransformOrigin="0.469,0.48" HorizontalAlignment="Right" Width="39"/>
+
 
     </Grid>
 </Window>
